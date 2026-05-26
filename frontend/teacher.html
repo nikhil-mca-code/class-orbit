@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Teachers | Era of Education</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Apply to teach with Era of Education and connect with students seeking quality home tuition.">
+  <link rel="icon" href="Logo.PNG" type="image/png">
+  <link rel="canonical" href="/teacher.html">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="shared.css">
+  <style>
+    .page-hero { background:linear-gradient(135deg,#1a6b3c,#2ecc71); color:#fff; text-align:center; padding:60px 20px; }
+    .page-hero h1 { font-size:36px; margin-bottom:10px; }
+    .page-hero p { font-size:16px; opacity:.85; }
+    .ticker-section { background:#fff; padding:40px 5%; text-align:center; }
+    .ticker-section h2 { font-size:26px; color:#003366; margin-bottom:22px; }
+    .feature-box { display:inline-block; background:linear-gradient(135deg,#1a6b3c,#2ecc71); color:#fff; padding:18px 40px; border-radius:40px; font-size:18px; font-weight:600; box-shadow:0 10px 30px rgba(46,204,113,.3); min-width:280px; }
+    .benefits-section { padding:60px 5%; background:#f5f8ff; }
+    .benefits-section h2 { text-align:center; font-size:28px; color:#003366; margin-bottom:36px; }
+    .benefits-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:22px; max-width:1100px; margin:auto; }
+    .benefit-card { background:#fff; padding:26px 20px; border-radius:16px; text-align:center; box-shadow:0 10px 25px rgba(0,0,0,.08); transition:0.3s; }
+    .benefit-card:hover { transform:translateY(-6px); }
+    .benefit-card .ico { font-size:36px; margin-bottom:12px; }
+    .benefit-card h3 { font-size:16px; color:#003366; margin-bottom:6px; }
+    .benefit-card p { font-size:13px; color:#666; }
+    .reviews-section { padding:60px 5%; background:#1a3a2a; color:#fff; text-align:center; }
+    .reviews-section h2 { font-size:28px; margin-bottom:30px; }
+    .reviews-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:20px; max-width:1000px; margin:auto; }
+    .review-card { background:rgba(255,255,255,.08); padding:22px; border-radius:14px; text-align:left; border:1px solid rgba(255,255,255,.1); }
+    .review-card .stars { color:#f4b400; margin-bottom:8px; font-size:14px; }
+    .review-card p { font-size:14px; line-height:1.6; margin-bottom:10px; }
+    .review-card span { font-size:13px; color:#aaa; }
+    .form-section { padding:60px 5%; background:#fff; }
+    .form-box { max-width:580px; margin:auto; background:#f5f8ff; padding:36px; border-radius:20px; box-shadow:0 14px 40px rgba(0,0,0,.1); }
+    .form-box h2 { text-align:center; font-size:24px; color:#003366; margin-bottom:24px; }
+    .field { margin-bottom:16px; }
+    .field label { display:block; font-size:13px; font-weight:600; color:#444; margin-bottom:6px; }
+    .field input,.field select,.field textarea { width:100%; padding:12px 14px; border:1px solid #ddd; border-radius:10px; outline:none; font-size:14px; font-family:inherit; background:#fff; transition:0.3s; }
+    .field input:focus,.field select:focus { border-color:#003366; }
+    .field-row { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+    .submit-btn { width:100%; padding:14px; border:none; border-radius:12px; background:linear-gradient(135deg,#1a6b3c,#2ecc71); color:#fff; font-size:16px; font-weight:700; cursor:pointer; transition:0.3s; font-family:inherit; }
+    .submit-btn:hover { transform:scale(1.03); }
+    .success-msg { display:none; text-align:center; padding:24px; background:#e8f8ef; border-radius:12px; color:#2e7d32; }
+    .success-msg h3 { font-size:22px; margin-bottom:8px; }
+    @media(max-width:580px){ .field-row{grid-template-columns:1fr;} }
+  </style>
+</head>
+<body>
+
+<header class="navbar" id="mainNav">
+  <div class="logo"><a href="index.html"><img src="Logo.PNG" alt="Logo"></a></div>
+  <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  <nav id="navMenu">
+    <a href="index.html">Home</a>
+    <a href="student.html">Students</a>
+    <a href="teacher.html" class="active">Teachers</a>
+    <a href="about.html">About</a>
+    <a href="team.html">Team</a>
+    <a href="contact.html">Contact</a>
+    <a href="login.html" class="login-btn">Login</a>
+  </nav>
+</header>
+
+<div class="page-hero">
+  <h1>👨‍🏫 Join as a Teacher</h1>
+  <p>Teach from home • Flexible timing • Earn with respect</p>
+  <a href="#form" style="background:#fff;color:#1a6b3c;padding:13px 30px;border-radius:30px;font-weight:700;margin-top:20px;display:inline-block;">Join Now — Free Registration</a>
+</div>
+
+<section class="ticker-section">
+  <h2>Why Join Our Network?</h2>
+  <div class="feature-box" id="featureBox">✔ Flexible Teaching Hours</div>
+</section>
+
+<section class="benefits-section">
+  <h2>Benefits for Our Teachers</h2>
+  <div class="benefits-grid">
+    <div class="benefit-card"><div class="ico">⏰</div><h3>Flexible Timing</h3><p>Teach according to your own schedule.</p></div>
+    <div class="benefit-card"><div class="ico">🏠</div><h3>Teach Near Home</h3><p>Get students in your own locality.</p></div>
+    <div class="benefit-card"><div class="ico">💸</div><h3>Good Income</h3><p>Earn ₹15,000–₹50,000+ per month.</p></div>
+    <div class="benefit-card"><div class="ico">📱</div><h3>App Support</h3><p>Manage everything from your phone.</p></div>
+    <div class="benefit-card"><div class="ico">🎓</div><h3>Career Growth</h3><p>Build your reputation as an educator.</p></div>
+    <div class="benefit-card"><div class="ico">🤝</div><h3>Supportive Team</h3><p>We help you every step of the way.</p></div>
+  </div>
+</section>
+
+<section class="reviews-section">
+  <h2>⭐ What Our Teachers Say</h2>
+  <div class="reviews-grid">
+    <div class="review-card"><div class="stars">⭐⭐⭐⭐⭐</div><p>"Best platform to start my teaching career. Students are great!"</p><span>— Ankit (Mathematics)</span></div>
+    <div class="review-card"><div class="stars">⭐⭐⭐⭐⭐</div><p>"Flexible timing and supportive team. Highly recommended!"</p><span>— Pooja (Science)</span></div>
+    <div class="review-card"><div class="stars">⭐⭐⭐⭐⭐</div><p>"I earn well and teach students near my home. Very convenient!"</p><span>— Rahul (English)</span></div>
+  </div>
+</section>
+
+<section class="form-section" id="form">
+  <div class="form-box" id="formBox">
+    <h2>📝 Teacher Registration</h2>
+    <div class="field-row">
+      <div class="field"><label>Teacher Name *</label><input type="text" id="tName" placeholder="Apna naam"></div>
+      <div class="field"><label>Mobile Number *</label><input type="tel" id="tMobile" placeholder="+91 XXXXXXXXXX"></div>
+    </div>
+    <div class="field-row">
+      <div class="field"><label>Subject *</label><input type="text" id="tSubject" placeholder="e.g. Maths, English"></div>
+      <div class="field">
+        <label>Experience</label>
+        <select id="tExp">
+          <option>Fresher (0–1 year)</option>
+          <option>1–3 years</option>
+          <option>3–5 years</option>
+          <option>5+ years</option>
+        </select>
+      </div>
+    </div>
+    <div class="field"><label>Qualification</label><input type="text" id="tQual" placeholder="e.g. B.Sc, M.A, B.Ed"></div>
+    <div class="field"><label>Area / Locality</label><input type="text" id="tArea" placeholder="Teaching area preference"></div>
+    <div class="field"><label>Email</label><input type="email" id="tEmail" placeholder="Email address (optional)"></div>
+    <button class="submit-btn" onclick="submitTeacherForm()"><i class="fas fa-check-circle"></i> &nbsp;Submit Registration</button>
+  </div>
+  <div class="form-box success-msg" id="successBox">
+    <h3>✅ Application Submitted!</h3>
+    <p><strong>Admin review ke baad aapko approve kiya jaayega.</strong></p>
+    <p style="margin-top:10px;">Process:</p>
+    <ul style="text-align:left;margin:10px 0;padding-left:20px;font-size:14px;color:#2e7d32;">
+      <li>✔ Aapki application receive ho gayi</li>
+      <li>⏳ Admin 24 hours mein review karega</li>
+      <li>📞 Approval ke baad call/WhatsApp aayega</li>
+      <li>🎓 Login credentials diye jaayenge</li>
+    </ul>
+    <p style="margin-top:10px;">Sawaal ke liye: <a href="tel:+917289053560" style="color:#003366;font-weight:600;">+91 72890 53560</a></p>
+    <a href="index.html" style="display:inline-block;margin-top:16px;padding:11px 28px;background:linear-gradient(135deg,#1a6b3c,#2ecc71);color:#fff;border-radius:20px;font-weight:700;">← Back to Home</a>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-top">
+    <div class="footer-newsletter"><h2>Stay Updated with Era of Education</h2><div class="newsletter-form"><input type="email" id="newsletterEmail" placeholder="Enter your email"><button onclick="subscribeNewsletter()">Subscribe</button></div></div>
+    <div class="footer-contact-info"><span>Call Anytime</span><h3><a href="tel:+917289053560">+91 72890 53560</a></h3></div>
+  </div>
+  <hr class="footer-divider">
+  <div class="footer-main">
+    <div class="footer-col"><h3>Era of Education</h3><p>Taramandal Road, Gorakhpur</p><p><a href="tel:+917289053560">📞 +91 72890 53560</a></p><p><a href="mailto:eraofedu@gmail.com">✉ eraofedu@gmail.com</a></p><div class="social-icons"><a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a><a href="https://www.instagram.com/hometutor.in" target="_blank"><i class="fab fa-instagram"></i></a><a href="https://youtube.com/@eraofedu" target="_blank"><i class="fab fa-youtube"></i></a><a href="https://wa.me/917289053560" target="_blank"><i class="fab fa-whatsapp"></i></a></div></div>
+    <div class="footer-col"><h4>Services</h4><ul><li><a href="student.html">Home Tuition</a></li><li><a href="student.html">Online Classes</a></li><li><a href="book-demo.html">Free Demo</a></li><li><a href="about.html">Career Guidance</a></li></ul></div>
+    <div class="footer-col"><h4>Quick Links</h4><ul><li><a href="index.html">Home</a></li><li><a href="student.html">Students</a></li><li><a href="teacher.html">Teachers</a></li><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div class="footer-col"><h4>Privacy &amp; Info</h4><ul><li><a href="terms.html">Terms &amp; Conditions</a></li><li><a href="privacy.html">Privacy Policy</a></li><li><a href="contact.html">Get in Touch</a></li><li><a href="teacher.html">Become a Partner</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><div class="footer-left"><img src="Logo.PNG" alt="Logo"><span>Era of Education</span></div><div class="footer-right">✨ Simple is Powerful • © 2026 Era of Education. All Rights Reserved</div></div>
+</footer>
+
+<a href="https://wa.me/917289053560" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+<div class="chatbot-bubble" id="chatbotBubble" onclick="toggleChatbot()"><i class="fas fa-comments"></i></div>
+<div class="chatbot-box" id="chatbotBox">
+  <div class="chatbot-header"><div class="chatbot-avatar">🧑‍🏫</div><div><strong>Guru Ji</strong><small>Era of Education Assistant</small></div><button onclick="toggleChatbot()" class="chatbot-close">✕</button></div>
+  <div class="chatbot-messages" id="chatMessages"><div class="chat-msg bot">Namaste! 🙏 Teacher registration mein help chahiye? Neeche form bharein! <div class="quick-btns"><button onclick="sendQuick('Salary kitni milegi?')">💰 Salary</button><button onclick="sendQuick('Contact info chahiye')">📞 Contact</button></div></div></div>
+  <div class="chatbot-input"><input type="text" id="chatInput" placeholder="Sawaal likhiye..." onkeypress="if(event.key==='Enter') sendChat()"><button onclick="sendChat()"><i class="fas fa-paper-plane"></i></button></div>
+</div>
+
+<script>
+document.getElementById('hamburger').addEventListener('click', function(){ document.getElementById('navMenu').classList.toggle('open'); this.classList.toggle('active'); });
+window.addEventListener('scroll', ()=> document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY>10));
+const tFeatures=['✔ Flexible Teaching Hours','✔ Teach from Home','✔ Good Income Opportunity','✔ Career Growth'];
+let tfi=0; setInterval(()=>{ document.getElementById('featureBox').textContent=tFeatures[tfi]; tfi=(tfi+1)%tFeatures.length; },2500);
+window.addEventListener('load', () => {
+  const name = sessionStorage.getItem('reg_name');
+  const email = sessionStorage.getItem('reg_email');
+  const phone = sessionStorage.getItem('reg_phone');
+  if (name) document.getElementById('tName').value = name;
+  if (email) document.getElementById('tEmail').value = email;
+  if (phone) document.getElementById('tMobile').value = phone;
+});
+async function submitTeacherForm(){
+  const name          = document.getElementById('tName').value.trim();
+  const mobile        = document.getElementById('tMobile').value.trim();
+  const subject       = document.getElementById('tSubject').value.trim();
+  const experience    = document.getElementById('tExp').value;
+  const qualification = document.getElementById('tQual').value.trim();
+  const area          = document.getElementById('tArea').value.trim();
+  const email         = document.getElementById('tEmail').value.trim();
+
+  if(!name || !mobile || !subject){ alert('Naam, mobile aur subject zaroor bharein!'); return; }
+  if(email && !email.includes('@')){ alert('Valid email daalen ya blank chhod den!'); return; }
+
+  const btn = document.querySelector('.form-box .submit-btn');
+  btn.disabled=true; btn.innerHTML='<i class="fas fa-spinner fa-spin"></i> &nbsp;Submitting...';
+
+  try {
+    const response = await fetch('/api/teacher/register', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ name, mobile, subject, experience, qualification, area, email })
+    });
+    const data = await response.json();
+    if (!response.ok || !data.success) throw new Error(data.message || 'Application submit nahi hui.');
+    sessionStorage.removeItem('reg_name');
+    sessionStorage.removeItem('reg_email');
+    sessionStorage.removeItem('reg_phone');
+    document.getElementById('formBox').style.display='none';
+    document.getElementById('successBox').style.display='block';
+  } catch(err){
+    alert(err.message || 'Application submit nahi hui. Kripya dobara try karein.');
+    btn.disabled=false;
+    btn.innerHTML='<i class="fas fa-check-circle"></i> &nbsp;Submit Registration';
+  }
+}
+async function subscribeNewsletter() {
+  const email = document.getElementById('newsletterEmail').value.trim();
+  if (!email || !email.includes('@')) { alert('Kripya valid email daalen!'); return; }
+  try {
+    await fetch('/api/newsletter/subscribe', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({email})
+    });
+  } catch(e){ /* backend offline - ok */ }
+  alert('Shukriya! Aap successfully subscribe ho gaye hain. 🎉');
+  document.getElementById('newsletterEmail').value = '';
+}
+function toggleChatbot(){ const b=document.getElementById('chatbotBox'),bl=document.getElementById('chatbotBubble'); b.classList.toggle('open'); bl.style.display=b.classList.contains('open')?'none':'flex'; }
+function sendQuick(t){ addMsg(t,'user'); getBotReply(t); }
+function sendChat(){ const i=document.getElementById('chatInput'); const t=i.value.trim(); if(!t)return; addMsg(t,'user'); i.value=''; getBotReply(t); }
+function addMsg(t,r,trusted){ const m=document.getElementById('chatMessages'); const msg=document.createElement('div'); msg.className='chat-msg '+r; if(trusted) msg.innerHTML=t; else msg.textContent=t; m.appendChild(msg); m.scrollTop=m.scrollHeight; }
+function getBotReply(text){ const l=text.toLowerCase(); let r=''; if(l.includes('salary')||l.includes('earn')||l.includes('income')) r='💸 Teachers earn ₹15,000–₹50,000+ per month depending on subject & hours.'; else if(l.includes('contact')||l.includes('call')) r='📞 <a href="tel:+917289053560">+91 72890 53560</a> | <a href="mailto:eraofedu@gmail.com">eraofedu@gmail.com</a>'; else r='Neeche registration form bharein ya <a href="contact.html">contact karen</a>!'; setTimeout(()=>addMsg(r,'bot',true),600); }
+</script>
+</body>
+</html>

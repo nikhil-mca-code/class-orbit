@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Payment | Era of Education</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Secure payment page for Era of Education selected learning plans.">
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="icon" href="Logo.PNG" type="image/png">
+  <link rel="canonical" href="/payment.html">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="shared.css">
+  <style>
+    .payment-hero {
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #fff; text-align: center; padding: 60px 20px;
+    }
+    .payment-hero h1 { font-size: 34px; margin-bottom: 10px; }
+    .payment-hero p { font-size: 16px; color: #ccc; }
+
+    .payment-section { padding: 60px 5%; background: #f5f8ff; }
+    .payment-container { max-width: 960px; margin: auto; }
+    .payment-plans { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; margin-bottom: 50px; }
+
+    .pay-card {
+      background: #fff; width: 280px; padding: 28px;
+      border-radius: 18px; box-shadow: 0 14px 35px rgba(0,0,0,.1);
+      text-align: center; border: 2px solid transparent;
+      cursor: pointer; transition: 0.3s;
+    }
+    .pay-card:hover, .pay-card.selected { border-color: #003366; transform: translateY(-6px); }
+    .pay-card h3 { font-size: 18px; color: #003366; margin-bottom: 8px; }
+    .pay-card .amount { font-size: 28px; font-weight: 700; color: #1e40af; margin: 10px 0; }
+    .pay-card p { font-size: 13px; color: #666; }
+
+    .payment-form-box {
+      background: #fff; max-width: 500px; margin: auto;
+      padding: 32px; border-radius: 18px;
+      box-shadow: 0 14px 40px rgba(0,0,0,.12);
+    }
+    .payment-form-box h3 { font-size: 20px; color: #003366; margin-bottom: 20px; text-align: center; }
+    .form-row { margin-bottom: 16px; }
+    .form-row label { display: block; font-size: 13px; font-weight: 600; color: #444; margin-bottom: 6px; }
+    .form-row input, .form-row select {
+      width: 100%; padding: 12px 14px; border: 1px solid #ddd;
+      border-radius: 10px; outline: none; font-size: 14px; font-family: inherit;
+      transition: 0.3s;
+    }
+    .form-row input:focus, .form-row select:focus { border-color: #003366; }
+    .pay-btn {
+      width: 100%; padding: 14px; border: none; border-radius: 12px;
+      background: linear-gradient(135deg, #003366, #0066cc);
+      color: #fff; font-size: 16px; font-weight: 700;
+      cursor: pointer; transition: 0.3s; font-family: inherit;
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+    }
+    .pay-btn:hover { transform: scale(1.03); }
+    .secure-note { text-align: center; margin-top: 14px; font-size: 12px; color: #888; }
+    .secure-note i { color: #4caf50; }
+    .selected-plan-display {
+      background: #e8f0fe; border-radius: 10px; padding: 12px 16px;
+      margin-bottom: 20px; font-size: 14px; color: #003366; font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="navbar" id="mainNav">
+  <div class="logo"><a href="index.html"><img src="Logo.PNG" alt="Logo"></a></div>
+  <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  <nav id="navMenu">
+    <a href="index.html">Home</a>
+    <a href="student.html">Students</a>
+    <a href="teacher.html">Teachers</a>
+    <a href="about.html">About</a>
+    <a href="team.html">Team</a>
+    <a href="contact.html">Contact</a>
+    <a href="login.html" class="login-btn">Login</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<div class="payment-hero">
+  <h1>💳 Secure Fee Payment</h1>
+  <p>Choose your plan and pay securely via Razorpay</p>
+</div>
+
+<!-- PAYMENT SECTION -->
+<section class="payment-section">
+  <div class="payment-container">
+
+    <!-- PLAN CARDS -->
+    <div class="payment-plans">
+      <div class="pay-card selected" onclick="selectPlan(this, 'Standard Support Plan', 499)">
+        <h3>Standard Plan</h3>
+        <div class="amount">₹499</div>
+        <p>Per Month • Most Popular</p>
+      </div>
+      <div class="pay-card" onclick="selectPlan(this, 'Premium Excellence Plan', 999)">
+        <h3>Premium Plan</h3>
+        <div class="amount">₹999</div>
+        <p>Per Month • Best Value</p>
+      </div>
+      <div class="pay-card" onclick="selectPlan(this, 'Annual Premium Plan', 9999)">
+        <h3>Annual Plan</h3>
+        <div class="amount">₹9,999</div>
+        <p>Per Year • Save 17%</p>
+      </div>
+    </div>
+
+    <!-- PAYMENT FORM -->
+    <div class="payment-form-box">
+      <h3>Complete Your Payment</h3>
+      <div class="selected-plan-display" id="selectedPlanDisplay">
+        Selected: Standard Support Plan — ₹499
+      </div>
+
+      <div class="form-row">
+        <label>Full Name</label>
+        <input type="text" id="payName" placeholder="Apna poora naam">
+      </div>
+      <div class="form-row">
+        <label>Email Address</label>
+        <input type="email" id="payEmail" placeholder="Email address">
+      </div>
+      <div class="form-row">
+        <label>Mobile Number</label>
+        <input type="tel" id="payPhone" placeholder="+91 XXXXXXXXXX">
+      </div>
+      <div class="form-row">
+        <label>Plan</label>
+        <select id="payPlan" onchange="updateFromSelect()">
+          <option value="499">Standard Support Plan — ₹499</option>
+          <option value="999">Premium Excellence Plan — ₹999</option>
+          <option value="9999">Annual Premium Plan — ₹9,999</option>
+        </select>
+      </div>
+
+      <button class="pay-btn" onclick="startPayment()">
+        <i class="fas fa-lock"></i> Pay Securely via Razorpay
+      </button>
+      <div class="secure-note">
+        <i class="fas fa-shield-alt"></i> 100% Secure Payment • SSL Encrypted • Razorpay Protected
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-top">
+    <div class="footer-newsletter">
+      <h2>Stay Updated with Era of Education</h2>
+      <div class="newsletter-form">
+        <input type="email" id="newsletterEmail" placeholder="Enter your email">
+        <button onclick="subscribeNewsletter()">Subscribe</button>
+      </div>
+    </div>
+    <div class="footer-contact-info">
+      <span>Call Anytime</span>
+      <h3><a href="tel:+917289053560">+91 72890 53560</a></h3>
+    </div>
+  </div>
+  <hr class="footer-divider">
+  <div class="footer-main">
+    <div class="footer-col">
+      <h3>Era of Education</h3>
+      <p>Taramandal Road, Gorakhpur</p>
+      <p><a href="tel:+917289053560">📞 +91 72890 53560</a></p>
+      <p><a href="mailto:eraofedu@gmail.com">✉ eraofedu@gmail.com</a></p>
+      <div class="social-icons">
+        <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/hometutor.in" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://youtube.com/@eraofedu" target="_blank"><i class="fab fa-youtube"></i></a>
+        <a href="https://wa.me/917289053560" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="student.html">Students</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-left"><img src="Logo.PNG" alt="Logo"><span>Era of Education</span></div>
+    <div class="footer-right">© 2026 Era of Education. All Rights Reserved</div>
+  </div>
+</footer>
+
+<a href="https://wa.me/917289053560" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+document.getElementById('hamburger').addEventListener('click', function(){
+  document.getElementById('navMenu').classList.toggle('open');
+  this.classList.toggle('active');
+});
+
+let selectedAmount = 499;
+let selectedPlanName = 'Standard Support Plan';
+
+function selectPlan(card, planName, amount) {
+  document.querySelectorAll('.pay-card').forEach(c => c.classList.remove('selected'));
+  card.classList.add('selected');
+  selectedAmount = amount;
+  selectedPlanName = planName;
+  document.getElementById('selectedPlanDisplay').textContent = `Selected: ${planName} — ₹${amount.toLocaleString('en-IN')}`;
+  const select = document.getElementById('payPlan');
+  for (let opt of select.options) { if (opt.value == amount) { opt.selected = true; break; } }
+}
+
+function updateFromSelect() {
+  const val = parseInt(document.getElementById('payPlan').value);
+  const text = document.getElementById('payPlan').selectedOptions[0].text;
+  selectedAmount = val;
+  selectedPlanName = val === 9999 ? 'Annual Premium Plan' : val === 999 ? 'Premium Excellence Plan' : 'Standard Support Plan';
+  document.getElementById('selectedPlanDisplay').textContent = `Selected: ${text}`;
+}
+
+async function startPayment() {
+  const name  = document.getElementById('payName').value.trim();
+  const email = document.getElementById('payEmail').value.trim();
+  const phone = document.getElementById('payPhone').value.trim();
+
+  if (!name || !email || !phone) { alert('Kripya sabhi fields bharein!'); return; }
+  if (!email.includes('@')) { alert('Valid email daalen!'); return; }
+
+  const btn = document.querySelector('.pay-btn');
+  btn.disabled=true; btn.innerHTML='<i class="fas fa-spinner fa-spin"></i> Processing...';
+
+  try {
+    // Step 1: Create order from backend
+    const res = await fetch('/api/payment/create-order', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ amount:selectedAmount, studentName:name, email, phone, plan:selectedPlanName })
+    });
+    const order = await res.json();
+    if (!res.ok || !order.id || !order.keyId) {
+      throw new Error(order.message || 'Payment could not be started.');
+    }
+
+    // Step 2: Open Razorpay checkout
+    const options = {
+      key: order.keyId,
+      amount: order.amount,
+      currency: 'INR',
+      name: 'Era of Education',
+      description: selectedPlanName,
+      image: 'Logo.PNG',
+      order_id: order.id,
+      prefill: { name, email, contact:phone },
+      theme: { color:'#003366' },
+      handler: async function(response) {
+        // Step 3: Verify payment on backend
+        try {
+          const verifyRes = await fetch('/api/payment/verify', {
+            method:'POST', headers:{'Content-Type':'application/json'},
+            body: JSON.stringify({
+              razorpay_order_id: response.razorpay_order_id,
+              razorpay_payment_id: response.razorpay_payment_id,
+              razorpay_signature: response.razorpay_signature,
+              dbId: order.dbId
+            })
+          });
+          const vData = await verifyRes.json();
+          if(vData.success){
+            alert('✅ Payment Successful! Receipt email bhej diya gaya hai.');
+            window.location.href='student.html';
+          } else {
+            alert(vData.message || 'Payment verification failed. Please contact support.');
+          }
+        } catch(e) {
+          alert('Payment verification failed. Please contact support with your payment ID.');
+        }
+      },
+      modal: { ondismiss: function(){ btn.disabled=false; btn.innerHTML='<i class="fas fa-lock"></i> Pay Securely via Razorpay'; }}
+    };
+    new Razorpay(options).open();
+
+  } catch(err) {
+    btn.disabled=false; btn.innerHTML='<i class="fas fa-lock"></i> Pay Securely via Razorpay';
+    alert(err.message || 'Payment start nahi hua. Kripya dobara try karein.');
+  }
+}
+
+function subscribeNewsletter() {
+  const email = document.getElementById('newsletterEmail').value;
+  if (!email || !email.includes('@')) { alert('Valid email daalen!'); return; }
+  alert('Shukriya! Successfully subscribed! 🎉');
+  document.getElementById('newsletterEmail').value = '';
+}
+</script>
+</body>
+</html>

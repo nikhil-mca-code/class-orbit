@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Book Free Demo | Era of Education</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Book a free demo class with Era of Education and experience personalized home tuition.">
+  <link rel="icon" href="Logo.PNG" type="image/png">
+  <link rel="canonical" href="/book-demo.html">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="shared.css">
+  <style>
+    .demo-hero { background:linear-gradient(135deg,#ff512f,#dd2476); color:#fff; text-align:center; padding:70px 20px; }
+    .demo-hero h1 { font-size:38px; margin-bottom:12px; }
+    .demo-hero p { font-size:17px; opacity:.9; }
+    .demo-section { padding:60px 5%; background:#f5f8ff; }
+    .demo-box { max-width:580px; margin:auto; background:#fff; padding:36px; border-radius:20px; box-shadow:0 14px 40px rgba(0,0,0,.12); }
+    .demo-box h2 { text-align:center; font-size:24px; color:#003366; margin-bottom:6px; }
+    .demo-box p.sub { text-align:center; color:#888; font-size:14px; margin-bottom:24px; }
+    .field { margin-bottom:16px; }
+    .field label { display:block; font-size:13px; font-weight:600; color:#444; margin-bottom:6px; }
+    .field input,.field select { width:100%; padding:12px 14px; border:1px solid #ddd; border-radius:10px; outline:none; font-size:14px; font-family:inherit; transition:0.3s; }
+    .field input:focus,.field select:focus { border-color:#dd2476; }
+    .field-row { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+    .submit-btn { width:100%; padding:14px; border:none; border-radius:12px; background:linear-gradient(135deg,#ff512f,#dd2476); color:#fff; font-size:16px; font-weight:700; cursor:pointer; transition:0.3s; font-family:inherit; }
+    .submit-btn:hover { transform:scale(1.03); }
+    .success-card { display:none; text-align:center; padding:30px; background:#fff4f9; border-radius:14px; border:1px solid #f9a8d4; }
+    .success-card h3 { font-size:24px; color:#dd2476; margin-bottom:10px; }
+    .free-badge { background:linear-gradient(135deg,#ff512f,#dd2476); color:#fff; display:inline-block; padding:6px 20px; border-radius:20px; font-weight:700; font-size:13px; margin-bottom:20px; }
+    @media(max-width:480px){ .field-row{grid-template-columns:1fr;} }
+  </style>
+</head>
+<body>
+
+<header class="navbar" id="mainNav">
+  <div class="logo"><a href="index.html"><img src="Logo.PNG" alt="Logo"></a></div>
+  <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  <nav id="navMenu">
+    <a href="index.html">Home</a>
+    <a href="student.html">Students</a>
+    <a href="teacher.html">Teachers</a>
+    <a href="about.html">About</a>
+    <a href="team.html">Team</a>
+    <a href="contact.html">Contact</a>
+    <a href="login.html" class="login-btn">Login</a>
+  </nav>
+</header>
+
+<div class="demo-hero">
+  <h1>🎯 Book Your FREE Demo Class</h1>
+  <p>No payment required • Expert teacher • At your doorstep</p>
+</div>
+
+<section class="demo-section">
+  <div class="demo-box" id="demoBox">
+    <div style="text-align:center;"><span class="free-badge">100% FREE — No Charges!</span></div>
+    <h2>Fill the Form Below</h2>
+    <p class="sub">Our team will call you within 2 hours to schedule your demo class.</p>
+    <div class="field-row">
+      <div class="field"><label>Student Name *</label><input type="text" id="dName" placeholder="Student ka naam"></div>
+      <div class="field"><label>Class *</label><select id="dClass"><option value="">Select Class</option><option>Class 1</option><option>Class 2</option><option>Class 3</option><option>Class 4</option><option>Class 5</option><option>Class 6</option><option>Class 7</option><option>Class 8</option><option>Class 9</option><option>Class 10</option><option>Class 11</option><option>Class 12</option></select></div>
+    </div>
+    <div class="field-row">
+      <div class="field"><label>Mobile Number *</label><input type="tel" id="dMobile" placeholder="+91 XXXXXXXXXX"></div>
+      <div class="field"><label>Subject Needed *</label><input type="text" id="dSubject" placeholder="e.g. Maths, Science"></div>
+    </div>
+    <div class="field"><label>Preferred Timing</label><select id="dTime"><option>Morning (7AM–11AM)</option><option>Afternoon (12PM–4PM)</option><option>Evening (5PM–8PM)</option><option>Any Time</option></select></div>
+    <div class="field"><label>Area / Locality *</label><input type="text" id="dArea" placeholder="Apna area batayein"></div>
+    <button class="submit-btn" onclick="bookDemo()"><i class="fas fa-calendar-check"></i> &nbsp;Book Free Demo Class</button>
+  </div>
+  <div class="success-card" id="successCard">
+    <div style="font-size:60px;">🎉</div>
+    <h3>Demo Class Booked!</h3>
+    <p style="color:#555;font-size:15px;">Shukriya! Hamari team 2 ghante mein aapko call karegi demo schedule karne ke liye.</p>
+    <p style="margin-top:14px;font-weight:600;">Jaldi contact chahiye? <a href="tel:+917289053560" style="color:#dd2476;">+91 72890 53560</a></p>
+    <a href="index.html" style="display:inline-block;margin-top:18px;padding:12px 28px;background:linear-gradient(135deg,#ff512f,#dd2476);color:#fff;border-radius:25px;font-weight:700;">Back to Home</a>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-top"><div class="footer-newsletter"><h2>Stay Updated with Era of Education</h2><div class="newsletter-form"><input type="email" id="newsletterEmail" placeholder="Enter your email"><button onclick="subscribeNewsletter()">Subscribe</button></div></div><div class="footer-contact-info"><span>Call Anytime</span><h3><a href="tel:+917289053560">+91 72890 53560</a></h3></div></div>
+  <hr class="footer-divider">
+  <div class="footer-main">
+    <div class="footer-col"><h3>Era of Education</h3><p>Taramandal Road, Gorakhpur</p><p><a href="tel:+917289053560">📞 +91 72890 53560</a></p><div class="social-icons"><a href="https://www.instagram.com/hometutor.in" target="_blank"><i class="fab fa-instagram"></i></a><a href="https://youtube.com/@eraofedu" target="_blank"><i class="fab fa-youtube"></i></a><a href="https://wa.me/917289053560" target="_blank"><i class="fab fa-whatsapp"></i></a></div></div>
+    <div class="footer-col"><h4>Quick Links</h4><ul><li><a href="index.html">Home</a></li><li><a href="student.html">Students</a></li><li><a href="teacher.html">Teachers</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><div class="footer-left"><img src="Logo.PNG" alt="Logo"><span>Era of Education</span></div><div class="footer-right">© 2026 Era of Education. All Rights Reserved</div></div>
+</footer>
+
+<a href="https://wa.me/917289053560" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+<script>
+document.getElementById('hamburger').addEventListener('click', function(){ document.getElementById('navMenu').classList.toggle('open'); this.classList.toggle('active'); });
+async function bookDemo(){
+  const studentName = document.getElementById('dName').value.trim();
+  const cls         = document.getElementById('dClass').value;
+  const mobile      = document.getElementById('dMobile').value.trim();
+  const subject     = document.getElementById('dSubject').value.trim();
+  const area        = document.getElementById('dArea').value.trim();
+  const timing      = document.getElementById('dTime').value;
+  if(!studentName||!cls||!mobile||!subject||!area){ alert('Kripya sabhi * fields bharein!'); return; }
+
+  const btn = document.querySelector('.form-box .submit-btn');
+  btn.disabled=true; btn.textContent='Booking...';
+
+  try {
+    const res = await fetch('/api/demo/book', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({studentName, class:cls, mobile, subject, area, timing})
+    });
+    const data = await res.json();
+    if (!res.ok || !data.success) throw new Error(data.message || 'Demo booking nahi hui.');
+    document.getElementById('demoBox').style.display='none';
+    document.getElementById('successCard').style.display='block';
+  } catch(err){
+    alert(err.message || 'Demo booking nahi hui. Kripya dobara try karein.');
+    btn.disabled=false;
+    btn.innerHTML='<i class="fas fa-calendar-check"></i> &nbsp;Book Free Demo Class';
+  }
+}
+async function subscribeNewsletter() {
+  const email = document.getElementById('newsletterEmail').value.trim();
+  if (!email || !email.includes('@')) { alert('Kripya valid email daalen!'); return; }
+  try {
+    await fetch('/api/newsletter/subscribe', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({email})
+    });
+  } catch(e){ /* backend offline - ok */ }
+  alert('Shukriya! Aap successfully subscribe ho gaye hain. 🎉');
+  document.getElementById('newsletterEmail').value = '';
+}
+</script>
+</body>
+</html>

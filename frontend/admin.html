@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Dashboard | Era of Education</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Era of Education administration dashboard.">
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="icon" href="Logo.PNG" type="image/png">
+  <link rel="canonical" href="/admin.html">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="shared.css">
+  <style>
+    body { background:#0f1923; }
+    .admin-layout { display:flex; min-height:calc(100vh - 76px); }
+    .sidebar { width:230px; background:#111d2b; padding:24px 12px; flex-shrink:0; }
+    .sidebar h3 { color:#00e5ff; font-size:12px; letter-spacing:1px; text-transform:uppercase; margin-bottom:16px; padding:0 8px; }
+    .sidebar a, .sidebar button.nav-btn { display:flex; align-items:center; gap:10px; color:#a0b0c0; padding:11px 14px; border-radius:10px; font-size:14px; font-weight:500; margin-bottom:4px; transition:0.3s; cursor:pointer; width:100%; text-align:left; background:none; border:none; font-family:inherit; }
+    .sidebar a:hover, .sidebar button.nav-btn:hover, .sidebar a.active, .sidebar button.nav-btn.active { background:#1a2d3e; color:#00e5ff; }
+    .sidebar a i, .sidebar button.nav-btn i { width:18px; }
+    .main-content { flex:1; padding:28px; overflow-x:auto; }
+    .admin-header { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:28px; }
+    .admin-header h2 { color:#fff; font-size:22px; }
+    .logout-btn { padding:9px 20px; background:#ff4444; color:#fff; border:none; border-radius:20px; font-weight:600; cursor:pointer; font-family:inherit; }
+    .stats-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); gap:18px; margin-bottom:28px; }
+    .stat-box { background:#111d2b; border-radius:14px; padding:20px; border:1px solid #1a2d3e; cursor:pointer; transition:0.2s; }
+    .stat-box:hover { border-color:#00e5ff33; }
+    .stat-box .stat-ico { font-size:28px; margin-bottom:10px; }
+    .stat-box h3 { font-size:30px; font-weight:700; color:#00e5ff; }
+    .stat-box p { font-size:13px; color:#7090a0; margin-top:4px; }
+    .panel { display:none; }
+    .panel.active { display:block; }
+    .admin-table-box { background:#111d2b; border-radius:14px; padding:20px; border:1px solid #1a2d3e; margin-bottom:24px; overflow-x:auto; }
+    .admin-table-box h3 { color:#fff; font-size:16px; margin-bottom:16px; display:flex; justify-content:space-between; align-items:center; }
+    .admin-table-box h3 span { font-size:13px; color:#7090a0; font-weight:400; }
+    table { width:100%; border-collapse:collapse; min-width:500px; }
+    th { background:#0a1520; color:#00e5ff; padding:11px 14px; text-align:left; font-size:13px; font-weight:600; }
+    td { padding:11px 14px; font-size:13px; color:#c0d0e0; border-bottom:1px solid #1a2d3e; }
+    tr:hover td { background:rgba(0,229,255,0.03); }
+    .badge { padding:3px 10px; border-radius:12px; font-size:11px; font-weight:700; }
+    .badge.active { background:#0a3020; color:#2ecc71; }
+    .badge.pending { background:#2a1a00; color:#f4b400; }
+    .badge.rejected { background:#2a0000; color:#ff6666; }
+    .action-btn { font-size:11px; padding:5px 12px; border:none; border-radius:10px; cursor:pointer; font-family:inherit; font-weight:600; margin:2px; }
+    .action-btn.approve { background:#1a6b3c; color:#fff; }
+    .action-btn.reject { background:#6b1a1a; color:#fff; }
+    .action-btn.delete { background:#333; color:#aaa; }
+    .empty-state { text-align:center; padding:40px; color:#7090a0; font-size:14px; }
+    .search-bar { width:100%; padding:10px 14px; background:#0a1520; border:1px solid #1a2d3e; border-radius:10px; color:#c0d0e0; font-size:13px; font-family:inherit; outline:none; margin-bottom:16px; }
+    .search-bar::placeholder { color:#506070; }
+    .notification { background:#0a1520; border:1px solid #1a2d3e; border-radius:10px; padding:14px 18px; margin-bottom:12px; display:flex; justify-content:space-between; align-items:center; }
+    .notification p { color:#c0d0e0; font-size:14px; }
+    .notification .time { color:#506070; font-size:12px; }
+    .panel-title { font-size:20px; color:#fff; margin-bottom:20px; font-weight:700; }
+  </style>
+</head>
+<body>
+
+<header class="navbar" id="mainNav" style="background:#111d2b;border-bottom:1px solid #1a2d3e;">
+  <div class="logo"><a href="index.html"><img src="Logo.PNG" alt="Logo"></a></div>
+  <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  <nav id="navMenu" style="background:#111d2b;">
+    <a href="index.html" style="color:#a0b0c0;">🌐 View Website</a>
+    <button class="logout-btn" onclick="logout()" style="margin-left:12px;">Logout</button>
+  </nav>
+</header>
+
+<div class="admin-layout">
+  <aside class="sidebar">
+    <h3>Admin Panel</h3>
+    <button class="nav-btn active" id="nav-dashboard" onclick="showPanel('dashboard')"><i class="fas fa-tachometer-alt"></i> Dashboard</button>
+    <button class="nav-btn" id="nav-students" onclick="showPanel('students')"><i class="fas fa-user-graduate"></i> Students</button>
+    <button class="nav-btn" id="nav-teachers" onclick="showPanel('teachers')"><i class="fas fa-chalkboard-teacher"></i> Teachers</button>
+    <button class="nav-btn" id="nav-pending" onclick="showPanel('pending')"><i class="fas fa-clock"></i> Pending Approvals</button>
+    <button class="nav-btn" id="nav-payments" onclick="showPanel('payments')"><i class="fas fa-credit-card"></i> Payments</button>
+    <button class="nav-btn" id="nav-demos" onclick="showPanel('demos')"><i class="fas fa-calendar"></i> Demo Requests</button>
+    <button class="nav-btn" id="nav-notifications" onclick="showPanel('notifications')"><i class="fas fa-bell"></i> Notifications</button>
+    <hr style="border-color:#1a2d3e;margin:12px 0;">
+    <a href="contact.html"><i class="fas fa-headset"></i> Support</a>
+    <a href="index.html"><i class="fas fa-globe"></i> View Website</a>
+    <a href="login.html" onclick="localStorage.clear()"><i class="fas fa-sign-out-alt"></i> Logout</a>
+  </aside>
+
+  <main class="main-content">
+    <div class="admin-header">
+      <h2 id="panelTitle">📊 Admin Dashboard</h2>
+      <button class="logout-btn" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</button>
+    </div>
+
+    <!-- PANEL: Dashboard -->
+    <div class="panel active" id="panel-dashboard">
+      <div class="stats-grid">
+        <div class="stat-box" onclick="showPanel('students')"><div class="stat-ico">👨‍🎓</div><h3 id="statStudents">0</h3><p>Total Students</p></div>
+        <div class="stat-box" onclick="showPanel('teachers')"><div class="stat-ico">👨‍🏫</div><h3 id="statTeachers">0</h3><p>Active Teachers</p></div>
+        <div class="stat-box" onclick="showPanel('pending')"><div class="stat-ico">⏳</div><h3 id="statPending">0</h3><p>Pending Approvals</p></div>
+        <div class="stat-box" onclick="showPanel('demos')"><div class="stat-ico">🎯</div><h3 id="statDemos">0</h3><p>Demo Requests</p></div>
+      </div>
+
+      <div class="admin-table-box">
+        <h3>📋 Recent Student Registrations <span id="recentStudentCount"></span></h3>
+        <table>
+          <thead><tr><th>Name</th><th>Class</th><th>Plan</th><th>Mobile</th><th>Status</th></tr></thead>
+          <tbody id="recentStudentsTbody"><tr><td colspan="5" class="empty-state">No students registered yet.</td></tr></tbody>
+        </table>
+      </div>
+
+      <div class="admin-table-box">
+        <h3>⏳ Pending Teacher Approvals <span id="pendingTeacherCount"></span></h3>
+        <table>
+          <thead><tr><th>Name</th><th>Subject</th><th>Mobile</th><th>Applied</th><th>Action</th></tr></thead>
+          <tbody id="pendingTeachersTbody"><tr><td colspan="5" class="empty-state">No pending approvals.</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- PANEL: Students -->
+    <div class="panel" id="panel-students">
+      <div class="admin-table-box">
+        <h3>👨‍🎓 All Registered Students</h3>
+        <input class="search-bar" id="studentSearch" placeholder="🔍 Search by name or email..." oninput="filterStudents()">
+        <table>
+          <thead><tr><th>Name</th><th>Email</th><th>Class</th><th>Subject</th><th>Plan</th><th>Mobile</th><th>Joined</th><th>Action</th></tr></thead>
+          <tbody id="allStudentsTbody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- PANEL: Teachers (Approved) -->
+    <div class="panel" id="panel-teachers">
+      <div class="admin-table-box">
+        <h3>👨‍🏫 Approved Teachers</h3>
+        <input class="search-bar" id="teacherSearch" placeholder="🔍 Search by name or subject..." oninput="filterTeachers()">
+        <table>
+          <thead><tr><th>Name</th><th>Subject</th><th>Mobile</th><th>Experience</th><th>Area</th><th>Status</th><th>Action</th></tr></thead>
+          <tbody id="approvedTeachersTbody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- PANEL: Pending Approvals -->
+    <div class="panel" id="panel-pending">
+      <div class="admin-table-box">
+        <h3>⏳ Pending Teacher Applications</h3>
+        <table>
+          <thead><tr><th>Name</th><th>Subject</th><th>Mobile</th><th>Email</th><th>Experience</th><th>Area</th><th>Applied</th><th>Action</th></tr></thead>
+          <tbody id="pendingAllTbody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- PANEL: Payments -->
+    <div class="panel" id="panel-payments">
+      <div class="admin-table-box">
+        <h3>💰 Student Plan Payments</h3>
+        <table>
+          <thead><tr><th>Student</th><th>Plan</th><th>Amount</th><th>Joined</th><th>Status</th></tr></thead>
+          <tbody id="paymentsTbody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- PANEL: Demo Requests -->
+    <div class="panel" id="panel-demos">
+      <div class="admin-table-box">
+        <h3>🎯 Demo Class Requests</h3>
+        <table id="demosTable">
+          <thead><tr><th>Student</th><th>Subject</th><th>Timing</th><th>Status</th></tr></thead>
+          <tbody id="demosTbody">
+            <tr><td>Mohan Yadav</td><td>Maths</td><td>Evening</td><td><span class="badge pending">Pending</span></td></tr>
+            <tr><td>Kavita Mishra</td><td>Science</td><td>Morning</td><td><span class="badge active">Scheduled</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- PANEL: Notifications -->
+    <div class="panel" id="panel-notifications">
+      <p class="panel-title">🔔 System Notifications</p>
+      <div id="notifContainer"></div>
+    </div>
+
+  </main>
+</div>
+
+<script>
+document.getElementById('hamburger').addEventListener('click', function(){ document.getElementById('navMenu').classList.toggle('open'); this.classList.toggle('active'); });
+
+// Auth guard
+const authToken = localStorage.getItem('authToken');
+document.body.style.display = 'none';
+function logout() {
+  localStorage.removeItem('authToken');
+  localStorage.removeItem('role');
+  localStorage.removeItem('user');
+  localStorage.removeItem('userId');
+  window.location.href = 'login.html';
+}
+function escapeHtml(value) {
+  return String(value == null ? '' : value).replace(/[&<>"']/g, c => ({
+    '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;'
+  }[c]));
+}
+async function validateAccess() {
+  if (!authToken || localStorage.getItem('role') !== 'admin') return false;
+  try {
+    const response = await fetch('/api/auth/session', { headers:{ Authorization:'Bearer ' + authToken } });
+    const session = await response.json();
+    return response.ok && session.role === 'admin';
+  } catch (error) {
+    return false;
+  }
+}
+
+// Panel navigation
+const panelTitles = {
+  dashboard: '📊 Admin Dashboard',
+  students: '👨‍🎓 All Students',
+  teachers: '👨‍🏫 Approved Teachers',
+  pending: '⏳ Pending Approvals',
+  payments: '💰 Payments',
+  demos: '🎯 Demo Requests',
+  notifications: '🔔 Notifications'
+};
+
+function showPanel(name) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('panel-' + name).classList.add('active');
+  document.getElementById('nav-' + name).classList.add('active');
+  document.getElementById('panelTitle').textContent = panelTitles[name] || name;
+  loadPanel(name);
+}
+
+function loadPanel(name) {
+  if (name === 'dashboard') loadDashboard();
+  else if (name === 'students') loadAllStudents();
+  else if (name === 'teachers') loadApprovedTeachers();
+  else if (name === 'pending') loadPendingTeachers('pendingAllTbody', true);
+  else if (name === 'payments') loadPayments();
+  else if (name === 'demos') loadDemos();
+  else if (name === 'notifications') loadNotifications();
+}
+
+// ---- DATA HELPERS ----
+function getStudents() { return JSON.parse(localStorage.getItem('era_students') || '[]'); }
+function getPendingTeachers() { return JSON.parse(localStorage.getItem('era_pending_teachers') || '[]'); }
+function getApprovedTeachers() { return JSON.parse(localStorage.getItem('era_approved_teachers') || '[]'); }
+
+function saveApprovedTeachers(list) { localStorage.setItem('era_approved_teachers', JSON.stringify(list)); }
+function savePendingTeachers(list) { localStorage.setItem('era_pending_teachers', JSON.stringify(list)); }
+
+// ---- LOAD DASHBOARD ----
+function loadDashboard() {
+  const students = getStudents();
+  const approved = getApprovedTeachers();
+  const pending = getPendingTeachers();
+
+  document.getElementById('statStudents').textContent = students.length;
+  document.getElementById('statTeachers').textContent = approved.length;
+  document.getElementById('statPending').textContent = pending.length;
+
+  // Recent students (last 5)
+  const recent = students.slice(-5).reverse();
+  const tbody = document.getElementById('recentStudentsTbody');
+  if (recent.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="5" class="empty-state">No students registered yet.</td></tr>';
+  } else {
+    tbody.innerHTML = recent.map(s => `
+      <tr>
+        <td>${escapeHtml(s.name)}</td>
+        <td>${escapeHtml(s.class || '—')}</td>
+        <td>${escapeHtml(s.plan || 'Essential')}</td>
+        <td>${escapeHtml(s.mobile)}</td>
+        <td><span class="badge active">Active</span></td>
+      </tr>`).join('');
+    document.getElementById('recentStudentCount').textContent = '(Showing last ' + recent.length + ')';
+  }
+
+  // Pending teachers on dashboard
+  loadPendingTeachers('pendingTeachersTbody', false);
+  document.getElementById('pendingTeacherCount').textContent = pending.length > 0 ? '(' + pending.length + ' pending)' : '';
+}
+
+// ---- LOAD ALL STUDENTS ----
+let allStudentsList = [];
+let allPaymentsList = [];
+let allDemosList = [];
+function loadAllStudents() {
+  allStudentsList = getStudents();
+  renderStudentsTable(allStudentsList);
+}
+
+function renderStudentsTable(list) {
+  const tbody = document.getElementById('allStudentsTbody');
+  if (list.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="8" class="empty-state">No registered students found.</td></tr>';
+    return;
+  }
+  tbody.innerHTML = list.map(s => `
+    <tr>
+      <td>${escapeHtml(s.name)}</td>
+      <td>${escapeHtml(s.email)}</td>
+      <td>${escapeHtml(s.class || '—')}</td>
+      <td>${escapeHtml(s.subject || '—')}</td>
+      <td><span class="badge active">${escapeHtml(s.plan || 'Essential')}</span></td>
+      <td>${escapeHtml(s.mobile)}</td>
+      <td>${escapeHtml(s.joinDate || '—')}</td>
+      <td>
+        <button class="action-btn delete" onclick="deleteStudent(decodeURIComponent('${encodeURIComponent(String(s.id))}'))"><i class="fas fa-trash"></i> Remove</button>
+      </td>
+    </tr>`).join('');
+}
+
+function filterStudents() {
+  const q = document.getElementById('studentSearch').value.toLowerCase();
+  const filtered = allStudentsList.filter(s =>
+    String(s.name || '').toLowerCase().includes(q) || String(s.email || '').toLowerCase().includes(q)
+  );
+  renderStudentsTable(filtered);
+}
+
+async function deleteStudent(id) {
+  if (!confirm('Kya aap is student ko remove karna chahte hain?')) return;
+  try {
+    const response = await fetch('/api/admin/student/' + encodeURIComponent(id), {
+      method:'DELETE', headers:{ Authorization:'Bearer ' + authToken }
+    });
+    if (!response.ok) throw new Error('Student removal failed');
+    await syncFromBackend();
+    loadAllStudents();
+    alert('Student removed.');
+  } catch (error) {
+    alert('Student remove nahi hua.');
+  }
+}
+
+// ---- LOAD APPROVED TEACHERS ----
+let allTeachersList = [];
+function loadApprovedTeachers() {
+  allTeachersList = getApprovedTeachers();
+  renderTeachersTable(allTeachersList);
+}
+
+function renderTeachersTable(list) {
+  const tbody = document.getElementById('approvedTeachersTbody');
+  if (list.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="7" class="empty-state">No approved teachers yet. Approve from Pending Approvals.</td></tr>';
+    return;
+  }
+  tbody.innerHTML = list.map(t => `
+    <tr>
+      <td>${escapeHtml(t.name)}</td>
+      <td>${escapeHtml(t.subject)}</td>
+      <td>${escapeHtml(t.mobile)}</td>
+      <td>${escapeHtml(t.experience || '—')}</td>
+      <td>${escapeHtml(t.area || '—')}</td>
+      <td><span class="badge active">✔ Approved</span></td>
+      <td>
+        <button class="action-btn reject" onclick="removeApprovedTeacher(decodeURIComponent('${encodeURIComponent(String(t.id))}'))"><i class="fas fa-ban"></i> Revoke</button>
+      </td>
+    </tr>`).join('');
+}
+
+function filterTeachers() {
+  const q = document.getElementById('teacherSearch').value.toLowerCase();
+  const filtered = allTeachersList.filter(t =>
+    String(t.name || '').toLowerCase().includes(q) || String(t.subject || '').toLowerCase().includes(q)
+  );
+  renderTeachersTable(filtered);
+}
+
+async function removeApprovedTeacher(id) {
+  if (!confirm('Kya aap is teacher ki approval revoke karna chahte hain?')) return;
+  try {
+    const response = await fetch('/api/admin/teacher/' + encodeURIComponent(id), {
+      method:'PUT',
+      headers:{'Content-Type':'application/json', Authorization:'Bearer ' + authToken},
+      body: JSON.stringify({ status:'inactive' })
+    });
+    if (!response.ok) throw new Error('Teacher update failed');
+    await syncFromBackend();
+    loadApprovedTeachers();
+    alert('Teacher approval revoked.');
+  } catch (error) {
+    alert('Teacher approval update nahi hua.');
+  }
+}
+
+// ---- LOAD PENDING TEACHERS ----
+function loadPendingTeachers(tbodyId, fullCols) {
+  const pending = getPendingTeachers();
+  const tbody = document.getElementById(tbodyId);
+  if (!tbody) return;
+
+  if (pending.length === 0) {
+    tbody.innerHTML = `<tr><td colspan="${fullCols?8:5}" class="empty-state">✅ Koi pending applications nahi hain.</td></tr>`;
+    return;
+  }
+
+  tbody.innerHTML = pending.map(t => {
+    const fullRow = fullCols ? `<td>${escapeHtml(t.email || '—')}</td><td>${escapeHtml(t.experience || '—')}</td><td>${escapeHtml(t.area || '—')}</td><td>${escapeHtml(t.appliedDate || '—')}</td>` : '';
+    return `<tr>
+      <td>${escapeHtml(t.name)}</td>
+      <td>${escapeHtml(t.subject)}</td>
+      <td>${escapeHtml(t.mobile)}</td>
+      ${fullRow}
+      <td>
+        <button class="action-btn approve" onclick="approveTeacher(decodeURIComponent('${encodeURIComponent(String(t.id))}'))"><i class="fas fa-check"></i> Approve</button>
+        <button class="action-btn reject" onclick="rejectTeacher(decodeURIComponent('${encodeURIComponent(String(t.id))}'))"><i class="fas fa-times"></i> Reject</button>
+      </td>
+    </tr>`;
+  }).join('');
+}
+
+async function approveTeacher(id) {
+  try {
+    const response = await fetch('/api/admin/teacher/' + encodeURIComponent(id), {
+      method:'PUT',
+      headers:{'Content-Type':'application/json', Authorization:'Bearer ' + authToken},
+      body: JSON.stringify({ status:'active' })
+    });
+    if (!response.ok) throw new Error('Teacher update failed');
+    await syncFromBackend();
+    loadDashboard();
+    if (document.getElementById('panel-pending').classList.contains('active')) {
+      loadPendingTeachers('pendingAllTbody', true);
+    }
+    alert('Teacher ko approve kar diya gaya!');
+  } catch (error) {
+    alert('Teacher approval update nahi hua.');
+  }
+}
+
+async function rejectTeacher(id) {
+  if (!confirm('Kya aap is application ko reject karna chahte hain?')) return;
+  try {
+    const response = await fetch('/api/admin/teacher/' + encodeURIComponent(id), {
+      method:'PUT',
+      headers:{'Content-Type':'application/json', Authorization:'Bearer ' + authToken},
+      body: JSON.stringify({ status:'inactive' })
+    });
+    if (!response.ok) throw new Error('Teacher update failed');
+    await syncFromBackend();
+    loadDashboard();
+    if (document.getElementById('panel-pending').classList.contains('active')) {
+      loadPendingTeachers('pendingAllTbody', true);
+    }
+    alert('Application rejected.');
+  } catch (error) {
+    alert('Application update nahi hua.');
+  }
+}
+
+// ---- PAYMENTS ----
+function loadPayments() {
+  const tbody = document.getElementById('paymentsTbody');
+  if (allPaymentsList.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="5" class="empty-state">No payment records yet.</td></tr>';
+    return;
+  }
+  tbody.innerHTML = allPaymentsList.map(p => `
+    <tr>
+      <td>${escapeHtml(p.studentName)}</td>
+      <td>${escapeHtml(p.plan)}</td>
+      <td>Rs. ${escapeHtml(p.amount)}</td>
+      <td>${escapeHtml(p.createdAt ? new Date(p.createdAt).toLocaleDateString('en-IN') : '—')}</td>
+      <td><span class="badge active">Paid</span></td>
+    </tr>`).join('');
+}
+function loadDemos() {
+  const tbody = document.getElementById('demosTbody');
+  if (allDemosList.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="4" class="empty-state">No demo requests yet.</td></tr>';
+    return;
+  }
+  tbody.innerHTML = allDemosList.map(d => `<tr>
+    <td>${escapeHtml(d.studentName)}</td>
+    <td>${escapeHtml(d.subject)}</td>
+    <td>${escapeHtml(d.timing || 'Any')}</td>
+    <td><span class="badge pending">${escapeHtml(d.status || 'pending')}</span></td>
+  </tr>`).join('');
+}
+
+// ---- NOTIFICATIONS ----
+function addNotification(msg) {
+  const notifs = JSON.parse(localStorage.getItem('era_admin_notifs') || '[]');
+  notifs.unshift({ msg, time: new Date().toLocaleString('en-IN') });
+  localStorage.setItem('era_admin_notifs', JSON.stringify(notifs.slice(0, 20)));
+}
+
+function loadNotifications() {
+  const notifs = JSON.parse(localStorage.getItem('era_admin_notifs') || '[]');
+  const container = document.getElementById('notifContainer');
+  if (notifs.length === 0) {
+    container.innerHTML = '<div class="empty-state">📭 Koi notifications nahi hain abhi.</div>';
+    return;
+  }
+  container.innerHTML = notifs.map(n => `
+    <div class="notification">
+      <p><i class="fas fa-bell" style="color:#00e5ff;margin-right:10px;"></i>${escapeHtml(n.msg)}</p>
+      <span class="time">${escapeHtml(n.time)}</span>
+    </div>`).join('');
+}
+
+// ---- BACKEND SYNC (optional, silently) ----
+async function syncFromBackend() {
+  try {
+    const headers = { Authorization: 'Bearer ' + authToken };
+    const [studRes, teachRes, demoRes, paymentRes, statsRes] = await Promise.all([
+      fetch('/api/admin/students', { headers }),
+      fetch('/api/admin/teachers', { headers }),
+      fetch('/api/admin/demos', { headers }),
+      fetch('/api/admin/payments', { headers }),
+      fetch('/api/admin/stats', { headers })
+    ]);
+    if (studRes.status === 401 || studRes.status === 403) {
+      logout();
+      return;
+    }
+    const students = await studRes.json();
+    const teachers = await teachRes.json();
+    const demos = await demoRes.json();
+    const payments = await paymentRes.json();
+    const stats = await statsRes.json();
+    const mappedStudents = Array.isArray(students) ? students.map(s => ({ ...s, id:s._id || s.id })) : [];
+    const mappedTeachers = Array.isArray(teachers) ? teachers.map(t => ({ ...t, id:t._id || t.id })) : [];
+    localStorage.setItem('era_students', JSON.stringify(mappedStudents));
+    saveApprovedTeachers(mappedTeachers.filter(t => t.status === 'active'));
+    savePendingTeachers(mappedTeachers.filter(t => t.status === 'pending'));
+    allDemosList = Array.isArray(demos) ? demos : [];
+    allPaymentsList = Array.isArray(payments) ? payments : [];
+    if (stats.success) {
+      document.getElementById('statStudents').textContent = stats.students;
+      document.getElementById('statTeachers').textContent = stats.teachers;
+      document.getElementById('statDemos').textContent = stats.pendingDemos;
+    }
+    loadDashboard();
+    loadDemos();
+  } catch(e) { /* backend offline */ }
+}
+
+// Init
+async function initializeAdmin() {
+  if (!(await validateAccess())) {
+    logout();
+    return;
+  }
+  document.body.style.display = '';
+  await syncFromBackend();
+}
+initializeAdmin();
+</script>
+</body>
+</html>

@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact Us | Era of Education</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contact Era of Education for student admissions, teacher registration, demos, and support.">
+  <link rel="icon" href="Logo.PNG" type="image/png">
+  <link rel="canonical" href="/contact.html">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="shared.css">
+  <style>
+    .page-hero {
+      background: linear-gradient(135deg, #003366, #0066cc);
+      color: #fff; text-align: center; padding: 60px 20px;
+    }
+    .page-hero h1 { font-size: 36px; margin-bottom: 10px; }
+    .page-hero p { font-size: 16px; opacity: 0.85; }
+
+    .contact-section { padding: 60px 5%; background: #fff; }
+    .contact-section h2 { text-align: center; font-size: 28px; color: #003366; margin-bottom: 10px; }
+    .contact-section > p { text-align: center; color: #666; margin-bottom: 40px; font-size: 15px; }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px; max-width: 1100px; margin: 0 auto 60px;
+    }
+    .contact-card {
+      background: #f9fbff; padding: 28px 20px; border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0,0,0,.08); text-align: center;
+      transition: 0.3s; border: 1px solid #eef;
+    }
+    .contact-card:hover { transform: translateY(-8px); box-shadow: 0 18px 40px rgba(0,0,0,.14); }
+    .contact-card .icon-wrap {
+      width: 64px; height: 64px; margin: 0 auto 16px;
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(135deg, #003366, #0066cc); color: #fff; font-size: 26px;
+    }
+    .contact-card h3 { font-size: 16px; color: #003366; margin-bottom: 8px; }
+    .contact-card a { color: #0066cc; font-weight: 500; font-size: 14px; word-break: break-word; }
+    .contact-card a:hover { text-decoration: underline; }
+
+    /* CONTACT FORM */
+    .contact-form-section { padding: 0 5% 60px; background: #fff; }
+    .contact-form-inner {
+      max-width: 720px; margin: auto; background: #f5f8ff;
+      padding: 36px; border-radius: 18px; box-shadow: 0 12px 35px rgba(0,0,0,.1);
+    }
+    .contact-form-inner h2 { text-align: center; font-size: 24px; color: #003366; margin-bottom: 24px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+    .form-row.full { grid-template-columns: 1fr; }
+    .form-row input, .form-row textarea, .form-row select {
+      width: 100%; padding: 12px 14px;
+      border: 1px solid #ddd; border-radius: 10px; outline: none;
+      font-size: 14px; font-family: inherit; transition: 0.3s;
+      background: #fff;
+    }
+    .form-row input:focus, .form-row textarea:focus, .form-row select:focus { border-color: #003366; }
+    .form-row textarea { height: 120px; resize: vertical; }
+    .submit-btn {
+      width: 100%; padding: 14px; border: none; border-radius: 12px;
+      background: linear-gradient(135deg, #003366, #0066cc);
+      color: #fff; font-size: 16px; font-weight: 700;
+      cursor: pointer; transition: 0.3s; font-family: inherit;
+    }
+    .submit-btn:hover { transform: scale(1.03); }
+    .form-success {
+      display: none; background: #e8f8ef; border: 1px solid #4caf50;
+      color: #2e7d32; padding: 14px; border-radius: 10px; text-align: center;
+      font-weight: 600; margin-top: 14px;
+    }
+
+    /* MAP */
+    .map-section { padding: 0 5% 60px; }
+    .map-section h2 { text-align: center; font-size: 24px; color: #003366; margin-bottom: 20px; }
+    .map-wrapper { border-radius: 16px; overflow: hidden; box-shadow: 0 12px 30px rgba(0,0,0,.12); }
+    .map-wrapper iframe { width: 100%; height: 380px; display: block; border: 0; }
+
+    @media(max-width:600px) { .form-row { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="navbar" id="mainNav">
+  <div class="logo"><a href="index.html"><img src="Logo.PNG" alt="Era of Education Logo"></a></div>
+  <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  <nav id="navMenu">
+    <a href="index.html">Home</a>
+    <a href="student.html">Students</a>
+    <a href="teacher.html">Teachers</a>
+    <a href="about.html">About</a>
+    <a href="team.html">Team</a>
+    <a href="contact.html" class="active">Contact</a>
+    <a href="login.html" class="login-btn">Login</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<div class="page-hero">
+  <h1>📬 Contact Era of Education</h1>
+  <p>We are always ready to help you. Reach us anytime!</p>
+</div>
+
+<!-- CONTACT CARDS -->
+<section class="contact-section">
+  <h2>Get In Touch</h2>
+  <p>Reach us through any of these channels — we respond fast!</p>
+  <div class="contact-grid">
+    <div class="contact-card">
+      <div class="icon-wrap"><i class="fas fa-phone"></i></div>
+      <h3>Call Us</h3>
+      <a href="tel:+917289053560">📞 +91 72890 53560</a>
+    </div>
+    <div class="contact-card">
+      <div class="icon-wrap"><i class="fab fa-whatsapp"></i></div>
+      <h3>WhatsApp</h3>
+      <a href="https://wa.me/917289053560" target="_blank">Chat on WhatsApp</a>
+    </div>
+    <div class="contact-card">
+      <div class="icon-wrap"><i class="fas fa-envelope"></i></div>
+      <h3>Email</h3>
+      <a href="mailto:eraofedu@gmail.com">eraofedu@gmail.com</a>
+    </div>
+    <div class="contact-card">
+      <div class="icon-wrap"><i class="fab fa-instagram"></i></div>
+      <h3>Instagram</h3>
+      <a href="https://www.instagram.com/hometutor.in" target="_blank">@hometutor.in</a>
+    </div>
+    <div class="contact-card">
+      <div class="icon-wrap"><i class="fab fa-youtube"></i></div>
+      <h3>YouTube</h3>
+      <a href="https://youtube.com/@eraofedu" target="_blank">@eraofedu</a>
+    </div>
+    <div class="contact-card">
+      <div class="icon-wrap"><i class="fas fa-map-marker-alt"></i></div>
+      <h3>Location</h3>
+      <a href="https://maps.app.goo.gl/oJfTPUA3ezxA5rBv9" target="_blank">Taramandal Rd, Gorakhpur</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT FORM -->
+<section class="contact-form-section">
+  <div class="contact-form-inner">
+    <h2>✉ Send Us a Message</h2>
+    <div class="form-row">
+      <input type="text" id="cfName" placeholder="Your Full Name" required>
+      <input type="tel" id="cfPhone" placeholder="Mobile Number" required>
+    </div>
+    <div class="form-row">
+      <input type="email" id="cfEmail" placeholder="Email Address" required>
+      <select id="cfSubject">
+        <option value="">Select Subject</option>
+        <option>Student Admission Enquiry</option>
+        <option>Teacher Registration</option>
+        <option>Free Demo Class</option>
+        <option>Fee / Payment Query</option>
+        <option>Other</option>
+      </select>
+    </div>
+    <div class="form-row full">
+      <textarea id="cfMessage" placeholder="Write your message here..."></textarea>
+    </div>
+    <button class="submit-btn" onclick="submitContactForm()">
+      <i class="fas fa-paper-plane"></i> &nbsp;Send Message
+    </button>
+    <div class="form-success" id="formSuccess">
+      ✅ Message bhej diya! Hum jald hi aapko contact karenge.
+    </div>
+  </div>
+</section>
+
+<!-- MAP -->
+<section class="map-section">
+  <h2>📍 Find Us on Map</h2>
+  <div class="map-wrapper">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3559.9065440219327!2d83.36542657596563!3d26.760841076736685!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3991447b0a3c6261%3A0x3e3d826538bea8ba!2sTara%20Mandal%20Rd%2C%20Gorakhpur%2C%20Uttar%20Pradesh!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+      allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-top">
+    <div class="footer-newsletter">
+      <h2>Stay Updated with Era of Education</h2>
+      <div class="newsletter-form">
+        <input type="email" id="newsletterEmail" placeholder="Enter your email">
+        <button onclick="subscribeNewsletter()">Subscribe</button>
+      </div>
+    </div>
+    <div class="footer-contact-info">
+      <span>Call Anytime</span>
+      <h3><a href="tel:+917289053560">+91 72890 53560</a></h3>
+    </div>
+  </div>
+  <hr class="footer-divider">
+  <div class="footer-main">
+    <div class="footer-col">
+      <h3>Era of Education</h3>
+      <p>Taramandal Road, Gorakhpur</p>
+      <p><a href="tel:+917289053560">📞 +91 72890 53560</a></p>
+      <p><a href="mailto:eraofedu@gmail.com">✉ eraofedu@gmail.com</a></p>
+      <div class="social-icons">
+        <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/hometutor.in" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://youtube.com/@eraofedu" target="_blank"><i class="fab fa-youtube"></i></a>
+        <a href="https://wa.me/917289053560" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="student.html">Home Tuition</a></li>
+        <li><a href="student.html">Online Classes</a></li>
+        <li><a href="book-demo.html">Free Demo</a></li>
+        <li><a href="about.html">Career Guidance</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="student.html">Students</a></li>
+        <li><a href="teacher.html">Teachers</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Privacy &amp; Info</h4>
+      <ul>
+        <li><a href="terms.html">Terms &amp; Conditions</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="contact.html">Get in Touch</a></li>
+        <li><a href="teacher.html">Become a Partner</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-left"><img src="Logo.PNG" alt="Logo"><span>Era of Education</span></div>
+    <div class="footer-right">✨ Simple is Powerful • © 2026 Era of Education. All Rights Reserved</div>
+  </div>
+</footer>
+
+<a href="https://wa.me/917289053560" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+<!-- Guru Ji Chatbot -->
+<div class="chatbot-bubble" id="chatbotBubble" onclick="toggleChatbot()"><i class="fas fa-comments"></i></div>
+<div class="chatbot-box" id="chatbotBox">
+  <div class="chatbot-header">
+    <div class="chatbot-avatar">🧑‍🏫</div>
+    <div><strong>Guru Ji</strong><small>Era of Education Assistant</small></div>
+    <button onclick="toggleChatbot()" class="chatbot-close">✕</button>
+  </div>
+  <div class="chatbot-messages" id="chatMessages">
+    <div class="chat-msg bot">Namaste! 🙏 Main Guru Ji hoon. Kaise help kar sakta hoon?<div class="quick-btns"><button onclick="sendQuick('Fees kitni hai?')">💰 Fees</button><button onclick="sendQuick('Free demo book karen')">🎯 Demo</button><button onclick="sendQuick('Student registration')">📚 Student</button></div></div>
+  </div>
+  <div class="chatbot-input">
+    <input type="text" id="chatInput" placeholder="Apna sawaal likhiye..." onkeypress="if(event.key==='Enter') sendChat()">
+    <button onclick="sendChat()"><i class="fas fa-paper-plane"></i></button>
+  </div>
+</div>
+
+<script>
+document.getElementById('hamburger').addEventListener('click', function(){
+  document.getElementById('navMenu').classList.toggle('open');
+  this.classList.toggle('active');
+});
+window.addEventListener('scroll', () => document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 10));
+
+async function submitContactForm() {
+  const name    = document.getElementById('cfName').value.trim();
+  const mobile  = document.getElementById('cfPhone').value.trim();
+  const email   = document.getElementById('cfEmail').value.trim();
+  const subject = document.getElementById('cfSubject').value;
+  const message = document.getElementById('cfMessage').value.trim();
+  if (!name || !mobile) { alert('Naam aur mobile zaroori hain!'); return; }
+
+  const btn = document.querySelector('.contact-form-inner .submit-btn');
+  btn.disabled=true; btn.innerHTML='<i class="fas fa-spinner fa-spin"></i> &nbsp;Sending...';
+
+  try {
+    const res = await fetch('/api/contact/send', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({name, mobile, email, subject, message})
+    });
+    const data = await res.json();
+    if (!res.ok || !data.success) throw new Error(data.message || 'Message send nahi hua.');
+    document.getElementById('formSuccess').style.display = 'block';
+    ['cfName','cfPhone','cfEmail','cfSubject','cfMessage'].forEach(id => {
+      const el = document.getElementById(id); if(el) el.value='';
+    });
+  } catch(err){
+    alert(err.message || 'Message send nahi hua. Kripya dobara try karein.');
+  }
+  btn.disabled=false; btn.innerHTML='<i class="fas fa-paper-plane"></i> &nbsp;Send Message';
+}
+function subscribeNewsletter() {
+  const email = document.getElementById('newsletterEmail').value;
+  if (!email || !email.includes('@')) { alert('Valid email daalen!'); return; }
+  alert('Shukriya! Successfully subscribed! 🎉');
+  document.getElementById('newsletterEmail').value = '';
+}
+function toggleChatbot() {
+  const box = document.getElementById('chatbotBox');
+  const bubble = document.getElementById('chatbotBubble');
+  box.classList.toggle('open');
+  bubble.style.display = box.classList.contains('open') ? 'none' : 'flex';
+}
+function sendQuick(t){ addUserMsg(t); getBotReply(t); }
+function sendChat(){
+  const inp = document.getElementById('chatInput');
+  const t = inp.value.trim(); if(!t) return;
+  addUserMsg(t); inp.value=''; getBotReply(t);
+}
+function addUserMsg(t){ const m=document.getElementById('chatMessages'); const msg=document.createElement('div'); msg.className='chat-msg user'; msg.textContent=t; m.appendChild(msg); m.scrollTop=m.scrollHeight; }
+function getBotReply(text){
+  const l=text.toLowerCase(); let r='';
+  if(l.includes('fee')||l.includes('price')) r='💰 Standard: ₹499/mo | Premium: ₹999/mo | Annual: ₹9,999';
+  else if(l.includes('demo')) r='🎯 Free demo ke liye <a href="book-demo.html">yahan click karen</a>!';
+  else if(l.includes('student')||l.includes('register')) r='📚 Register karne ke liye <a href="student.html">yahan click karen</a>!';
+  else if(l.includes('teacher')||l.includes('join')) r='👨‍🏫 Join karne ke liye <a href="teacher.html">yahan click karen</a>!';
+  else r='Kripya <a href="contact.html">contact page</a> dekhen ya +91 72890 53560 pe call karen.';
+  setTimeout(()=>{ const m=document.getElementById('chatMessages'); m.innerHTML+=`<div class="chat-msg bot">${r}</div>`; m.scrollTop=m.scrollHeight; },600);
+}
+</script>
+</body>
+</html>

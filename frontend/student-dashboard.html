@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Dashboard | Era of Education</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Era of Education student account dashboard.">
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="icon" href="Logo.PNG" type="image/png">
+  <link rel="canonical" href="/student-dashboard.html">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="shared.css">
+  <style>
+    .dash-page { min-height:calc(100vh - 76px); background:#f0f4ff; padding:30px 5%; }
+    .dash-header { background:#fff; border-radius:16px; padding:20px 24px; margin-bottom:24px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; box-shadow:0 4px 15px rgba(0,0,0,.08); }
+    .dash-header h2 { font-size:22px; color:#003366; }
+    .dash-header p { font-size:14px; color:#888; }
+    .logout-btn { padding:9px 20px; background:#ff4444; color:#fff; border:none; border-radius:20px; font-weight:600; cursor:pointer; font-family:inherit; }
+    .dash-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:20px; margin-bottom:28px; }
+    .dash-card { background:#fff; padding:22px; border-radius:14px; box-shadow:0 8px 20px rgba(0,0,0,.07); text-align:center; }
+    .dash-card .ico { font-size:36px; margin-bottom:10px; }
+    .dash-card h3 { font-size:26px; font-weight:700; color:#003366; }
+    .dash-card p { font-size:13px; color:#888; }
+    .dash-section { background:#fff; border-radius:16px; padding:24px; box-shadow:0 8px 20px rgba(0,0,0,.07); margin-bottom:24px; }
+    .dash-section h3 { font-size:18px; color:#003366; margin-bottom:16px; border-bottom:2px solid #f0f4ff; padding-bottom:10px; }
+    .info-row { display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid #f5f5f5; font-size:14px; }
+    .info-row:last-child { border-bottom:none; }
+    .info-row span:first-child { color:#888; }
+    .info-row span:last-child { font-weight:600; color:#333; }
+    .btn-row { display:flex; gap:12px; flex-wrap:wrap; }
+    .dash-btn { padding:10px 20px; border:none; border-radius:20px; font-weight:600; cursor:pointer; font-family:inherit; font-size:14px; transition:0.3s; text-decoration:none; display:inline-block; }
+    .dash-btn.primary { background:linear-gradient(135deg,#003366,#0066cc); color:#fff; }
+    .dash-btn.secondary { background:#f0f4ff; color:#003366; border:1px solid #cdd; }
+    .dash-btn.danger { background:#fff0f0; color:#c00; border:1px solid #fcc; }
+    .dash-btn:hover { transform:translateY(-2px); box-shadow:0 4px 12px rgba(0,0,0,.1); }
+    .plan-badge { display:inline-block; padding:5px 16px; border-radius:20px; font-size:13px; font-weight:700; background:linear-gradient(135deg,#003366,#0066cc); color:#fff; }
+    .upgrade-box { background:linear-gradient(135deg,#003366,#0066cc); border-radius:16px; padding:24px; color:#fff; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; margin-bottom:24px; }
+    .upgrade-box h3 { font-size:18px; margin-bottom:6px; }
+    .upgrade-box p { font-size:14px; opacity:.85; }
+    .upgrade-btn { padding:11px 24px; background:#f4c430; color:#000; border:none; border-radius:20px; font-weight:700; cursor:pointer; font-family:inherit; font-size:14px; white-space:nowrap; }
+    /* Change password modal */
+    .modal-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:9999; justify-content:center; align-items:center; }
+    .modal-overlay.open { display:flex; }
+    .modal-box { background:#fff; border-radius:16px; padding:32px; width:380px; max-width:90%; }
+    .modal-box h3 { font-size:18px; color:#003366; margin-bottom:20px; }
+    .field { margin-bottom:14px; }
+    .field label { display:block; font-size:13px; font-weight:600; color:#444; margin-bottom:5px; }
+    .field input { width:100%; padding:11px 14px; border:1.5px solid #ddd; border-radius:10px; outline:none; font-size:14px; font-family:inherit; box-sizing:border-box; }
+    .field input:focus { border-color:#003366; }
+    .modal-btn { width:100%; padding:12px; border:none; border-radius:10px; background:linear-gradient(135deg,#003366,#0066cc); color:#fff; font-size:15px; font-weight:700; cursor:pointer; font-family:inherit; }
+    .cancel-btn { width:100%; padding:10px; border:1px solid #ddd; border-radius:10px; background:#fff; color:#666; font-size:14px; cursor:pointer; font-family:inherit; margin-top:8px; }
+  </style>
+</head>
+<body>
+
+<header class="navbar" id="mainNav">
+  <div class="logo"><a href="index.html"><img src="Logo.PNG" alt="Logo"></a></div>
+  <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  <nav id="navMenu">
+    <a href="index.html">Home</a>
+    <a href="student.html">Students</a>
+    <a href="contact.html">Contact</a>
+    <button class="logout-btn" style="margin-left:12px;" onclick="logout()">Logout</button>
+  </nav>
+</header>
+
+<div class="dash-page">
+  <div class="dash-header">
+    <div>
+      <h2>👋 Welcome, <span id="dName">Student</span>!</h2>
+      <p>Era of Education — Student Dashboard &nbsp;|&nbsp; Joined: <span id="dJoinDate">—</span></p>
+    </div>
+    <button class="logout-btn" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</button>
+  </div>
+
+  <!-- Stats -->
+  <div class="dash-grid">
+    <div class="dash-card"><div class="ico">📚</div><h3 id="dSubjectCount">—</h3><p>Active Subjects</p></div>
+    <div class="dash-card"><div class="ico">✅</div><h3>0</h3><p>Classes Completed</p></div>
+    <div class="dash-card"><div class="ico">📅</div><h3>—</h3><p>Next Class</p></div>
+    <div class="dash-card"><div class="ico">⭐</div><h3>New</h3><p>Student Status</p></div>
+  </div>
+
+  <!-- Plan Upgrade Banner (shown only for non-premium) -->
+  <div class="upgrade-box" id="upgradeBanner" style="display:none;">
+    <div>
+      <h3>🚀 Upgrade Your Plan</h3>
+      <p>Get 24/7 doubt solving, career guidance & more with Premium!</p>
+    </div>
+    <button class="upgrade-btn" onclick="window.location.href='plan-purchase.html'">Upgrade Now →</button>
+  </div>
+
+  <!-- Profile -->
+  <div class="dash-section">
+    <h3>📋 My Profile</h3>
+    <div class="info-row"><span>Name</span><span id="pName">—</span></div>
+    <div class="info-row"><span>Email (Login ID)</span><span id="pEmail">—</span></div>
+    <div class="info-row"><span>Mobile</span><span id="pMobile">—</span></div>
+    <div class="info-row"><span>Class / Grade</span><span id="pClass">—</span></div>
+    <div class="info-row"><span>Subject(s)</span><span id="pSubject">—</span></div>
+    <div class="info-row"><span>Current Plan</span><span id="pPlan">—</span></div>
+    <div class="info-row"><span>Plan Fee</span><span id="pPrice">—</span></div>
+    <div class="info-row"><span>Account Status</span><span style="color:#2ecc71;font-weight:700;">● Active</span></div>
+  </div>
+
+  <!-- Quick Actions -->
+  <div class="dash-section">
+    <h3>⚡ Quick Actions</h3>
+    <div class="btn-row">
+      <a href="payment.html" class="dash-btn primary"><i class="fas fa-credit-card"></i> Pay Fees</a>
+      <a href="book-demo.html" class="dash-btn secondary"><i class="fas fa-calendar"></i> Book Demo Class</a>
+      <a href="contact.html" class="dash-btn secondary"><i class="fas fa-headset"></i> Contact Support</a>
+      <a href="https://wa.me/917289053560" target="_blank" class="dash-btn secondary"><i class="fab fa-whatsapp"></i> WhatsApp Us</a>
+      <button class="dash-btn danger" onclick="openChangePassword()"><i class="fas fa-key"></i> Change Password</button>
+    </div>
+  </div>
+
+  <!-- Plan Details -->
+  <div class="dash-section">
+    <h3>📦 My Plan Details</h3>
+    <div class="info-row"><span>Plan Name</span><span id="planDetail">—</span></div>
+    <div class="info-row"><span>Plan Fee</span><span id="priceDetail">—</span></div>
+    <div class="info-row"><span>Teacher Replacement</span><span id="featReplace">—</span></div>
+    <div class="info-row"><span>Doubt Solving Faculty</span><span id="featDoubt">—</span></div>
+    <div class="info-row"><span>Career Guidance</span><span id="featCareer">—</span></div>
+    <div class="info-row"><span>Spoken English Classes</span><span id="featEnglish">—</span></div>
+    <div class="info-row"><span>Assigned Teacher</span><span>Will be assigned — <a href="contact.html" style="color:#003366;">Contact us</a></span></div>
+  </div>
+</div>
+
+<!-- Change Password Modal -->
+<div class="modal-overlay" id="pwModal">
+  <div class="modal-box">
+    <h3><i class="fas fa-key"></i> &nbsp;Change Password</h3>
+    <div class="field"><label>Current Password</label><input type="password" id="oldPw" placeholder="Purana password"></div>
+    <div class="field"><label>New Password</label><input type="password" id="newPw" placeholder="Naya password (min 6 chars)"></div>
+    <div class="field"><label>Confirm New Password</label><input type="password" id="newPw2" placeholder="Naya password dobara"></div>
+    <button class="modal-btn" onclick="changePassword()">Update Password</button>
+    <button class="cancel-btn" onclick="closePwModal()">Cancel</button>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-bottom" style="border-top:none;padding:20px 5%;">
+    <div class="footer-left"><img src="Logo.PNG" alt="Logo"><span>Era of Education</span></div>
+    <div class="footer-right">© 2026 Era of Education. All Rights Reserved</div>
+  </div>
+</footer>
+
+<script>
+document.getElementById('hamburger').addEventListener('click', function(){ document.getElementById('navMenu').classList.toggle('open'); this.classList.toggle('active'); });
+
+// Auth guard
+document.body.style.display = 'none';
+
+function logout() { localStorage.removeItem('authToken'); localStorage.removeItem('role'); localStorage.removeItem('userId'); localStorage.removeItem('era_student_id'); localStorage.removeItem('era_student_name'); window.location.href = 'login.html'; }
+
+// Load student data
+async function validateAccess() {
+  const token = localStorage.getItem('authToken');
+  if (!token || localStorage.getItem('role') !== 'student') return false;
+  try {
+    const response = await fetch('/api/auth/session', { headers:{ Authorization:'Bearer ' + token } });
+    const session = await response.json();
+    return response.ok && session.role === 'student';
+  } catch (error) {
+    return false;
+  }
+}
+async function initializeDashboard() {
+  if (!(await validateAccess())) {
+    logout();
+    return;
+  }
+  document.body.style.display = '';
+  const studentId = localStorage.getItem('era_student_id');
+  const students = JSON.parse(localStorage.getItem('era_students') || '[]');
+  const student = students.find(s => s.id === studentId);
+
+  if (!student) {
+    // Demo fallback
+    document.getElementById('dName').textContent = localStorage.getItem('era_student_name') || 'Student';
+    return;
+  }
+
+  // Header
+  document.getElementById('dName').textContent = student.name;
+  document.getElementById('dJoinDate').textContent = student.joinDate || '—';
+
+  // Stats
+  const subjectList = student.subject ? student.subject.split(',') : [];
+  document.getElementById('dSubjectCount').textContent = subjectList.length || '—';
+
+  // Profile
+  document.getElementById('pName').textContent = student.name;
+  document.getElementById('pEmail').textContent = student.email;
+  document.getElementById('pMobile').textContent = student.mobile;
+  document.getElementById('pClass').textContent = student.class;
+  document.getElementById('pSubject').textContent = student.subject;
+  const badge = document.createElement('span');
+  badge.className = 'plan-badge';
+  badge.textContent = student.plan || 'Essential';
+  document.getElementById('pPlan').replaceChildren(badge);
+  document.getElementById('pPrice').textContent = student.price || 'Free';
+
+  // Plan Details
+  const plan = student.plan || 'Essential Plan';
+  document.getElementById('planDetail').textContent = plan;
+  document.getElementById('priceDetail').textContent = student.price || 'Free';
+
+  if (plan.includes('Essential')) {
+    document.getElementById('featReplace').textContent = '✘ Not included';
+    document.getElementById('featDoubt').textContent = '✘ Not included';
+    document.getElementById('featCareer').textContent = '✘ Not included';
+    document.getElementById('featEnglish').textContent = '✘ Not included';
+    document.getElementById('upgradeBanner').style.display = 'flex';
+  } else if (plan.includes('Standard')) {
+    document.getElementById('featReplace').textContent = '✔ Anytime Replacement';
+    document.getElementById('featDoubt').textContent = '✔ 24/7 Available';
+    document.getElementById('featCareer').textContent = '✘ Not included';
+    document.getElementById('featEnglish').textContent = '✘ Not included';
+    document.getElementById('upgradeBanner').style.display = 'flex';
+  } else if (plan.includes('Premium')) {
+    document.getElementById('featReplace').textContent = '✔ Anytime Replacement';
+    document.getElementById('featDoubt').textContent = '✔ 24/7 Available';
+    document.getElementById('featCareer').textContent = '✔ Online Career Guidance';
+    document.getElementById('featEnglish').textContent = '✔ 4 Classes / Month';
+    document.getElementById('upgradeBanner').style.display = 'none';
+  }
+}
+initializeDashboard();
+
+// Change Password
+function openChangePassword() { document.getElementById('pwModal').classList.add('open'); }
+function closePwModal() { document.getElementById('pwModal').classList.remove('open'); }
+
+async function changePassword() {
+  const oldPw = document.getElementById('oldPw').value;
+  const newPw = document.getElementById('newPw').value;
+  const newPw2 = document.getElementById('newPw2').value;
+
+  if (!oldPw || !newPw || !newPw2) { alert('Kripya sabhi fields bharein!'); return; }
+  if (newPw.length < 6) { alert('Naya password kam se kam 6 characters ka hona chahiye!'); return; }
+  if (newPw !== newPw2) { alert('Passwords match nahi kar rahe!'); return; }
+
+  try {
+    const response = await fetch('/api/auth/change-password', {
+      method:'POST',
+      headers:{'Content-Type':'application/json', Authorization:'Bearer ' + localStorage.getItem('authToken')},
+      body: JSON.stringify({ currentPassword: oldPw, password: newPw })
+    });
+    const data = await response.json();
+    if (!response.ok) throw new Error(data.message || 'Password update failed');
+    closePwModal();
+    alert('Password successfully change ho gaya!');
+  } catch (error) {
+    alert(error.message || 'Password update failed');
+  }
+}
+</script>
+</body>
+</html>

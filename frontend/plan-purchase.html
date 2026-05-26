@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Choose Your Plan | Era of Education</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Choose a learning plan and create your Era of Education student account.">
+  <link rel="icon" href="Logo.PNG" type="image/png">
+  <link rel="canonical" href="/plan-purchase.html">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="shared.css">
+  <style>
+    .plan-page { min-height:calc(100vh - 76px); background:linear-gradient(135deg,#0f2027,#203a43,#2c5364); padding:50px 5%; }
+    .plan-page h1 { text-align:center; color:#fff; font-size:32px; margin-bottom:10px; }
+    .plan-page p.sub { text-align:center; color:#adf; font-size:15px; margin-bottom:40px; }
+    .plans-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:24px; max-width:980px; margin:auto 0; }
+    .plan-card { background:#fff; border-radius:20px; padding:32px 28px; text-align:center; box-shadow:0 14px 40px rgba(0,0,0,0.25); position:relative; transition:0.3s; }
+    .plan-card:hover { transform:translateY(-6px); }
+    .plan-card.popular { border:3px solid #f4c430; }
+    .plan-card .popular-badge { position:absolute; top:-14px; left:50%; transform:translateX(-50%); background:#f4c430; color:#000; font-size:11px; font-weight:700; padding:4px 18px; border-radius:20px; white-space:nowrap; }
+    .plan-card h3 { font-size:20px; color:#003366; margin-bottom:8px; }
+    .plan-card .price { font-size:34px; font-weight:700; color:#0066cc; margin:16px 0; }
+    .plan-card .price small { font-size:14px; color:#888; font-weight:400; }
+    .plan-card ul { list-style:none; padding:0; margin:0 0 24px; text-align:left; }
+    .plan-card ul li { padding:7px 0; font-size:14px; color:#444; border-bottom:1px solid #f5f5f5; }
+    .plan-card ul li:last-child { border:none; }
+    .select-btn { width:100%; padding:13px; border:none; border-radius:30px; background:linear-gradient(135deg,#003366,#0066cc); color:#fff; font-size:16px; font-weight:700; cursor:pointer; font-family:inherit; transition:0.3s; }
+    .select-btn:hover { opacity:0.9; }
+    .plan-card.popular .select-btn { background:linear-gradient(135deg,#b8860b,#f4c430); color:#000; }
+
+    /* MODAL */
+    .modal-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.6); z-index:9999; justify-content:center; align-items:center; padding:20px; }
+    .modal-overlay.open { display:flex; }
+    .modal-box { background:#fff; border-radius:20px; padding:36px 32px; width:440px; max-width:100%; animation:popIn 0.3s ease; }
+    @keyframes popIn { from{transform:scale(0.85);opacity:0;} to{transform:scale(1);opacity:1;} }
+    .modal-box h2 { font-size:22px; color:#003366; text-align:center; margin-bottom:4px; }
+    .modal-box .plan-tag { text-align:center; background:#f0f4ff; color:#003366; font-size:13px; font-weight:600; padding:5px 14px; border-radius:20px; display:inline-block; margin-bottom:20px; }
+    .modal-wrap { text-align:center; }
+    .field { margin-bottom:14px; text-align:left; }
+    .field label { display:block; font-size:13px; font-weight:600; color:#444; margin-bottom:5px; }
+    .field input { width:100%; padding:11px 14px; border:1.5px solid #ddd; border-radius:10px; outline:none; font-size:14px; font-family:inherit; transition:0.3s; box-sizing:border-box; }
+    .field input:focus { border-color:#003366; }
+    .modal-btn { width:100%; padding:13px; border:none; border-radius:10px; background:linear-gradient(135deg,#003366,#0066cc); color:#fff; font-size:16px; font-weight:700; cursor:pointer; font-family:inherit; margin-top:6px; transition:0.3s; }
+    .modal-btn:hover { opacity:0.9; }
+    .close-modal { float:right; background:none; border:none; font-size:20px; cursor:pointer; color:#888; margin-top:-4px; }
+    .step { display:none; }
+    .step.active { display:block; }
+    .success-box { text-align:center; padding:10px 0; }
+    .success-box .check { font-size:60px; margin-bottom:12px; }
+    .success-box h3 { font-size:22px; color:#003366; margin-bottom:8px; }
+    .success-box p { font-size:14px; color:#666; margin-bottom:20px; }
+    .err { color:#e00; font-size:13px; margin-top:6px; display:none; }
+  </style>
+</head>
+<body>
+
+<header class="navbar" id="mainNav">
+  <div class="logo"><a href="index.html"><img src="Logo.PNG" alt="Logo"></a></div>
+  <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  <nav id="navMenu">
+    <a href="index.html">Home</a>
+    <a href="student.html">Students</a>
+    <a href="teacher.html">Teachers</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="login.html" class="login-btn">Login</a>
+  </nav>
+</header>
+
+<div class="plan-page">
+  <h1>📚 Choose Your Learning Plan</h1>
+  <p class="sub">Select a plan and create your student account in minutes</p>
+
+  <div class="plans-grid" style="margin:0 auto;">
+    <!-- Plan 1: Essential -->
+    <div class="plan-card">
+      <h3>Essential Plan</h3>
+      <div class="price">₹0 <small>/ registration</small></div>
+      <ul>
+        <li>✔ Dedicated Subject Tutor</li>
+        <li>✔ Regular Home Tuition Classes</li>
+        <li>✔ Personal Academic Attention</li>
+        <li>✔ Simple & Affordable Learning</li>
+        <li>✔ Student Dashboard Access</li>
+      </ul>
+      <button class="select-btn" onclick="openModal('Essential Plan','Free')">Get Started Free</button>
+    </div>
+
+    <!-- Plan 2: Standard (Popular) -->
+    <div class="plan-card popular">
+      <span class="popular-badge">⭐ Most Popular</span>
+      <h3>Standard Support Plan</h3>
+      <div class="price">₹499 <small>/ month</small></div>
+      <ul>
+        <li>✔ Anytime Teacher Replacement</li>
+        <li>✔ 24/7 Doubt Solving Faculty</li>
+        <li>✔ Parent-Student-Teacher Meetings</li>
+        <li>✔ Academic Progress Monitoring</li>
+        <li>✔ Student Dashboard Access</li>
+      </ul>
+      <button class="select-btn" onclick="openModal('Standard Support Plan','₹499/month')">Choose Standard</button>
+    </div>
+
+    <!-- Plan 3: Premium -->
+    <div class="plan-card">
+      <h3>Premium Excellence Plan</h3>
+      <div class="price">₹999 <small>/ month</small></div>
+      <ul>
+        <li>✔ Everything in Standard Plan</li>
+        <li>✔ Online Career Guidance</li>
+        <li>✔ 4 Spoken English Classes/Month</li>
+        <li>✔ Flexible Class Scheduling</li>
+        <li>✔ Priority Student Dashboard</li>
+      </ul>
+      <button class="select-btn" onclick="openModal('Premium Excellence Plan','₹999/month')">Choose Premium</button>
+    </div>
+  </div>
+</div>
+
+<!-- REGISTRATION MODAL -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal-box">
+    <button class="close-modal" onclick="closeModal()">✕</button>
+    <div class="modal-wrap">
+      <h2>🎓 Create Student Account</h2>
+      <div><span class="plan-tag" id="planTag">Essential Plan — Free</span></div>
+    </div>
+
+    <!-- Step 1: Basic Info -->
+    <div class="step active" id="step1">
+      <div class="field"><label>Full Name *</label><input type="text" id="sName" placeholder="Apna poora naam"></div>
+      <div class="field"><label>Mobile Number *</label><input type="tel" id="sMobile" placeholder="+91 XXXXXXXXXX"></div>
+      <div class="field"><label>Class / Grade *</label>
+        <input type="text" id="sClass" placeholder="e.g. Class 10, 12th, Graduation">
+      </div>
+      <div class="field"><label>Subject(s) Needed *</label><input type="text" id="sSubject" placeholder="e.g. Maths, Science, English"></div>
+      <p class="err" id="err1">Kripya sabhi fields bharein!</p>
+      <button class="modal-btn" onclick="goStep2()">Next — Set Login Details →</button>
+    </div>
+
+    <!-- Step 2: Create ID & Password -->
+    <div class="step" id="step2">
+      <div class="field"><label>Email Address (Login ID) *</label><input type="email" id="sEmail" placeholder="Email — yahi se login karein"></div>
+      <div class="field"><label>Create Password *</label><input type="password" id="sPass" placeholder="Min 6 characters"></div>
+      <div class="field"><label>Confirm Password *</label><input type="password" id="sPass2" placeholder="Password dobara likhein"></div>
+      <p class="err" id="err2">Kripya sabhi details sahi bharein!</p>
+      <button class="modal-btn" onclick="completeRegistration()"><i class="fas fa-user-plus"></i> &nbsp;Create Account & Login</button>
+      <p style="text-align:center;margin-top:12px;font-size:13px;color:#888;cursor:pointer;" onclick="backStep1()">← Go Back</p>
+    </div>
+
+    <!-- Step 3: Success -->
+    <div class="step" id="step3">
+      <div class="success-box">
+        <div class="check">✅</div>
+        <h3>Account Created!</h3>
+        <p id="successMsg">Welcome! Your account is ready.</p>
+        <button class="modal-btn" onclick="goToDashboard()"><i class="fas fa-tachometer-alt"></i> &nbsp;Go to My Dashboard</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-bottom" style="border-top:none;padding:20px 5%;">
+    <div class="footer-left"><img src="Logo.PNG" alt="Logo"><span>Era of Education</span></div>
+    <div class="footer-right">© 2026 Era of Education. All Rights Reserved</div>
+  </div>
+</footer>
+
+<script>
+document.getElementById('hamburger').addEventListener('click', function(){ document.getElementById('navMenu').classList.toggle('open'); this.classList.toggle('active'); });
+
+let selectedPlan = '';
+let selectedPrice = '';
+
+function openModal(plan, price) {
+  selectedPlan = plan;
+  selectedPrice = price;
+  document.getElementById('planTag').textContent = plan + ' — ' + price;
+  showStep('step1');
+  document.getElementById('modalOverlay').classList.add('open');
+}
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('open');
+}
+function showStep(id) {
+  document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+function backStep1() { showStep('step1'); }
+
+function goStep2() {
+  const name = document.getElementById('sName').value.trim();
+  const mobile = document.getElementById('sMobile').value.trim();
+  const cls = document.getElementById('sClass').value.trim();
+  const subject = document.getElementById('sSubject').value.trim();
+  if (!name || !mobile || !cls || !subject) {
+    document.getElementById('err1').style.display = 'block';
+    return;
+  }
+  document.getElementById('err1').style.display = 'none';
+  showStep('step2');
+}
+
+async function completeRegistration() {
+  const email = document.getElementById('sEmail').value.trim();
+  const pass = document.getElementById('sPass').value;
+  const pass2 = document.getElementById('sPass2').value;
+  const err = document.getElementById('err2');
+
+  if (!email || !email.includes('@')) { err.textContent = 'Valid email daalen!'; err.style.display='block'; return; }
+  if (pass.length < 6) { err.textContent = 'Password kam se kam 6 characters ka hona chahiye!'; err.style.display='block'; return; }
+  if (pass !== pass2) { err.textContent = 'Passwords match nahi kar rahe!'; err.style.display='block'; return; }
+
+  const name = document.getElementById('sName').value.trim();
+  const mobile = document.getElementById('sMobile').value.trim();
+  const cls = document.getElementById('sClass').value.trim();
+  const subject = document.getElementById('sSubject').value.trim();
+
+  err.style.display = 'none';
+  try {
+    const authRes = await fetch('/api/auth/register', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({name, email, password: pass, role:'student'})
+    });
+    const authData = await authRes.json();
+    if (!authRes.ok) throw new Error(authData.message || 'Account could not be created.');
+
+    localStorage.setItem('authToken', authData.token);
+    localStorage.setItem('role', authData.role);
+    localStorage.setItem('userId', authData.userId);
+    localStorage.setItem('era_student_name', name);
+
+    await fetch('/api/student/register', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({name, email, mobile, class: cls, subject, plan: selectedPlan})
+    });
+    document.getElementById('successMsg').textContent = 'Welcome, ' + name + '! Your ' + selectedPlan + ' is now active.';
+    showStep('step3');
+  } catch (error) {
+    err.textContent = error.message || 'Registration failed. Please try again.';
+    err.style.display = 'block';
+  }
+}
+
+function goToDashboard() {
+  closeModal();
+  window.location.href = 'student-dashboard.html';
+}
+
+// Auto-open modal based on URL param
+window.addEventListener('load', function() {
+  const params = new URLSearchParams(window.location.search);
+  const plan = params.get('plan');
+  if (plan === 'standard') openModal('Standard Support Plan', '₹499/month');
+  else if (plan === 'premium') openModal('Premium Excellence Plan', '₹999/month');
+  else if (plan === 'essential') openModal('Essential Plan', 'Free');
+});
+</script>
+</body>
+</html>

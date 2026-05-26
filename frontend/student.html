@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Students | Era of Education</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Register for home tuition with Era of Education and connect with qualified tutors for your subjects.">
+  <link rel="icon" href="Logo.PNG" type="image/png">
+  <link rel="canonical" href="/student.html">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="shared.css">
+  <style>
+    .page-hero { background: linear-gradient(135deg,#003366,#0066cc); color:#fff; text-align:center; padding:60px 20px; }
+    .page-hero h1 { font-size:36px; margin-bottom:10px; }
+    .page-hero p { font-size:16px; opacity:.85; }
+    .page-hero .btn { margin-top:20px; display:inline-block; }
+
+    /* FEATURES TICKER */
+    .ticker-section { background:#fff; padding:40px 5%; text-align:center; }
+    .ticker-section h2 { font-size:26px; color:#003366; margin-bottom:22px; }
+    .feature-box {
+      display:inline-block; background:linear-gradient(135deg,#003366,#0066cc);
+      color:#fff; padding:18px 40px; border-radius:40px; font-size:18px;
+      font-weight:600; box-shadow:0 10px 30px rgba(0,102,204,.3); transition:0.5s;
+      min-width:280px;
+    }
+
+    /* BENEFITS GRID */
+    .benefits-section { padding:60px 5%; background:#f5f8ff; }
+    .benefits-section h2 { text-align:center; font-size:28px; color:#003366; margin-bottom:36px; }
+    .benefits-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:22px; max-width:1100px; margin:auto; }
+    .benefit-card { background:#fff; padding:26px 20px; border-radius:16px; text-align:center; box-shadow:0 10px 25px rgba(0,0,0,.08); transition:0.3s; }
+    .benefit-card:hover { transform:translateY(-6px); }
+    .benefit-card .ico { font-size:36px; margin-bottom:12px; }
+    .benefit-card h3 { font-size:16px; color:#003366; margin-bottom:6px; }
+    .benefit-card p { font-size:13px; color:#666; }
+
+    /* REVIEWS */
+    .reviews-section { padding:60px 5%; background:#0b1c3d; color:#fff; text-align:center; }
+    .reviews-section h2 { font-size:28px; margin-bottom:30px; }
+    .reviews-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:20px; max-width:1000px; margin:auto; }
+    .review-card { background:rgba(255,255,255,.08); padding:22px; border-radius:14px; text-align:left; border:1px solid rgba(255,255,255,.1); }
+    .review-card .stars { color:#f4b400; margin-bottom:8px; font-size:14px; }
+    .review-card p { font-size:14px; line-height:1.6; margin-bottom:10px; }
+    .review-card span { font-size:13px; color:#aaa; }
+
+    /* STUDENT FORM */
+    .form-section { padding:60px 5%; background:#fff; }
+    .form-box { max-width:580px; margin:auto; background:#f5f8ff; padding:36px; border-radius:20px; box-shadow:0 14px 40px rgba(0,0,0,.1); }
+    .form-box h2 { text-align:center; font-size:24px; color:#003366; margin-bottom:24px; }
+    .field { margin-bottom:16px; }
+    .field label { display:block; font-size:13px; font-weight:600; color:#444; margin-bottom:6px; }
+    .field input, .field select, .field textarea {
+      width:100%; padding:12px 14px; border:1px solid #ddd; border-radius:10px;
+      outline:none; font-size:14px; font-family:inherit; background:#fff; transition:0.3s;
+    }
+    .field input:focus, .field select:focus { border-color:#003366; }
+    .field-row { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+    .submit-btn {
+      width:100%; padding:14px; border:none; border-radius:12px;
+      background:linear-gradient(135deg,#003366,#0066cc); color:#fff;
+      font-size:16px; font-weight:700; cursor:pointer; transition:0.3s; font-family:inherit;
+    }
+    .submit-btn:hover { transform:scale(1.03); }
+    .success-msg { display:none; text-align:center; padding:20px; background:#e8f8ef; border-radius:12px; color:#2e7d32; }
+    .success-msg h3 { font-size:22px; margin-bottom:8px; }
+    @media(max-width:580px){ .field-row { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="navbar" id="mainNav">
+  <div class="logo"><a href="index.html"><img src="Logo.PNG" alt="Logo"></a></div>
+  <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  <nav id="navMenu">
+    <a href="index.html">Home</a>
+    <a href="student.html" class="active">Students</a>
+    <a href="teacher.html">Teachers</a>
+    <a href="about.html">About</a>
+    <a href="team.html">Team</a>
+    <a href="contact.html">Contact</a>
+    <a href="login.html" class="login-btn">Login</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<div class="page-hero">
+  <h1>📚 Best Home Tuition at Your Doorstep</h1>
+  <p>Personal attention • Verified teachers • Free demo class</p>
+  <a href="plan-purchase.html" class="btn" style="background:#f4c430;color:#000;padding:13px 30px;border-radius:30px;font-weight:700;margin-top:20px;display:inline-block;">Choose Plan & Register →</a>
+</div>
+
+<!-- FEATURE TICKER -->
+<section class="ticker-section">
+  <h2>Our Coaching Benefits</h2>
+  <div class="feature-box" id="featureBox">✔ Verified Teachers</div>
+</section>
+
+<!-- BENEFITS GRID -->
+<section class="benefits-section">
+  <h2>Why Students Love Us</h2>
+  <div class="benefits-grid">
+    <div class="benefit-card">
+      <div class="ico">👨‍🏫</div>
+      <h3>Verified Teachers</h3>
+      <p>All teachers are background-checked and qualified.</p>
+    </div>
+    <div class="benefit-card">
+      <div class="ico">🎯</div>
+      <h3>Free Demo Class</h3>
+      <p>Try before you pay. Completely free first class.</p>
+    </div>
+    <div class="benefit-card">
+      <div class="ico">📈</div>
+      <h3>Better Results</h3>
+      <p>95% students improved their marks within 2 months.</p>
+    </div>
+    <div class="benefit-card">
+      <div class="ico">🏠</div>
+      <h3>Home Comfort</h3>
+      <p>Learn from the comfort of your own home.</p>
+    </div>
+    <div class="benefit-card">
+      <div class="ico">💬</div>
+      <h3>24/7 Doubt Support</h3>
+      <p>Get help anytime through WhatsApp or call.</p>
+    </div>
+    <div class="benefit-card">
+      <div class="ico">💰</div>
+      <h3>Affordable Fees</h3>
+      <p>Quality education at the most reasonable rates.</p>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews-section">
+  <h2>⭐ What Students Say</h2>
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+      <p>"Best home tuition service in Gorakhpur. My marks improved a lot!"</p>
+      <span>— Riya (Class 10)</span>
+    </div>
+    <div class="review-card">
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+      <p>"Teachers are very supportive and friendly. Highly recommended!"</p>
+      <span>— Aman (Class 8)</span>
+    </div>
+    <div class="review-card">
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+      <p>"My marks improved in just 2 months. Era of Education is amazing!"</p>
+      <span>— Neha (Class 12)</span>
+    </div>
+  </div>
+</section>
+
+<!-- REGISTRATION FORM -->
+<section class="form-section" id="form">
+  <div class="form-box" id="formBox">
+    <h2>🎓 Student Registration</h2>
+    <div class="field-row">
+      <div class="field">
+        <label>Student Name *</label>
+        <input type="text" id="sName" placeholder="Poora naam">
+      </div>
+      <div class="field">
+        <label>Class *</label>
+        <select id="sClass">
+          <option value="">Select Class</option>
+          <option>Class 1</option><option>Class 2</option><option>Class 3</option>
+          <option>Class 4</option><option>Class 5</option><option>Class 6</option>
+          <option>Class 7</option><option>Class 8</option><option>Class 9</option>
+          <option>Class 10</option><option>Class 11</option><option>Class 12</option>
+        </select>
+      </div>
+    </div>
+    <div class="field">
+      <label>School Name *</label>
+      <input type="text" id="sSchool" placeholder="School ka naam">
+    </div>
+    <div class="field-row">
+      <div class="field">
+        <label>Mobile Number *</label>
+        <input type="tel" id="sMobile" placeholder="+91 XXXXXXXXXX">
+      </div>
+      <div class="field">
+        <label>Subject Needed</label>
+        <input type="text" id="sSubject" placeholder="e.g. Maths, Science">
+      </div>
+    </div>
+    <div class="field">
+      <label>Area / Locality</label>
+      <input type="text" id="sArea" placeholder="Apna area batayein">
+    </div>
+    <button class="submit-btn" onclick="submitStudentForm()">
+      <i class="fas fa-check-circle"></i> &nbsp;Submit Registration
+    </button>
+  </div>
+  <div class="form-box success-msg" id="successBox">
+    <h3>✅ Registration Successful!</h3>
+    <p>Shukriya! Hamari team aapko jald hi contact karegi.</p>
+    <p style="margin-top:10px;">Koi sawaal ho to: <a href="tel:+917289053560" style="color:#003366;font-weight:600;">+91 72890 53560</a></p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-top">
+    <div class="footer-newsletter">
+      <h2>Stay Updated with Era of Education</h2>
+      <div class="newsletter-form">
+        <input type="email" id="newsletterEmail" placeholder="Enter your email">
+        <button onclick="subscribeNewsletter()">Subscribe</button>
+      </div>
+    </div>
+    <div class="footer-contact-info">
+      <span>Call Anytime</span>
+      <h3><a href="tel:+917289053560">+91 72890 53560</a></h3>
+    </div>
+  </div>
+  <hr class="footer-divider">
+  <div class="footer-main">
+    <div class="footer-col">
+      <h3>Era of Education</h3>
+      <p>Taramandal Road, Gorakhpur</p>
+      <p><a href="tel:+917289053560">📞 +91 72890 53560</a></p>
+      <p><a href="mailto:eraofedu@gmail.com">✉ eraofedu@gmail.com</a></p>
+      <div class="social-icons">
+        <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/hometutor.in" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://youtube.com/@eraofedu" target="_blank"><i class="fab fa-youtube"></i></a>
+        <a href="https://wa.me/917289053560" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="student.html">Home Tuition</a></li>
+        <li><a href="student.html">Online Classes</a></li>
+        <li><a href="book-demo.html">Free Demo</a></li>
+        <li><a href="about.html">Career Guidance</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="student.html">Students</a></li>
+        <li><a href="teacher.html">Teachers</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Privacy &amp; Info</h4>
+      <ul>
+        <li><a href="terms.html">Terms &amp; Conditions</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="contact.html">Get in Touch</a></li>
+        <li><a href="teacher.html">Become a Partner</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-left"><img src="Logo.PNG" alt="Logo"><span>Era of Education</span></div>
+    <div class="footer-right">✨ Simple is Powerful • © 2026 Era of Education. All Rights Reserved</div>
+  </div>
+</footer>
+
+<a href="https://wa.me/917289053560" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+<div class="chatbot-bubble" id="chatbotBubble" onclick="toggleChatbot()"><i class="fas fa-comments"></i></div>
+<div class="chatbot-box" id="chatbotBox">
+  <div class="chatbot-header"><div class="chatbot-avatar">🧑‍🏫</div><div><strong>Guru Ji</strong><small>Era of Education Assistant</small></div><button onclick="toggleChatbot()" class="chatbot-close">✕</button></div>
+  <div class="chatbot-messages" id="chatMessages"><div class="chat-msg bot">Namaste! 🙏 Student registration mein help chahiye? <div class="quick-btns"><button onclick="sendQuick('Fees kya hain?')">💰 Fees</button><button onclick="sendQuick('Free demo kaise milegi?')">🎯 Demo</button></div></div></div>
+  <div class="chatbot-input"><input type="text" id="chatInput" placeholder="Apna sawaal likhiye..." onkeypress="if(event.key==='Enter') sendChat()"><button onclick="sendChat()"><i class="fas fa-paper-plane"></i></button></div>
+</div>
+
+<script>
+document.getElementById('hamburger').addEventListener('click', function(){ document.getElementById('navMenu').classList.toggle('open'); this.classList.toggle('active'); });
+window.addEventListener('scroll', ()=> document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY>10));
+
+// Feature ticker
+const features = ['✔ Verified Teachers','✔ Free Demo Class','✔ Personal Attention','✔ Best Results','✔ Affordable Fees'];
+let fi=0;
+setInterval(()=>{ document.getElementById('featureBox').textContent = features[fi]; fi=(fi+1)%features.length; },2500);
+
+async function submitStudentForm() {
+  const name=document.getElementById('sName').value.trim();
+  const cls=document.getElementById('sClass').value;
+  const mobile=document.getElementById('sMobile').value.trim();
+  if(!name||!cls||!mobile){ alert('Kripya naam, class aur mobile fill karein!'); return; }
+  const school=document.getElementById('sSchool').value.trim();
+  const subject=document.getElementById('sSubject').value.trim();
+  const area=document.getElementById('sArea').value.trim();
+  try {
+    const response = await fetch('/api/student/register', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({name, class:cls, school, mobile, subject, area})
+    });
+    if (!response.ok) throw new Error('Registration failed');
+  } catch (error) {
+    alert('Registration submit nahi hui. Kripya dobara try karein.');
+    return;
+  }
+  document.getElementById('formBox').style.display='none';
+  document.getElementById('successBox').style.display='block';
+}
+async function subscribeNewsletter() {
+  const email = document.getElementById('newsletterEmail').value.trim();
+  if (!email || !email.includes('@')) { alert('Kripya valid email daalen!'); return; }
+  try {
+    await fetch('/api/newsletter/subscribe', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({email})
+    });
+  } catch(e){ /* backend offline - ok */ }
+  alert('Shukriya! Aap successfully subscribe ho gaye hain. 🎉');
+  document.getElementById('newsletterEmail').value = '';
+}
+function toggleChatbot(){ const b=document.getElementById('chatbotBox'),bl=document.getElementById('chatbotBubble'); b.classList.toggle('open'); bl.style.display=b.classList.contains('open')?'none':'flex'; }
+function sendQuick(t){ addMsg(t,'user'); getBotReply(t); }
+function sendChat(){ const i=document.getElementById('chatInput'); const t=i.value.trim(); if(!t)return; addMsg(t,'user'); i.value=''; getBotReply(t); }
+function addMsg(t,r,trusted){ const m=document.getElementById('chatMessages'); const msg=document.createElement('div'); msg.className='chat-msg '+r; if(trusted) msg.innerHTML=t; else msg.textContent=t; m.appendChild(msg); m.scrollTop=m.scrollHeight; }
+function getBotReply(text){ const l=text.toLowerCase(); let r=''; if(l.includes('fee')||l.includes('price')) r='💰 Standard: ₹499/mo | Premium: ₹999/mo'; else if(l.includes('demo')) r='🎯 <a href="book-demo.html">Yahan click karen</a> free demo ke liye!'; else r='Neeche form bharen ya <a href="contact.html">contact karen</a>!'; setTimeout(()=>addMsg(r,'bot',true),600); }
+</script>
+</body>
+</html>

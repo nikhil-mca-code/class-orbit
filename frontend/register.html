@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Register | Era of Education</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Create an Era of Education account to begin student or teacher registration.">
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="icon" href="Logo.PNG" type="image/png">
+  <link rel="canonical" href="/register.html">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="shared.css">
+  <style>
+    .reg-page { min-height:calc(100vh - 76px); background:linear-gradient(135deg,#0f2027,#203a43,#2c5364); display:flex; justify-content:center; align-items:center; padding:40px 20px; }
+    .reg-card { background:#fff; padding:36px 32px; width:420px; max-width:100%; border-radius:18px; box-shadow:0 20px 50px rgba(0,0,0,0.3); }
+    .reg-card h2 { text-align:center; font-size:22px; color:#003366; margin-bottom:4px; }
+    .reg-card p.sub { text-align:center; color:#888; font-size:13px; margin-bottom:22px; }
+    .field { margin-bottom:14px; }
+    .field label { display:block; font-size:13px; font-weight:600; color:#444; margin-bottom:5px; }
+    .field input,.field select { width:100%; padding:11px 14px; border:1px solid #ddd; border-radius:10px; outline:none; font-size:14px; font-family:inherit; transition:0.3s; }
+    .field input:focus { border-color:#003366; }
+    .submit-btn { width:100%; padding:13px; border:none; border-radius:10px; background:linear-gradient(135deg,#0f2027,#2c5364); color:#fff; font-size:16px; font-weight:700; cursor:pointer; transition:0.3s; font-family:inherit; margin-top:6px; }
+    .submit-btn:hover { transform:scale(1.03); }
+    .login-link { display:block; text-align:center; margin-top:16px; font-size:13px; color:#555; }
+    .login-link a { color:#003366; font-weight:600; }
+  </style>
+</head>
+<body>
+
+<header class="navbar" id="mainNav">
+  <div class="logo"><a href="index.html"><img src="Logo.PNG" alt="Logo"></a></div>
+  <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  <nav id="navMenu">
+    <a href="index.html">Home</a>
+    <a href="student.html">Students</a>
+    <a href="teacher.html">Teachers</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="login.html" class="login-btn">Login</a>
+  </nav>
+</header>
+
+<div class="reg-page">
+  <div class="reg-card">
+    <h2>🎓 Create Account</h2>
+    <p class="sub">Era of Education — Register for free<br><small style="color:#aaa;">Students: Create account | Teachers: Continue to application</small></p>
+    <div class="field">
+      <label>Full Name *</label>
+      <input type="text" id="regName" placeholder="Apna poora naam">
+    </div>
+    <div class="field">
+      <label>Email Address *</label>
+      <input type="email" id="regEmail" placeholder="Email address">
+    </div>
+    <div class="field">
+      <label>Mobile Number *</label>
+      <input type="tel" id="regPhone" placeholder="+91 XXXXXXXXXX">
+    </div>
+    <div class="field">
+      <label>Role *</label>
+      <select id="regRole">
+        <option value="">Select Role</option>
+        <option value="student">Student</option>
+        <option value="teacher">Teacher</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>Password *</label>
+      <input type="password" id="regPass" placeholder="Create password (min 6 chars)">
+    </div>
+    <div class="field">
+      <label>Confirm Password *</label>
+      <input type="password" id="regPass2" placeholder="Re-enter password">
+    </div>
+    <button class="submit-btn" onclick="registerUser()">
+      <i class="fas fa-user-plus"></i> &nbsp;Create Account
+    </button>
+    <span class="login-link">Already have an account? <a href="login.html">Login here</a></span>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-bottom" style="border-top:none;padding:20px 5%;">
+    <div class="footer-left"><img src="Logo.PNG" alt="Logo"><span>Era of Education</span></div>
+    <div class="footer-right">© 2026 Era of Education. All Rights Reserved</div>
+  </div>
+</footer>
+
+<script>
+document.getElementById('hamburger').addEventListener('click', function(){ document.getElementById('navMenu').classList.toggle('open'); this.classList.toggle('active'); });
+async function registerUser(){
+  const name=document.getElementById('regName').value.trim();
+  const email=document.getElementById('regEmail').value.trim();
+  const phone=document.getElementById('regPhone').value.trim();
+  const role=document.getElementById('regRole').value;
+  const pass=document.getElementById('regPass').value;
+  const pass2=document.getElementById('regPass2').value;
+  if(!name||!email||!phone||!role||!pass){ alert('Kripya sabhi fields bharein!'); return; }
+  if(!email.includes('@')){ alert('Valid email daalen!'); return; }
+  if(pass.length<6){ alert('Password kam se kam 6 characters ka hona chahiye!'); return; }
+  if(pass!==pass2){ alert('Passwords match nahi kar rahe!'); return; }
+
+  try {
+    const response = await fetch('/api/auth/register', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ name, email, password: pass, role })
+    });
+    const data = await response.json();
+    if (!response.ok || !data.token) throw new Error(data.message || 'Registration failed');
+    localStorage.setItem('authToken', data.token);
+    localStorage.setItem('role', data.role);
+    localStorage.setItem('userId', data.userId);
+    localStorage.setItem('user', name);
+    if(role === 'student'){
+      localStorage.setItem('era_student_name', name);
+      window.location.href='student-dashboard.html';
+    } else if(role === 'teacher'){
+      sessionStorage.setItem('reg_name', name);
+      sessionStorage.setItem('reg_email', email);
+      sessionStorage.setItem('reg_phone', phone);
+      window.location.href='teacher.html#form';
+    }
+  } catch (error) {
+    alert(error.message || 'Registration failed. Please try again.');
+  }
+}
+</script>
+</body>
+</html>

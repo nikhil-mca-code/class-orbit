@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>About Us | Era of Education</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Learn about Era of Education and its mission to provide trusted, personalized home tuition.">
+  <link rel="icon" href="Logo.PNG" type="image/png">
+  <link rel="canonical" href="/about.html">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="shared.css">
+  <style>
+    .about-hero { background:linear-gradient(rgba(0,51,102,0.75),rgba(0,51,102,0.75)),url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f') center/cover no-repeat; color:#fff; text-align:center; padding:90px 20px; }
+    .about-hero h1 { font-size:40px; margin-bottom:12px; }
+    .about-hero p { font-size:18px; opacity:.9; }
+    .intro { padding:60px 5%; text-align:center; max-width:900px; margin:auto; }
+    .intro h2 { font-size:30px; color:#003366; margin-bottom:16px; }
+    .intro p { font-size:16px; color:#555; line-height:1.8; }
+    .stats { background:#003366; padding:50px 5%; display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:20px; text-align:center; }
+    .stat-card { color:#fff; }
+    .stat-card h3 { font-size:42px; font-weight:700; color:#f4c430; }
+    .stat-card p { font-size:15px; opacity:.85; margin-top:6px; }
+    .mv-section { padding:60px 5%; background:#f5f8ff; display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:28px; max-width:1000px; margin:auto; }
+    .mv-box { background:#fff; padding:32px; border-radius:18px; box-shadow:0 12px 30px rgba(0,0,0,.08); }
+    .mv-box h3 { font-size:20px; color:#003366; margin-bottom:12px; }
+    .mv-box p { font-size:15px; color:#555; line-height:1.7; }
+    .values-section { padding:60px 5%; text-align:center; }
+    .values-section h2 { font-size:28px; color:#003366; margin-bottom:36px; }
+    .values-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:22px; max-width:1100px; margin:auto; }
+    .value-card { background:#fff; padding:26px 20px; border-radius:16px; box-shadow:0 10px 25px rgba(0,0,0,.08); transition:0.3s; }
+    .value-card:hover { transform:translateY(-6px); }
+    .value-card .ico { font-size:36px; margin-bottom:12px; }
+    .value-card h3 { font-size:16px; color:#003366; margin-bottom:6px; }
+    .value-card p { font-size:13px; color:#666; }
+
+    .reel-section { padding:70px 5%; background:#f5f8ff; }
+    .reel-container { max-width:1000px; margin:auto; text-align:center; }
+    .reel-container h2 { font-size:30px; color:#003366; margin-bottom:10px; }
+    .reel-sub { font-size:16px; color:#666; margin-bottom:40px; }
+    .reel-wrapper { display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center; }
+    .reel-frame { display:flex; justify-content:center; }
+    .reel-cta { text-align:left; }
+    .reel-cta h3 { font-size:22px; color:#003366; margin-bottom:14px; }
+    .reel-cta p { font-size:15px; color:#555; line-height:1.7; margin-bottom:24px; }
+    .insta-btn { display:inline-block; padding:13px 28px; background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045); color:#fff; border-radius:30px; font-weight:700; font-size:15px; transition:0.3s; margin-right:12px; margin-bottom:12px; }
+    .insta-btn:hover { transform:scale(1.05); opacity:0.95; }
+    .insta-btn.secondary-btn { background:linear-gradient(135deg,#003366,#0066cc); }
+    @media(max-width:700px) { .reel-wrapper { grid-template-columns:1fr; } .reel-cta { text-align:center; } }
+    .cta-section { background:linear-gradient(135deg,#003366,#0066cc); color:#fff; text-align:center; padding:60px 20px; }
+    .cta-section h2 { font-size:28px; margin-bottom:14px; }
+    .cta-section p { font-size:16px; opacity:.85; margin-bottom:24px; }
+    .cta-btn { display:inline-block; padding:14px 36px; background:#f4c430; color:#000; border-radius:30px; font-weight:700; font-size:16px; transition:0.3s; }
+    .cta-btn:hover { background:#ffdd55; transform:scale(1.05); }
+  </style>
+</head>
+<body>
+
+<header class="navbar" id="mainNav">
+  <div class="logo"><a href="index.html"><img src="Logo.PNG" alt="Logo"></a></div>
+  <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  <nav id="navMenu">
+    <a href="index.html">Home</a>
+    <a href="student.html">Students</a>
+    <a href="teacher.html">Teachers</a>
+    <a href="about.html" class="active">About</a>
+    <a href="team.html">Team</a>
+    <a href="contact.html">Contact</a>
+    <a href="login.html" class="login-btn">Login</a>
+  </nav>
+</header>
+
+<div class="about-hero">
+  <h1>About Era of Education</h1>
+  <p>India's Most Trusted Home Tuition Network</p>
+</div>
+
+<section style="padding:60px 5%; max-width:900px; margin:auto; text-align:center;">
+  <h2 style="font-size:30px;color:#003366;margin-bottom:16px;">Who We Are</h2>
+  <p style="font-size:16px;color:#555;line-height:1.8;">Era of Education is a fast-growing home tuition platform dedicated to delivering quality education directly to students' homes. We connect students with verified, expert teachers and create a personalized learning environment for every child. Founded in Gorakhpur, we are now expanding across UP and India.</p>
+</section>
+
+<section class="stats">
+  <div class="stat-card"><h3>500+</h3><p>Happy Students</p></div>
+  <div class="stat-card"><h3>150+</h3><p>Expert Teachers</p></div>
+  <div class="stat-card"><h3>10+</h3><p>Cities Covered</p></div>
+  <div class="stat-card"><h3>95%</h3><p>Success Rate</p></div>
+</section>
+
+<section style="padding:60px 5%;">
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:28px;max-width:1000px;margin:auto;">
+    <div style="background:#fff;padding:32px;border-radius:18px;box-shadow:0 12px 30px rgba(0,0,0,.08);">
+      <h3 style="font-size:20px;color:#003366;margin-bottom:12px;">🎯 Our Mission</h3>
+      <p style="font-size:15px;color:#555;line-height:1.7;">To provide every student with the right teacher, right guidance, and right learning environment so they can achieve their full potential.</p>
+    </div>
+    <div style="background:#fff;padding:32px;border-radius:18px;box-shadow:0 12px 30px rgba(0,0,0,.08);">
+      <h3 style="font-size:20px;color:#003366;margin-bottom:12px;">🚀 Our Vision</h3>
+      <p style="font-size:15px;color:#555;line-height:1.7;">To become India's most trusted and loved home tuition brand by delivering affordable, accessible and result-driven education to every doorstep.</p>
+    </div>
+  </div>
+</section>
+
+<section class="values-section">
+  <h2>Our Core Values</h2>
+  <div class="values-grid">
+    <div class="value-card"><div class="ico">✅</div><h3>Quality</h3><p>We never compromise on the quality of education.</p></div>
+    <div class="value-card"><div class="ico">🤝</div><h3>Trust</h3><p>Every teacher is verified and background-checked.</p></div>
+    <div class="value-card"><div class="ico">💡</div><h3>Innovation</h3><p>Modern teaching methods for better results.</p></div>
+    <div class="value-card"><div class="ico">❤️</div><h3>Care</h3><p>We treat every student like family.</p></div>
+    <div class="value-card"><div class="ico">💰</div><h3>Affordability</h3><p>Best education at the most reasonable price.</p></div>
+    <div class="value-card"><div class="ico">🌟</div><h3>Excellence</h3><p>We strive for excellence in everything we do.</p></div>
+  </div>
+</section>
+
+
+<section class="reel-section">
+  <div class="reel-container">
+    <h2>🎬 See Us in Action</h2>
+    <p class="reel-sub">Watch how Era of Education is transforming home tuition across India</p>
+    <div class="reel-wrapper">
+      <div class="reel-frame">
+        <blockquote
+          class="instagram-media"
+          data-instgrm-permalink="https://www.instagram.com/reel/DPoYZRxkk4v/?igsh=dnJnb3g3YnBjaWwy"
+          data-instgrm-version="14"
+          style="background:#FFF; border:0; border-radius:14px; box-shadow:0 0 1px 0 rgba(0,0,0,.5),0 1px 10px 0 rgba(0,0,0,.15); margin:1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
+          <div style="padding:16px;">
+            <a href="https://www.instagram.com/reel/DPoYZRxkk4v/?igsh=dnJnb3g3YnBjaWwy" target="_blank" style="background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;">
+              <div style="display:flex; flex-direction:row; align-items:center;">
+                <div style="background-color:#F4F4F4; border-radius:50%; height:40px; margin-right:14px; width:40px;"></div>
+                <div style="display:flex; flex-direction:column; flex-grow:1; justify-content:center;">
+                  <div style="background-color:#F4F4F4; border-radius:4px; height:14px; margin-bottom:6px; width:100px;"></div>
+                  <div style="background-color:#F4F4F4; border-radius:4px; height:14px; width:60px;"></div>
+                </div>
+              </div>
+              <div style="padding:19% 0;"></div>
+              <div style="display:block; height:50px; margin:0 auto 12px; width:50px;">
+                <svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+                  <g fill="none" fill-rule="evenodd">
+                    <g fill="#000" fill-rule="nonzero">
+                      <path d="M29.5 12.5c-9.389 0-17 7.611-17 17s7.611 17 17 17 17-7.611 17-17-7.611-17-17-17zm0 28c-6.075 0-11-4.925-11-11s4.925-11 11-11 11 4.925 11 11-4.925 11-11 11zm17.625-28.875a3.875 3.875 0 1 1-7.75 0 3.875 3.875 0 0 1 7.75 0z"/>
+                    </g>
+                  </g>
+                </svg>
+              </div>
+              <div style="padding-top:8px;">
+                <div style="color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">Watch this Reel on Instagram</div>
+              </div>
+              <div style="padding:12.5% 0;"></div>
+              <div style="display:flex; flex-direction:row; margin-bottom:14px; align-items:center;">
+                <div style="background-color:#F4F4F4; border-radius:50%; height:12.5px; width:12.5px; transform:translateX(0px) translateY(7px);"></div>
+                <div style="background-color:#F4F4F4; height:12.5px; transform:rotate(-45deg) translateX(3px) translateY(1px); width:12.5px; border-radius:0 0 0 0; flex-grow:0; margin-right:14px; margin-left:2px;"></div>
+                <div style="background-color:#F4F4F4; border-radius:50%; height:12.5px; width:12.5px; transform:translateX(9px) translateY(-18px);"></div>
+              </div>
+              <div style="margin-left:8px;">
+                <div style="background-color:#F4F4F4; border-radius:50%; flex-grow:0; height:20px; width:20px;"></div>
+                <div style="width:0; height:0; border-top:2px solid transparent; border-left:6px solid #f4f4f4; border-bottom:2px solid transparent; transform:translateX(16px) translateY(-4px) rotate(30deg)"></div>
+              </div>
+              <div style="margin-left:auto;">
+                <div style="width:0px; border-top:8px solid #F4F4F4; border-right:8px solid transparent; transform:translateY(16px);"></div>
+                <div style="background-color:#F4F4F4; flex-grow:0; height:12px; width:16px; transform:translateY(-4px);"></div>
+                <div style="width:0; height:0; border-top:8px solid #F4F4F4; border-left:8px solid transparent; transform:translateY(-4px) translateX(8px);"></div>
+              </div>
+            </a>
+          </div>
+        </blockquote>
+      </div>
+      <div class="reel-cta">
+        <h3>📱 Follow Us on Instagram</h3>
+        <p>Stay updated with our latest activities, student success stories, and teacher highlights!</p>
+        <a href="https://www.instagram.com/reel/DPoYZRxkk4v/?igsh=dnJnb3g3YnBjaWwy" target="_blank" class="insta-btn">
+          <i class="fab fa-instagram"></i> Watch on Instagram
+        </a>
+        <a href="https://www.instagram.com/hometutor.in" target="_blank" class="insta-btn secondary-btn">
+          <i class="fab fa-instagram"></i> @hometutor.in
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+<script async src="//www.instagram.com/embed.js"></script>
+
+<section class="cta-section">
+  <h2>Ready to Get Started?</h2>
+  <p>Join thousands of students and teachers on Era of Education today!</p>
+  <a href="student.html" class="cta-btn">Apply as Student</a>
+  &nbsp;&nbsp;
+  <a href="teacher.html" class="cta-btn" style="background:#fff;color:#003366;">Join as Teacher</a>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-top">
+    <div class="footer-newsletter"><h2>Stay Updated with Era of Education</h2><div class="newsletter-form"><input type="email" id="newsletterEmail" placeholder="Enter your email"><button onclick="subscribeNewsletter()">Subscribe</button></div></div>
+    <div class="footer-contact-info"><span>Call Anytime</span><h3><a href="tel:+917289053560">+91 72890 53560</a></h3></div>
+  </div>
+  <hr class="footer-divider">
+  <div class="footer-main">
+    <div class="footer-col"><h3>Era of Education</h3><p>Taramandal Road, Gorakhpur</p><p><a href="tel:+917289053560">📞 +91 72890 53560</a></p><p><a href="mailto:eraofedu@gmail.com">✉ eraofedu@gmail.com</a></p><div class="social-icons"><a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a><a href="https://www.instagram.com/hometutor.in" target="_blank"><i class="fab fa-instagram"></i></a><a href="https://youtube.com/@eraofedu" target="_blank"><i class="fab fa-youtube"></i></a><a href="https://wa.me/917289053560" target="_blank"><i class="fab fa-whatsapp"></i></a></div></div>
+    <div class="footer-col"><h4>Services</h4><ul><li><a href="student.html">Home Tuition</a></li><li><a href="student.html">Online Classes</a></li><li><a href="book-demo.html">Free Demo</a></li><li><a href="about.html">Career Guidance</a></li></ul></div>
+    <div class="footer-col"><h4>Quick Links</h4><ul><li><a href="index.html">Home</a></li><li><a href="student.html">Students</a></li><li><a href="teacher.html">Teachers</a></li><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div class="footer-col"><h4>Privacy &amp; Info</h4><ul><li><a href="terms.html">Terms &amp; Conditions</a></li><li><a href="privacy.html">Privacy Policy</a></li><li><a href="contact.html">Get in Touch</a></li><li><a href="teacher.html">Become a Partner</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><div class="footer-left"><img src="Logo.PNG" alt="Logo"><span>Era of Education</span></div><div class="footer-right">✨ © 2026 Era of Education. All Rights Reserved</div></div>
+</footer>
+
+<a href="https://wa.me/917289053560" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+<div class="chatbot-bubble" id="chatbotBubble" onclick="toggleChatbot()"><i class="fas fa-comments"></i></div>
+<div class="chatbot-box" id="chatbotBox">
+  <div class="chatbot-header"><div class="chatbot-avatar">🧑‍🏫</div><div><strong>Guru Ji</strong><small>Era of Education Assistant</small></div><button onclick="toggleChatbot()" class="chatbot-close">✕</button></div>
+  <div class="chatbot-messages" id="chatMessages"><div class="chat-msg bot">Namaste! 🙏 Koi sawaal ho Era of Education ke baare mein?<div class="quick-btns"><button onclick="sendQuick('Student registration')">📚 Student</button><button onclick="sendQuick('Teacher join')">👨‍🏫 Teacher</button></div></div></div>
+  <div class="chatbot-input"><input type="text" id="chatInput" placeholder="Sawaal likhiye..." onkeypress="if(event.key==='Enter') sendChat()"><button onclick="sendChat()"><i class="fas fa-paper-plane"></i></button></div>
+</div>
+
+<script>
+document.getElementById('hamburger').addEventListener('click', function(){ document.getElementById('navMenu').classList.toggle('open'); this.classList.toggle('active'); });
+window.addEventListener('scroll', ()=> document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY>10));
+async function subscribeNewsletter() {
+  const email = document.getElementById('newsletterEmail').value.trim();
+  if (!email || !email.includes('@')) { alert('Kripya valid email daalen!'); return; }
+  try {
+    await fetch('/api/newsletter/subscribe', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({email})
+    });
+  } catch(e){ /* backend offline - ok */ }
+  alert('Shukriya! Aap successfully subscribe ho gaye hain. 🎉');
+  document.getElementById('newsletterEmail').value = '';
+}
+function toggleChatbot(){ const b=document.getElementById('chatbotBox'),bl=document.getElementById('chatbotBubble'); b.classList.toggle('open'); bl.style.display=b.classList.contains('open')?'none':'flex'; }
+function sendQuick(t){ addMsg(t,'user'); getBotReply(t); }
+function sendChat(){ const i=document.getElementById('chatInput'); const t=i.value.trim(); if(!t)return; addMsg(t,'user'); i.value=''; getBotReply(t); }
+function addMsg(t,r,trusted){ const m=document.getElementById('chatMessages'); const msg=document.createElement('div'); msg.className='chat-msg '+r; if(trusted) msg.innerHTML=t; else msg.textContent=t; m.appendChild(msg); m.scrollTop=m.scrollHeight; }
+function getBotReply(text){ const l=text.toLowerCase(); let r=''; if(l.includes('student')||l.includes('register')) r='📚 <a href="student.html">Student Registration</a> ke liye yahan click karen!'; else if(l.includes('teacher')||l.includes('join')) r='👨‍🏫 <a href="teacher.html">Teacher Registration</a> ke liye yahan click karen!'; else r='<a href="contact.html">Contact us</a> or call <a href="tel:+917289053560">+91 72890 53560</a>'; setTimeout(()=>addMsg(r,'bot',true),600); }
+</script>
+</body>
+</html>
