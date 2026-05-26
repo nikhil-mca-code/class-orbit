@@ -1,62 +1,302 @@
-# Era of Education — Fixed Website
+# Era of Education Platform
 
-## What Was Fixed
+A full-stack education management platform built with Node.js, Express.js, MongoDB, and vanilla HTML/CSS/JavaScript.
 
-### Frontend Bugs Fixed:
-1. **Broken Google Font link** — `<!<link>` typo fixed, Poppins now loads correctly
-2. **No hamburger menu** — Added responsive hamburger for all pages (mobile friendly)
-3. **"forgot password.html" with space** — Renamed to `forgot-password.html` (works on all servers)
-4. **"book-demo.html" missing** — Created the page (was only `demo.html` before)
-5. **"student dashboard.html" / "teacher dashboard.html" with spaces** — Renamed to `student-dashboard.html` / `teacher-dashboard.html`
-6. **Footer links not clickable** — All Quick Links, Services, Legal now have real `<a>` tags
-7. **Social icons not linked** — Facebook, Instagram, YouTube, WhatsApp now all properly linked
-8. **Chatbot "Guru Ji" missing** — Built from scratch, works on every page, speaks Hindi/English
-9. **Broken `fetch()` calls** — Removed fetch to `localhost:3000` that caused visible errors
-10. **Payment page had no header/footer** — Fully styled with plan selection and fallback demo mode
-11. **Login page missing header/footer** — Added proper navbar and footer
-12. **`ceo.jpg` missing** — Added fallback to online image
-13. **CSS `<link>` tags placed inside `<section>`** — Moved to `<head>` where they belong
-14. **Duplicate FontAwesome CDN imports** — Cleaned up
-15. **Register page missing header/footer** — Added
-16. **Footer had no real links** — All footer columns now properly linked
+The platform provides secure role-based access for students, teachers, and administrators with authentication, dashboard management, payment integration, and administrative controls.
 
-### New Pages Created:
-- `book-demo.html` — Free demo class booking form
-- `forgot-password.html` — Forgot password page
-- `student-dashboard.html` — Student dashboard (after login)
-- `teacher-dashboard.html` — Teacher dashboard (after login)
-- `admin.html` — Admin dashboard with sidebar
-- `terms.html` — Terms & Conditions
-- `privacy.html` — Privacy Policy
+---
 
-### New Files:
-- `shared.css` — Common CSS for navbar, footer, chatbot, hamburger, WhatsApp button
-- `components.js` — Reusable chatbot and newsletter logic
+## Features
 
-## Demo Login Credentials
-| Role | Email | Password |
-|------|-------|----------|
-| Admin | admin@gmail.com | 123 |
-| Student | student@gmail.com | 123 |
-| Teacher | teacher@gmail.com | 123 |
+### Authentication & Security
 
-## How to Run Frontend
-Just open `frontend/index.html` in any browser — no server needed for frontend.
+* JWT-based authentication
+* Role-based authorization
+* Protected admin APIs
+* Password reset workflow
+* Secure route middleware
+* Helmet security headers
+* API rate limiting
+* Environment-based configuration
 
-## How to Run Backend (Node.js)
+---
+
+### Student Features
+
+* Student registration and login
+* Dashboard access
+* Profile management
+* Demo booking
+* Course enrollment workflow
+
+---
+
+### Teacher Features
+
+* Teacher registration
+* Teacher dashboard
+* Subject application workflow
+* Approval process
+
+---
+
+### Admin Features
+
+* Secure admin dashboard
+* Student management
+* Teacher management
+* Demo request management
+* Payment management
+* Statistics overview
+
+---
+
+### Payment System
+
+* Razorpay integration
+* Secure order creation
+* Server-side payment validation
+* Payment verification workflow
+
+---
+
+### Communication System
+
+* Contact form
+* Newsletter subscription
+* Email notifications
+* Password reset emails
+
+---
+
+## Tech Stack
+
+### Frontend
+
+* HTML5
+* CSS3
+* JavaScript
+
+### Backend
+
+* Node.js
+* Express.js
+
+### Database
+
+* MongoDB
+* Mongoose
+
+### Authentication
+
+* JWT
+* bcrypt
+
+### Payments
+
+* Razorpay
+
+### Email Service
+
+* Nodemailer
+
+### Security
+
+* Helmet
+* Express Rate Limit
+
+---
+
+## Project Structure
+
+```bash
+output_site/
+│
+├── backend/
+│   ├── config/
+│   ├── controllers/
+│   ├── middleware/
+│   ├── models/
+│   ├── routes/
+│   ├── payment/
+│   ├── server.js
+│   └── package.json
+│
+├── frontend/
+│   ├── images/
+│   ├── index.html
+│   ├── login.html
+│   ├── register.html
+│   ├── student-dashboard.html
+│   ├── teacher-dashboard.html
+│   └── admin.html
+│
+├── README.md
+└── SETUP.md
+```
+
+---
+
+## Architecture Flow
+
+```text
+User
+↓
+Frontend
+↓
+Express API
+↓
+Authentication Middleware
+↓
+MongoDB Database
+↓
+Payment + Email Services
+↓
+Admin Dashboard
+```
+
+---
+
+## Installation
+
+Clone repository:
+
+```bash
+git clone YOUR_REPOSITORY_URL
+```
+
+Go into project:
+
+```bash
+cd output_site
+```
+
+Install backend dependencies:
+
 ```bash
 cd backend
 npm install
-# Edit .env with your MongoDB URI and Razorpay keys
-node server.js
 ```
 
-## Payment Setup
-1. Get your Razorpay key from https://razorpay.com
-2. Replace `rzp_test_YOUR_KEY_HERE` in `payment.html` with your actual key
-3. Make sure backend is running on port 5000
+Create environment variables:
 
-## Contact
-📞 +91 72890 53560
-✉ eraofedu@gmail.com
-🌐 Taramandal Road, Gorakhpur, UP
+```bash
+cp .env.example .env
+```
+
+Start backend:
+
+```bash
+npm run dev
+```
+
+Run frontend using Live Server or local server.
+
+---
+
+## Environment Variables
+
+Required variables:
+
+```env
+PORT=
+MONGO_URI=
+JWT_SECRET=
+
+EMAIL_USER=
+EMAIL_APP_PASS=
+
+RAZORPAY_KEY_ID=
+RAZORPAY_KEY_SECRET=
+
+FRONTEND_URL=
+CORS_ORIGINS=
+```
+
+---
+
+## API Overview
+
+Authentication:
+
+```text
+POST /api/auth/register
+POST /api/auth/login
+POST /api/auth/forgot-password
+POST /api/auth/change-password
+```
+
+Student:
+
+```text
+POST /api/student/register
+```
+
+Teacher:
+
+```text
+POST /api/teacher/register
+```
+
+Demo:
+
+```text
+POST /api/demo/book
+```
+
+Contact:
+
+```text
+POST /api/contact/send
+```
+
+Payment:
+
+```text
+POST /api/payment/create-order
+POST /api/payment/verify
+```
+
+Admin:
+
+```text
+GET /api/admin/students
+GET /api/admin/teachers
+GET /api/admin/payments
+```
+
+---
+
+## Security Measures
+
+* JWT Authentication
+* Password hashing
+* Role-based access control
+* Secure payment verification
+* Helmet protection
+* Rate limiting
+* Protected admin routes
+
+---
+
+## Future Improvements
+
+* Course management module
+* Attendance system
+* Notifications
+* Live classes
+* Chat system
+* Analytics dashboard
+* Mobile application
+
+---
+
+## License
+
+This project is intended for educational and portfolio purposes.
+
+---
+
+## Author
+
+Developed by Nikhil
