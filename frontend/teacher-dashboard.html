@@ -106,7 +106,7 @@ async function validateAccess() {
   const token = localStorage.getItem('authToken');
   if (!token || localStorage.getItem('role') !== 'teacher') return false;
   try {
-    const response = await fetch('/api/auth/session', { headers:{ Authorization:'Bearer ' + token } });
+    const response = await fetch(API_BASE_URL + '/api/auth/session', { headers:{ Authorization:'Bearer ' + token } });
     const session = await response.json();
     return response.ok && session.role === 'teacher';
   } catch (error) {

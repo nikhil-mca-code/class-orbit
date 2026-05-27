@@ -220,7 +220,7 @@ async function completeRegistration() {
 
   err.style.display = 'none';
   try {
-    const authRes = await fetch('/api/auth/register', {
+    const authRes = await fetch(API_BASE_URL + '/api/auth/register', {
       method:'POST', headers:{'Content-Type':'application/json'},
       body: JSON.stringify({name, email, password: pass, role:'student'})
     });
@@ -232,7 +232,7 @@ async function completeRegistration() {
     localStorage.setItem('userId', authData.userId);
     localStorage.setItem('era_student_name', name);
 
-    await fetch('/api/student/register', {
+    await fetch(API_BASE_URL + '/api/student/register', {
       method:'POST', headers:{'Content-Type':'application/json'},
       body: JSON.stringify({name, email, mobile, class: cls, subject, plan: selectedPlan})
     });

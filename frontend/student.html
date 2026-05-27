@@ -296,7 +296,7 @@ async function submitStudentForm() {
   const subject=document.getElementById('sSubject').value.trim();
   const area=document.getElementById('sArea').value.trim();
   try {
-    const response = await fetch('/api/student/register', {
+    const response = await fetch(API_BASE_URL + '/api/student/register', {
       method:'POST', headers:{'Content-Type':'application/json'},
       body: JSON.stringify({name, class:cls, school, mobile, subject, area})
     });
@@ -312,7 +312,7 @@ async function subscribeNewsletter() {
   const email = document.getElementById('newsletterEmail').value.trim();
   if (!email || !email.includes('@')) { alert('Kripya valid email daalen!'); return; }
   try {
-    await fetch('/api/newsletter/subscribe', {
+    await fetch(API_BASE_URL + '/api/newsletter/subscribe', {
       method:'POST', headers:{'Content-Type':'application/json'},
       body: JSON.stringify({email})
     });

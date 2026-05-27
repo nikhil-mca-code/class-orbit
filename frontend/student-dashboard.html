@@ -161,7 +161,7 @@ async function validateAccess() {
   const token = localStorage.getItem('authToken');
   if (!token || localStorage.getItem('role') !== 'student') return false;
   try {
-    const response = await fetch('/api/auth/session', { headers:{ Authorization:'Bearer ' + token } });
+    const response = await fetch(API_BASE_URL + '/api/auth/session', { headers:{ Authorization:'Bearer ' + token } });
     const session = await response.json();
     return response.ok && session.role === 'student';
   } catch (error) {
@@ -245,7 +245,7 @@ async function changePassword() {
   if (newPw !== newPw2) { alert('Passwords match nahi kar rahe!'); return; }
 
   try {
-    const response = await fetch('/api/auth/change-password', {
+    const response = await fetch(API_BASE_URL + '/api/auth/change-password', {
       method:'POST',
       headers:{'Content-Type':'application/json', Authorization:'Bearer ' + localStorage.getItem('authToken')},
       body: JSON.stringify({ currentPassword: oldPw, password: newPw })

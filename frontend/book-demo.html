@@ -105,7 +105,7 @@ async function bookDemo(){
   btn.disabled=true; btn.textContent='Booking...';
 
   try {
-    const res = await fetch('/api/demo/book', {
+    const res = await fetch(API_BASE_URL + '/api/demo/book', {
       method:'POST', headers:{'Content-Type':'application/json'},
       body: JSON.stringify({studentName, class:cls, mobile, subject, area, timing})
     });
@@ -123,7 +123,7 @@ async function subscribeNewsletter() {
   const email = document.getElementById('newsletterEmail').value.trim();
   if (!email || !email.includes('@')) { alert('Kripya valid email daalen!'); return; }
   try {
-    await fetch('/api/newsletter/subscribe', {
+    await fetch(API_BASE_URL + '/api/newsletter/subscribe', {
       method:'POST', headers:{'Content-Type':'application/json'},
       body: JSON.stringify({email})
     });

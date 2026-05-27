@@ -286,7 +286,7 @@ async function submitContactForm() {
   btn.disabled=true; btn.innerHTML='<i class="fas fa-spinner fa-spin"></i> &nbsp;Sending...';
 
   try {
-    const res = await fetch('/api/contact/send', {
+    const res = await fetch(API_BASE_URL + '/api/contact/send', {
       method:'POST', headers:{'Content-Type':'application/json'},
       body: JSON.stringify({name, mobile, email, subject, message})
     });
