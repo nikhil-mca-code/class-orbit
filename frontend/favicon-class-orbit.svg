@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" role="img" aria-label="Class Orbit favicon">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4F46E5"/>
+      <stop offset="60%" stop-color="#7C3AED"/>
+      <stop offset="100%" stop-color="#06B6D4"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="#F8FAFC"/>
+  <circle cx="32" cy="32" r="14" fill="none" stroke="url(#g)" stroke-width="4"/>
+  <ellipse cx="32" cy="32" rx="20" ry="8" fill="none" stroke="#4F46E5" stroke-width="3" transform="rotate(-20 32 32)"/>
+  <circle cx="48" cy="25" r="3.5" fill="#06B6D4"/>
+</svg>

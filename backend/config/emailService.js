@@ -102,7 +102,7 @@ const studentRegisteredUser = (data) => `
        💬 <a href="https://wa.me/917518007867">WhatsApp</a></p>
   </div>
   <div style="background:#003366;padding:12px;text-align:center;color:#aaa;font-size:12px;">
-    Class Orbit | Taramandal Road, Gorakhpur
+    Class Orbit | Gorakhpur
   </div>
 </div>`;
 
@@ -148,7 +148,7 @@ const teacherRegisteredUser = (data) => `
        💬 <a href="https://wa.me/917518007867">WhatsApp</a></p>
   </div>
   <div style="background:#1a6b3c;padding:12px;text-align:center;color:#aaa;font-size:12px;">
-    Class Orbit | Taramandal Road, Gorakhpur
+    Class Orbit | Gorakhpur
   </div>
 </div>`;
 
