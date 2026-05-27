@@ -158,6 +158,7 @@
 </div>
 
 <script>
+window.API_BASE_URL = "https://class-orbit-backend.onrender.com";
 document.getElementById('hamburger').addEventListener('click', function(){ document.getElementById('navMenu').classList.toggle('open'); this.classList.toggle('active'); });
 window.addEventListener('scroll', ()=> document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY>10));
 const tFeatures=['✔ Flexible Teaching Hours','✔ Teach from Home','✔ Good Income Opportunity','✔ Career Growth'];
@@ -186,7 +187,7 @@ async function submitTeacherForm(){
   btn.disabled=true; btn.innerHTML='<i class="fas fa-spinner fa-spin"></i> &nbsp;Submitting...';
 
   try {
-    const response = await fetch(API_BASE_URL + '/api/teacher/register', {
+    const response = await fetch(window.API_BASE_URL + '/api/teacher/register', {
       method:'POST', headers:{'Content-Type':'application/json'},
       body: JSON.stringify({ name, mobile, subject, experience, qualification, area, email })
     });
@@ -207,7 +208,7 @@ async function subscribeNewsletter() {
   const email = document.getElementById('newsletterEmail').value.trim();
   if (!email || !email.includes('@')) { alert('Kripya valid email daalen!'); return; }
   try {
-    await fetch(API_BASE_URL + '/api/newsletter/subscribe', {
+    await fetch(window.API_BASE_URL + '/api/newsletter/subscribe', {
       method:'POST', headers:{'Content-Type':'application/json'},
       body: JSON.stringify({email})
     });

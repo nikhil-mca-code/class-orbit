@@ -184,6 +184,7 @@
 </div>
 
 <script>
+window.API_BASE_URL = "https://class-orbit-backend.onrender.com";
 document.getElementById('hamburger').addEventListener('click', function(){ document.getElementById('navMenu').classList.toggle('open'); this.classList.toggle('active'); });
 
 // Auth guard
@@ -204,7 +205,7 @@ function escapeHtml(value) {
 async function validateAccess() {
   if (!authToken || localStorage.getItem('role') !== 'admin') return false;
   try {
-    const response = await fetch(API_BASE_URL + '/api/auth/session', { headers:{ Authorization:'Bearer ' + authToken } });
+    const response = await fetch(window.API_BASE_URL + '/api/auth/session', { headers:{ Authorization:'Bearer ' + authToken } });
     const session = await response.json();
     return response.ok && session.role === 'admin';
   } catch (error) {
@@ -323,7 +324,7 @@ function filterStudents() {
 async function deleteStudent(id) {
   if (!confirm('Kya aap is student ko remove karna chahte hain?')) return;
   try {
-    const response = await fetch(API_BASE_URL + '/api/admin/student/' + encodeURIComponent(id), {
+    const response = await fetch(window.API_BASE_URL + '/api/admin/student/' + encodeURIComponent(id), {
       method:'DELETE', headers:{ Authorization:'Bearer ' + authToken }
     });
     if (!response.ok) throw new Error('Student removal failed');
@@ -373,7 +374,7 @@ function filterTeachers() {
 async function removeApprovedTeacher(id) {
   if (!confirm('Kya aap is teacher ki approval revoke karna chahte hain?')) return;
   try {
-    const response = await fetch(API_BASE_URL + '/api/admin/teacher/' + encodeURIComponent(id), {
+    const response = await fetch(window.API_BASE_URL + '/api/admin/teacher/' + encodeURIComponent(id), {
       method:'PUT',
       headers:{'Content-Type':'application/json', Authorization:'Bearer ' + authToken},
       body: JSON.stringify({ status:'inactive' })
@@ -415,7 +416,7 @@ function loadPendingTeachers(tbodyId, fullCols) {
 
 async function approveTeacher(id) {
   try {
-    const response = await fetch(API_BASE_URL + '/api/admin/teacher/' + encodeURIComponent(id), {
+    const response = await fetch(window.API_BASE_URL + '/api/admin/teacher/' + encodeURIComponent(id), {
       method:'PUT',
       headers:{'Content-Type':'application/json', Authorization:'Bearer ' + authToken},
       body: JSON.stringify({ status:'active' })
@@ -435,7 +436,7 @@ async function approveTeacher(id) {
 async function rejectTeacher(id) {
   if (!confirm('Kya aap is application ko reject karna chahte hain?')) return;
   try {
-    const response = await fetch(API_BASE_URL + '/api/admin/teacher/' + encodeURIComponent(id), {
+    const response = await fetch(window.API_BASE_URL + '/api/admin/teacher/' + encodeURIComponent(id), {
       method:'PUT',
       headers:{'Content-Type':'application/json', Authorization:'Bearer ' + authToken},
       body: JSON.stringify({ status:'inactive' })
@@ -508,11 +509,11 @@ async function syncFromBackend() {
   try {
     const headers = { Authorization: 'Bearer ' + authToken };
     const [studRes, teachRes, demoRes, paymentRes, statsRes] = await Promise.all([
-      fetch(API_BASE_URL + '/api/admin/students', { headers }),
-      fetch(API_BASE_URL + '/api/admin/teachers', { headers }),
-      fetch(API_BASE_URL + '/api/admin/demos', { headers }),
-      fetch(API_BASE_URL + '/api/admin/payments', { headers }),
-      fetch(API_BASE_URL + '/api/admin/stats', { headers })
+      fetch(window.API_BASE_URL + '/api/admin/students', { headers }),
+      fetch(window.API_BASE_URL + '/api/admin/teachers', { headers }),
+      fetch(window.API_BASE_URL + '/api/admin/demos', { headers }),
+      fetch(window.API_BASE_URL + '/api/admin/payments', { headers }),
+      fetch(window.API_BASE_URL + '/api/admin/stats', { headers })
     ]);
     if (studRes.status === 401 || studRes.status === 403) {
       logout();

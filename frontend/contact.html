@@ -268,6 +268,7 @@
 </div>
 
 <script>
+window.API_BASE_URL = "https://class-orbit-backend.onrender.com";
 document.getElementById('hamburger').addEventListener('click', function(){
   document.getElementById('navMenu').classList.toggle('open');
   this.classList.toggle('active');
@@ -286,7 +287,7 @@ async function submitContactForm() {
   btn.disabled=true; btn.innerHTML='<i class="fas fa-spinner fa-spin"></i> &nbsp;Sending...';
 
   try {
-    const res = await fetch(API_BASE_URL + '/api/contact/send', {
+    const res = await fetch(window.API_BASE_URL + '/api/contact/send', {
       method:'POST', headers:{'Content-Type':'application/json'},
       body: JSON.stringify({name, mobile, email, subject, message})
     });

@@ -110,13 +110,14 @@
 <a href="https://wa.me/917518007867" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
 <script>
+window.API_BASE_URL = "https://class-orbit-backend.onrender.com";
 document.getElementById('hamburger').addEventListener('click', function(){ document.getElementById('navMenu').classList.toggle('open'); this.classList.toggle('active'); });
 window.addEventListener('scroll', ()=> document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY>10));
 async function subscribeNewsletter() {
   const email = document.getElementById('newsletterEmail').value.trim();
   if (!email || !email.includes('@')) { alert('Kripya valid email daalen!'); return; }
   try {
-    await fetch(API_BASE_URL + '/api/newsletter/subscribe', {
+    await fetch(window.API_BASE_URL + '/api/newsletter/subscribe', {
       method:'POST', headers:{'Content-Type':'application/json'},
       body: JSON.stringify({email})
     });

@@ -169,6 +169,7 @@
 </footer>
 
 <script>
+window.API_BASE_URL = "https://class-orbit-backend.onrender.com";
 document.getElementById('hamburger').addEventListener('click', function(){ document.getElementById('navMenu').classList.toggle('open'); this.classList.toggle('active'); });
 
 let selectedPlan = '';
@@ -220,7 +221,7 @@ async function completeRegistration() {
 
   err.style.display = 'none';
   try {
-    const authRes = await fetch(API_BASE_URL + '/api/auth/register', {
+    const authRes = await fetch(window.API_BASE_URL + '/api/auth/register', {
       method:'POST', headers:{'Content-Type':'application/json'},
       body: JSON.stringify({name, email, password: pass, role:'student'})
     });
@@ -232,7 +233,7 @@ async function completeRegistration() {
     localStorage.setItem('userId', authData.userId);
     localStorage.setItem('era_student_name', name);
 
-    await fetch(API_BASE_URL + '/api/student/register', {
+    await fetch(window.API_BASE_URL + '/api/student/register', {
       method:'POST', headers:{'Content-Type':'application/json'},
       body: JSON.stringify({name, email, mobile, class: cls, subject, plan: selectedPlan})
     });

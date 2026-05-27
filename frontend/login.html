@@ -137,6 +137,7 @@
 <a href="https://wa.me/917518007867" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
 <script>
+window.API_BASE_URL = "https://class-orbit-backend.onrender.com";
 document.getElementById('hamburger').addEventListener('click', function(){
   document.getElementById('navMenu').classList.toggle('open');
   this.classList.toggle('active');
@@ -159,7 +160,7 @@ async function loginUser() {
   if (!email || !pass) { errEl.textContent = 'Email aur password daalen!'; errEl.style.display='block'; return; }
 
   try {
-    const response = await fetch(API_BASE_URL + '/api/auth/login', {
+    const response = await fetch(window.API_BASE_URL + '/api/auth/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, password: pass, role })

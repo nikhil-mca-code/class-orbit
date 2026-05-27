@@ -197,6 +197,7 @@
 
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 <script>
+window.API_BASE_URL = "https://class-orbit-backend.onrender.com";
 document.getElementById('hamburger').addEventListener('click', function(){
   document.getElementById('navMenu').classList.toggle('open');
   this.classList.toggle('active');
@@ -236,7 +237,7 @@ async function startPayment() {
 
   try {
     // Step 1: Create order from backend
-    const res = await fetch(API_BASE_URL + '/api/payment/create-order', {
+    const res = await fetch(window.API_BASE_URL + '/api/payment/create-order', {
       method:'POST', headers:{'Content-Type':'application/json'},
       body: JSON.stringify({ amount:selectedAmount, studentName:name, email, phone, plan:selectedPlanName })
     });
@@ -259,7 +260,7 @@ async function startPayment() {
       handler: async function(response) {
         // Step 3: Verify payment on backend
         try {
-          const verifyRes = await fetch(API_BASE_URL + '/api/payment/verify', {
+          const verifyRes = await fetch(window.API_BASE_URL + '/api/payment/verify', {
             method:'POST', headers:{'Content-Type':'application/json'},
             body: JSON.stringify({
               razorpay_order_id: response.razorpay_order_id,
