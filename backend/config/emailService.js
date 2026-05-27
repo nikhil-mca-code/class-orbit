@@ -11,7 +11,7 @@ const createTransporter = () => {
   return nodemailer.createTransport({
     service: "gmail",
     auth: {
-      user: process.env.EMAIL_USER,       // your Gmail: eraofedu@gmail.com
+      user: process.env.EMAIL_USER,       // your Gmail:nikhil.mca.in@gmail.com
       pass: process.env.EMAIL_APP_PASS,   // Gmail App Password (16 chars)
     },
   });
@@ -79,7 +79,7 @@ const studentRegisteredAdmin = (data) => `
     </div>
   </div>
   <div style="background:#003366;padding:12px;text-align:center;color:#aaa;font-size:12px;">
-    Era of Education | +91 72890 53560 | eraofedu@gmail.com
+    Era of Education | +91 75180 07867 |nikhil.mca.in@gmail.com
   </div>
 </div>`;
 
@@ -98,8 +98,8 @@ const studentRegisteredUser = (data) => `
       Class: ${data.class} | Subject: ${data.subject || "N/A"} | Area: ${data.area || "N/A"}
     </div>
     <p>Koi bhi sawaal ho toh contact karo:</p>
-    <p>📞 <a href="tel:+917289053560">+91 72890 53560</a> &nbsp;|&nbsp; 
-       💬 <a href="https://wa.me/917289053560">WhatsApp</a></p>
+    <p>📞 <a href="tel:+917518007867">+91 75180 07867</a> &nbsp;|&nbsp; 
+       💬 <a href="https://wa.me/917518007867">WhatsApp</a></p>
   </div>
   <div style="background:#003366;padding:12px;text-align:center;color:#aaa;font-size:12px;">
     Era of Education | Taramandal Road, Gorakhpur
@@ -128,7 +128,7 @@ const teacherRegisteredAdmin = (data) => `
     </div>
   </div>
   <div style="background:#1a6b3c;padding:12px;text-align:center;color:#aaa;font-size:12px;">
-    Era of Education | +91 72890 53560 | eraofedu@gmail.com
+    Era of Education | +91 75180 07867 |nikhil.mca.in@gmail.com
   </div>
 </div>`;
 
@@ -144,8 +144,8 @@ const teacherRegisteredUser = (data) => `
     <div style="background:#f0fff4;padding:16px;border-radius:8px;margin:16px 0;">
       Subject: ${data.subject} | Experience: ${data.experience || "N/A"} | Area: ${data.area || "N/A"}
     </div>
-    <p>📞 <a href="tel:+917289053560">+91 72890 53560</a> &nbsp;|&nbsp; 
-       💬 <a href="https://wa.me/917289053560">WhatsApp</a></p>
+    <p>📞 <a href="tel:+917518007867">+91 75180 07867</a> &nbsp;|&nbsp; 
+       💬 <a href="https://wa.me/917518007867">WhatsApp</a></p>
   </div>
   <div style="background:#1a6b3c;padding:12px;text-align:center;color:#aaa;font-size:12px;">
     Era of Education | Taramandal Road, Gorakhpur
@@ -187,7 +187,7 @@ const demoBookedUser = (data) => `
     <div style="background:#fff0f6;padding:16px;border-radius:8px;margin:16px 0;">
       Class: ${data.class} | Subject: ${data.subject} | Area: ${data.area}
     </div>
-    <p>📞 <a href="tel:+917289053560">+91 72890 53560</a></p>
+    <p>📞 <a href="tel:+917518007867">+91 75180 07867</a></p>
   </div>
 </div>`;
 
@@ -241,7 +241,7 @@ const paymentSuccessUser = (data) => `
       <strong>Payment ID:</strong> ${data.razorpayPaymentId || "N/A"}
     </div>
     <p>Shukriya Era of Education choose karne ke liye! 🎓</p>
-    <p>📞 <a href="tel:+917289053560">+91 72890 53560</a></p>
+    <p>📞 <a href="tel:+917518007867">+91 75180 07867</a></p>
   </div>
 </div>`;
 
