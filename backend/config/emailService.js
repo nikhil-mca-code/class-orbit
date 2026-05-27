@@ -11,7 +11,7 @@ const createTransporter = () => {
   return nodemailer.createTransport({
     service: "gmail",
     auth: {
-      user: process.env.EMAIL_USER,       // your Gmail:nikhil.mca.in@gmail.com
+      user: process.env.EMAIL_USER,       // your Gmail:hello@classorbit.in
       pass: process.env.EMAIL_APP_PASS,   // Gmail App Password (16 chars)
     },
   });
@@ -23,9 +23,9 @@ const sendAdminNotification = async (subject, htmlContent) => {
   try {
     const transporter = createTransporter();
     await transporter.sendMail({
-      from: `"Era of Education Website" <${process.env.EMAIL_USER}>`,
+      from: `"Class Orbit Website" <${process.env.EMAIL_USER}>`,
       to: process.env.ADMIN_EMAIL || process.env.EMAIL_USER,
-      subject: `[Era of Education] ${subject}`,
+      subject: `[Class Orbit] ${subject}`,
       html: htmlContent,
     });
     console.log(`✅ Admin email sent: ${subject}`);
@@ -42,7 +42,7 @@ const sendUserConfirmation = async (toEmail, toName, subject, htmlContent) => {
   try {
     const transporter = createTransporter();
     await transporter.sendMail({
-      from: `"Era of Education" <${process.env.EMAIL_USER}>`,
+      from: `"Class Orbit" <${process.env.EMAIL_USER}>`,
       to: toEmail,
       subject: subject,
       html: htmlContent,
@@ -62,7 +62,7 @@ const studentRegisteredAdmin = (data) => `
 <div style="font-family:Arial,sans-serif;max-width:600px;margin:auto;border:1px solid #ddd;border-radius:10px;overflow:hidden;">
   <div style="background:#003366;padding:20px;text-align:center;">
     <h2 style="color:#fff;margin:0;">📚 New Student Registration</h2>
-    <p style="color:#f4c430;margin:5px 0;">Era of Education</p>
+    <p style="color:#f4c430;margin:5px 0;">Class Orbit</p>
   </div>
   <div style="padding:24px;">
     <table style="width:100%;border-collapse:collapse;">
@@ -79,7 +79,7 @@ const studentRegisteredAdmin = (data) => `
     </div>
   </div>
   <div style="background:#003366;padding:12px;text-align:center;color:#aaa;font-size:12px;">
-    Era of Education | +91 75180 07867 |nikhil.mca.in@gmail.com
+    Class Orbit | +91 75180 07867 |hello@classorbit.in
   </div>
 </div>`;
 
@@ -87,11 +87,11 @@ const studentRegisteredUser = (data) => `
 <div style="font-family:Arial,sans-serif;max-width:600px;margin:auto;border:1px solid #ddd;border-radius:10px;overflow:hidden;">
   <div style="background:#003366;padding:20px;text-align:center;">
     <h2 style="color:#fff;margin:0;">Registration Successful! 🎉</h2>
-    <p style="color:#f4c430;">Era of Education</p>
+    <p style="color:#f4c430;">Class Orbit</p>
   </div>
   <div style="padding:24px;">
     <p>Dear <strong>${data.name}</strong>,</p>
-    <p>Aapki registration Era of Education mein successfully ho gayi hai! 🎓</p>
+    <p>Aapki registration Class Orbit mein successfully ho gayi hai! 🎓</p>
     <p>Hamari team aapko <strong>2 ghante mein call karegi</strong> ek verified teacher assign karne ke liye.</p>
     <div style="background:#f0f4ff;padding:16px;border-radius:8px;margin:16px 0;">
       <strong>Aapki Registration Details:</strong><br>
@@ -102,7 +102,7 @@ const studentRegisteredUser = (data) => `
        💬 <a href="https://wa.me/917518007867">WhatsApp</a></p>
   </div>
   <div style="background:#003366;padding:12px;text-align:center;color:#aaa;font-size:12px;">
-    Era of Education | Taramandal Road, Gorakhpur
+    Class Orbit | Taramandal Road, Gorakhpur
   </div>
 </div>`;
 
@@ -111,7 +111,7 @@ const teacherRegisteredAdmin = (data) => `
 <div style="font-family:Arial,sans-serif;max-width:600px;margin:auto;border:1px solid #ddd;border-radius:10px;overflow:hidden;">
   <div style="background:#1a6b3c;padding:20px;text-align:center;">
     <h2 style="color:#fff;margin:0;">👨‍🏫 New Teacher Registration</h2>
-    <p style="color:#f4c430;margin:5px 0;">Era of Education</p>
+    <p style="color:#f4c430;margin:5px 0;">Class Orbit</p>
   </div>
   <div style="padding:24px;">
     <table style="width:100%;border-collapse:collapse;">
@@ -128,14 +128,14 @@ const teacherRegisteredAdmin = (data) => `
     </div>
   </div>
   <div style="background:#1a6b3c;padding:12px;text-align:center;color:#aaa;font-size:12px;">
-    Era of Education | +91 75180 07867 |nikhil.mca.in@gmail.com
+    Class Orbit | +91 75180 07867 |hello@classorbit.in
   </div>
 </div>`;
 
 const teacherRegisteredUser = (data) => `
 <div style="font-family:Arial,sans-serif;max-width:600px;margin:auto;border:1px solid #ddd;border-radius:10px;overflow:hidden;">
   <div style="background:#1a6b3c;padding:20px;text-align:center;">
-    <h2 style="color:#fff;margin:0;">Welcome to Era of Education! 🎉</h2>
+    <h2 style="color:#fff;margin:0;">Welcome to Class Orbit! 🎉</h2>
   </div>
   <div style="padding:24px;">
     <p>Dear <strong>${data.name}</strong>,</p>
@@ -148,7 +148,7 @@ const teacherRegisteredUser = (data) => `
        💬 <a href="https://wa.me/917518007867">WhatsApp</a></p>
   </div>
   <div style="background:#1a6b3c;padding:12px;text-align:center;color:#aaa;font-size:12px;">
-    Era of Education | Taramandal Road, Gorakhpur
+    Class Orbit | Taramandal Road, Gorakhpur
   </div>
 </div>`;
 
@@ -157,7 +157,7 @@ const demoBookedAdmin = (data) => `
 <div style="font-family:Arial,sans-serif;max-width:600px;margin:auto;border:1px solid #ddd;border-radius:10px;overflow:hidden;">
   <div style="background:#dd2476;padding:20px;text-align:center;">
     <h2 style="color:#fff;margin:0;">🎯 New Demo Class Request</h2>
-    <p style="color:#ffe;margin:5px 0;">Era of Education</p>
+    <p style="color:#ffe;margin:5px 0;">Class Orbit</p>
   </div>
   <div style="padding:24px;">
     <table style="width:100%;border-collapse:collapse;">
@@ -240,7 +240,7 @@ const paymentSuccessUser = (data) => `
       <strong>Plan:</strong> ${data.plan}<br>
       <strong>Payment ID:</strong> ${data.razorpayPaymentId || "N/A"}
     </div>
-    <p>Shukriya Era of Education choose karne ke liye! 🎓</p>
+    <p>Shukriya Class Orbit choose karne ke liye! 🎓</p>
     <p>📞 <a href="tel:+917518007867">+91 75180 07867</a></p>
   </div>
 </div>`;

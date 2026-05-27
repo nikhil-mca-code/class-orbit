@@ -1,12 +1,12 @@
-/* ===== SHARED.CSS - Global Styles for Era of Education ===== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap');
+
+/* ===== SHARED.CSS - Global Styles for Class Orbit ===== */
 
 *, *::before, *::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap');
 
 :root {
   --primary: #4F46E5;
@@ -36,10 +36,11 @@ body {
   color: var(--text);
   overflow-x: hidden;
   line-height: 1.6;
+  text-rendering: optimizeLegibility;
 }
 
 a { text-decoration: none; color: inherit; }
-img { max-width: 100%; }
+img { max-width: 100%; height: auto; }
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Poppins', 'Inter', sans-serif;
   color: var(--text);
@@ -88,6 +89,7 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--text);
   border-radius: 999px;
   transition: 0.25s;
+  white-space: nowrap;
 }
 .navbar nav a:hover,
 .navbar nav a.active {
@@ -162,6 +164,7 @@ h1, h2, h3, h4, h5, h6 {
 .newsletter-form input {
   padding: 12px 18px;
   width: 230px;
+  min-width: 0;
   border: none;
   outline: none;
   font-size: 14px;
@@ -342,8 +345,8 @@ h1, h2, h3, h4, h5, h6 {
   align-self: flex-end;
   border-radius: 14px 4px 14px 14px;
 }
-.chat-msg a { color: #0066cc; text-decoration: underline; }
-.chat-msg.bot a { color: #003366; }
+.chat-msg a { color: var(--primary); text-decoration: underline; }
+.chat-msg.bot a { color: var(--primary); }
 
 .quick-btns { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
 .quick-btns button {
@@ -582,6 +585,7 @@ h1, h2, h3, h4, h5, h6 {
 .contact-form-inner .submit-btn {
   border-radius: 12px !important;
   font-weight: 700 !important;
+  min-height: 44px !important;
   transition: transform .2s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease !important;
 }
 
@@ -637,6 +641,7 @@ textarea {
   border-radius: 12px !important;
   color: var(--text) !important;
   background: #fff !important;
+  max-width: 100% !important;
 }
 
 input::placeholder,
@@ -842,6 +847,8 @@ button:disabled,
     top: 70px;
     border-top: 1px solid var(--border);
     box-shadow: 0 18px 40px rgba(15,23,42,.12);
+    max-height: calc(100vh - 70px);
+    overflow-y: auto;
   }
   .navbar nav a,
   .navbar nav button {
@@ -879,6 +886,9 @@ button:disabled,
     width: 100%;
     min-width: 0;
   }
+  .newsletter-form button {
+    flex: 0 0 auto;
+  }
 }
 
 @media (max-width: 425px) {
@@ -907,6 +917,34 @@ button:disabled,
   .chatbot-box {
     width: calc(100vw - 24px);
     right: 12px;
+  }
+  .whatsapp-float,
+  .chatbot-bubble {
+    width: 50px;
+    height: 50px;
+    right: 16px;
+    font-size: 24px;
+  }
+  .whatsapp-float {
+    bottom: 88px;
+  }
+  .chatbot-bubble {
+    bottom: 24px;
+  }
+}
+
+@media (max-width: 375px) {
+  .newsletter-form {
+    border-radius: 16px;
+    flex-direction: column;
+  }
+  .newsletter-form button {
+    width: 100%;
+    border-radius: 0;
+  }
+  .navbar nav {
+    padding-left: 16px;
+    padding-right: 16px;
   }
 }
 

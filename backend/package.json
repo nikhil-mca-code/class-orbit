@@ -1,7 +1,7 @@
 {
-  "name": "era-of-education-backend",
+  "name": "class-orbit-backend",
   "version": "2.0.0",
-  "description": "Era of Education Home Tuition Platform Backend",
+  "description": "Class Orbit Premium Education Platform Backend",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",

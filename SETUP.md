@@ -1,6 +1,6 @@
 # Setup Guide
 
-This document explains how to run Era of Education locally.
+This document explains how to run Class Orbit, a premium education platform, locally.
 
 ---
 
@@ -199,4 +199,3 @@ Backend:
 Database:
 
 * MongoDB Atlas
-

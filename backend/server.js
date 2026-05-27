@@ -83,7 +83,7 @@ app.post("/api/student/register", async (req, res) => {
     const student = new Student({ name, class:cls, school, mobile, subject, area, email });
     await student.save();
     sendAdminNotification(`New Student: ${name}`, studentRegisteredAdmin(safeTemplateData({name,class:cls,school,mobile,subject,area})));
-    if(email) sendUserConfirmation(email, name, "Registration Successful - Era of Education", studentRegisteredUser(safeTemplateData({name,class:cls,subject,area})));
+    if(email) sendUserConfirmation(email, name, "Registration Successful - Class Orbit", studentRegisteredUser(safeTemplateData({name,class:cls,subject,area})));
     res.json({ success:true, message:"Registration successful! Team jald contact karegi.", id:student._id });
   } catch(err) { console.error(err); res.status(500).json({ success:false, message:"Server error." }); }
 });
@@ -96,7 +96,7 @@ app.post("/api/teacher/register", async (req, res) => {
     const teacher = new Teacher({ name, mobile, subject, experience, qualification, area, email });
     await teacher.save();
     sendAdminNotification(`New Teacher: ${name}`, teacherRegisteredAdmin(safeTemplateData({name,mobile,subject,experience,qualification,area})));
-    if(email) sendUserConfirmation(email, name, "Teacher Registration - Era of Education", teacherRegisteredUser(safeTemplateData({name,subject,experience,area})));
+    if(email) sendUserConfirmation(email, name, "Teacher Registration - Class Orbit", teacherRegisteredUser(safeTemplateData({name,subject,experience,area})));
     res.json({ success:true, message:"Registration successful! Team 24 ghante mein contact karegi.", id:teacher._id });
   } catch(err) { console.error(err); res.status(500).json({ success:false, message:"Server error." }); }
 });
@@ -164,7 +164,7 @@ app.post("/api/payment/verify", async (req, res) => {
     if(payment) {
       const safePayment = safeTemplateData(payment.toObject());
       sendAdminNotification(`Payment Received: Rs.${payment.amount}`, paymentSuccessAdmin(safePayment));
-      if(payment.email) sendUserConfirmation(payment.email, payment.studentName, "Payment Successful - Era of Education", paymentSuccessUser(safePayment));
+      if(payment.email) sendUserConfirmation(payment.email, payment.studentName, "Payment Successful - Class Orbit", paymentSuccessUser(safePayment));
     }
     res.json({ success:true, message:"Payment verified!" });
   } catch(err) { console.error(err); res.status(500).json({ success:false, message:"Verification error." }); }
@@ -199,7 +199,7 @@ app.delete("/api/admin/student/:id", async (req,res) => { try { await Student.fi
 app.put("/api/admin/teacher/:id", async (req,res) => { try { res.json(await Teacher.findByIdAndUpdate(req.params.id,req.body,{new:true})); } catch(e){ res.status(500).json({}); }});
 app.put("/api/admin/demo/:id",    async (req,res) => { try { res.json(await Demo.findByIdAndUpdate(req.params.id,req.body,{new:true}));    } catch(e){ res.status(500).json({}); }});
 
-app.get("/api/health", (req,res) => res.json({ status:"OK", message:"Era of Education Backend Running!" }));
+app.get("/api/health", (req,res) => res.json({ status:"OK", message:"Class Orbit Backend Running!" }));
 app.get("*", (req,res) => res.sendFile(path.join(__dirname,"../frontend/index.html")));
 app.use((err, req, res, next) => {
   if (err.type === "entity.too.large") {

@@ -104,7 +104,7 @@ exports.forgotPassword = async (req, res) => {
         await sendUserConfirmation(
           user.email,
           user.name,
-          "Password Reset - Era of Education",
+          "Password Reset - Class Orbit",
           passwordResetEmail(safeName, resetLink)
         );
       }

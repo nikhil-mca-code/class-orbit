@@ -1,8 +1,8 @@
-# Era of Education Platform
+# Class Orbit Platform
 
-A full-stack education management platform built with Node.js, Express.js, MongoDB, and vanilla HTML/CSS/JavaScript.
+A premium education platform built with Node.js, Express.js, MongoDB, and vanilla HTML/CSS/JavaScript.
 
-The platform provides secure role-based access for students, teachers, and administrators with authentication, dashboard management, payment integration, and administrative controls.
+Class Orbit provides secure role-based access for students, teachers, and administrators with personalized learning workflows, dashboard management, payment integration, and administrative controls.
 
 ---
 
