@@ -11,19 +11,31 @@ dotenv.config();
 
 const app = express();
 const isProduction = process.env.NODE_ENV === "production";
-const allowedOrigins = (process.env.CORS_ORIGINS || "")
-  .split(",")
-  .map(origin => origin.trim())
-  .filter(Boolean);
+const allowedOrigins = [
+  "http://localhost:5500",
+  "http://127.0.0.1:5500",
+  "http://localhost:3000",
+  "http://127.0.0.1:3000",
+  "https://class-orbit.netlify.app"
+];
+const corsOptions = {
+  origin: function(origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(null, false);
+    }
+  },
+  credentials: true,
+  methods: ["GET","POST","PUT","PATCH","DELETE","OPTIONS"],
+  allowedHeaders: ["Content-Type","Authorization"]
+};
 
 app.disable("x-powered-by");
 app.set("trust proxy", isProduction ? 1 : false);
 app.use(helmet({ contentSecurityPolicy: false }));
-if (!isProduction) {
-  app.use(cors({ origin: "*", methods: ["GET","POST","PUT","DELETE"] }));
-} else if (allowedOrigins.length) {
-  app.use(cors({ origin: allowedOrigins, methods: ["GET","POST","PUT","DELETE"] }));
-}
+app.use(cors(corsOptions));
+app.options(/.*/, cors(corsOptions));
 app.use(express.json({ limit: "10kb" }));
 app.use(express.static(path.join(__dirname, "../frontend"), {
   etag: true,
