@@ -1,0 +1,55 @@
+<svg width="400" height="400" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4F46E5"/>
+      <stop offset="100%" stop-color="#7C3AED"/>
+    </linearGradient>
+
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06B6D4"/>
+      <stop offset="100%" stop-color="#4F46E5"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="400" height="400" rx="32" fill="url(#bg)"/>
+
+  <circle cx="200" cy="140" r="70" fill="white" fill-opacity="0.15"/>
+
+  <circle cx="200" cy="120" r="35" fill="white"/>
+
+  <path d="M140 220 C140 180 260 180 260 220 V250 H140 Z" fill="white"/>
+
+  <circle cx="320" cy="80" r="20" fill="url(#accent)" opacity="0.8"/>
+  <circle cx="90" cy="90" r="12" fill="url(#accent)" opacity="0.6"/>
+  <circle cx="320" cy="310" r="10" fill="url(#accent)" opacity="0.5"/>
+
+  <text x="200"
+        y="305"
+        text-anchor="middle"
+        fill="white"
+        font-size="28"
+        font-family="Arial"
+        font-weight="700">
+    Nikhil Singh
+  </text>
+
+  <text x="200"
+        y="338"
+        text-anchor="middle"
+        fill="white"
+        fill-opacity="0.9"
+        font-size="16"
+        font-family="Arial">
+    Founder &amp; Director
+  </text>
+
+  <text x="200"
+        y="362"
+        text-anchor="middle"
+        fill="white"
+        fill-opacity="0.75"
+        font-size="13"
+        font-family="Arial">
+    Full Stack Developer
+  </text>
+</svg>

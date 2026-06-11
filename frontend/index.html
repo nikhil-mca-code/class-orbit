@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,9 +5,43 @@
   <title>Class Orbit | Premium Education Platform</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Class Orbit is a premium education platform for verified tutors, personalized learning plans, free demos, and smarter academic support.">
+  <meta name="theme-color" content="#4F46E5">
+  <link rel="canonical" href="https://classorbit.in/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Class Orbit">
+  <meta property="og:title" content="Class Orbit | Premium Education Platform">
+  <meta property="og:description" content="Class Orbit is a premium education platform for verified tutors, personalized learning plans, free demos, and smarter academic support.">
+  <meta property="og:url" content="https://classorbit.in/">
+  <meta property="og:image" content="https://images.pexels.com/photos/4145193/pexels-photo-4145193.jpeg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Class Orbit | Premium Education Platform">
+  <meta name="twitter:description" content="Class Orbit connects students with verified educators, structured learning plans, and personal academic guidance.">
+  <meta name="twitter:image" content="https://images.pexels.com/photos/4145193/pexels-photo-4145193.jpeg">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%234F46E5'/%3E%3Ctext x='50' y='67' text-anchor='middle' fill='white' font-size='40' font-weight='bold'%3ECO%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "EducationalOrganization",
+      "name": "Class Orbit",
+      "url": "https://classorbit.in/",
+      "description": "A premium education platform for verified tutors, personalized learning plans, free demos, and academic support.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Gorakhpur",
+        "addressCountry": "IN"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+91-75180-07867",
+        "contactType": "customer support"
+      }
+    }
+  </script>
   <style>
     * {
       margin: 0;
@@ -16,20 +49,70 @@
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+    }
+
     body {
       font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
       background: #ffffff;
       color: #0a0a2a;
+      line-height: 1.5;
       overflow-x: hidden;
     }
 
-    /* Shared Styles */
-    .container {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 0 2rem;
+    img,
+    svg {
+      display: block;
+      max-width: 100%;
     }
 
+    button,
+    input {
+      font: inherit;
+    }
+
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible {
+      outline: 3px solid rgba(79,70,229,0.45);
+      outline-offset: 3px;
+    }
+
+    .skip-link {
+      position: absolute;
+      top: 0.75rem;
+      left: 0.75rem;
+      z-index: 2000;
+      transform: translateY(-150%);
+      background: #ffffff;
+      color: #4F46E5;
+      padding: 0.6rem 1rem;
+      border-radius: 999px;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.18);
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform 0.2s ease;
+    }
+
+    .skip-link:focus {
+      transform: translateY(0);
+    }
+
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    /* Shared Styles */
     .section-title {
       font-size: clamp(1.8rem, 4vw, 2.5rem);
       font-weight: 700;
@@ -71,7 +154,7 @@
       position: sticky;
       top: 0;
       z-index: 1000;
-      transition: all 0.3s;
+      transition: padding 0.3s ease, box-shadow 0.3s ease;
       border-bottom: 1px solid rgba(0,0,0,0.05);
     }
 
@@ -101,6 +184,7 @@
       color: #1a1a2e;
       font-weight: 500;
       transition: color 0.2s;
+      white-space: nowrap;
     }
 
     .nav-links a:hover, .nav-links a.active {
@@ -112,6 +196,9 @@
       color: white !important;
       padding: 0.5rem 1.2rem;
       border-radius: 30px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .hamburger {
@@ -121,6 +208,11 @@
       background: none;
       border: none;
       cursor: pointer;
+      padding: 0.5rem;
+      min-width: 44px;
+      min-height: 44px;
+      align-items: center;
+      justify-content: center;
     }
 
     .hamburger span {
@@ -135,7 +227,7 @@
       .nav-links {
         display: none;
         position: absolute;
-        top: 70px;
+        top: 100%;
         left: 0;
         right: 0;
         background: white;
@@ -157,22 +249,23 @@
       margin: 0 auto;
     }
 
-    .hero-text { flex: 1; }
+    .hero-text { flex: 1 1 320px; min-width: 0; }
     .hero-text h1 { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 800; line-height: 1.2; margin-bottom: 1rem; background: linear-gradient(135deg, #1E1F36, #4F46E5); background-clip: text; -webkit-background-clip: text; color: transparent; }
     .hero-text p { color: #4a5568; font-size: 1.1rem; margin-bottom: 2rem; }
     .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
-    .btn { padding: 0.8rem 1.8rem; border-radius: 40px; text-decoration: none; font-weight: 600; transition: 0.2s; }
+    .btn { padding: 0.8rem 1.8rem; border-radius: 40px; text-decoration: none; font-weight: 600; transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease; display: inline-flex; align-items: center; justify-content: center; text-align: center; min-height: 44px; }
     .btn.primary { background: #4F46E5; color: white; box-shadow: 0 4px 12px rgba(79,70,229,0.3); }
     .btn.primary:hover { background: #4338CA; transform: translateY(-2px); }
     .btn.secondary { background: transparent; border: 1.5px solid #4F46E5; color: #4F46E5; }
-    .hero-image { flex: 1; border-radius: 2rem; overflow: hidden; box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1); }
-    .hero-image img { width: 100%; height: auto; object-fit: cover; }
+    .hero-image { flex: 1 1 320px; min-width: 0; border-radius: 2rem; overflow: hidden; box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1); }
+    .hero-image img { width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; }
 
     /* Premium Animated Testimonial Section (Orbit Dashboard) */
     .orbit-premium-section {
       background: linear-gradient(145deg, #f7f9fc 0%, #eef2f5 100%);
       padding: 5rem 2rem;
       margin: 2rem 0;
+      overflow: hidden;
     }
 
     .orbit-premium-container {
@@ -184,7 +277,7 @@
       align-items: center;
     }
 
-    .orbit-left { flex: 1.1; min-width: 280px; }
+    .orbit-left { flex: 1.1 1 320px; min-width: 0; }
     .orbit-badge {
       display: inline-block;
       background: rgba(79,70,229,0.12);
@@ -236,16 +329,19 @@
 
     /* Orbit Visual */
     .orbit-visual {
-      flex: 1.2;
+      flex: 1.2 1 420px;
       position: relative;
+      width: min(100%, 560px);
       min-height: 580px;
       display: flex;
       justify-content: center;
       align-items: center;
+      contain: layout paint;
+      isolation: isolate;
     }
     .glass-dashboard {
       position: relative;
-      width: 340px;
+      width: min(340px, calc(100vw - 3rem));
       background: rgba(255,255,255,0.7);
       backdrop-filter: blur(14px);
       border-radius: 2rem;
@@ -281,6 +377,7 @@
     }
     .metric-value { font-weight: 800; color: #4F46E5; }
     .metric-label { font-size: 0.7rem; color: #334155; }
+    .live-indicator { font-size: 10px; }
     .progress-item {
       display: flex;
       align-items: center;
@@ -296,6 +393,9 @@
       overflow: hidden;
     }
     .bar-fill { height: 100%; width: 70%; background: linear-gradient(90deg, #4F46E5, #7C3AED); border-radius: 8px; }
+    .bar-fill.math { width: 78%; }
+    .bar-fill.reading { width: 64%; }
+    .bar-fill.science { width: 82%; }
 
     .orbit-card {
       position: absolute;
@@ -308,11 +408,11 @@
       font-weight: 600;
       font-size: 0.75rem;
       box-shadow: 0 10px 20px -5px rgba(0,0,0,0.1);
-      transition: all 0.2s;
+      transition: background-color 0.2s ease, box-shadow 0.2s ease;
       cursor: default;
       z-index: 20;
     }
-    .orbit-card:hover { transform: scale(1.08); background: white; box-shadow: 0 15px 25px -10px rgba(79,70,229,0.3); }
+    .orbit-card:hover { background: white; box-shadow: 0 15px 25px -10px rgba(79,70,229,0.3); }
 
     @keyframes orbit1 { 0% { transform: rotate(0deg) translateX(160px) rotate(0deg); } 100% { transform: rotate(360deg) translateX(160px) rotate(-360deg); } }
     @keyframes orbit2 { 0% { transform: rotate(60deg) translateX(195px) rotate(-60deg); } 100% { transform: rotate(420deg) translateX(195px) rotate(-420deg); } }
@@ -355,7 +455,7 @@
 
     @media (max-width: 980px) {
       .orbit-premium-container { flex-direction: column; }
-      .orbit-visual { width: 100%; min-height: 520px; transform: scale(0.95); }
+      .orbit-visual { width: 100%; min-height: 520px; }
       @keyframes orbit1 { 0% { transform: rotate(0deg) translateX(130px) rotate(0deg); } 100% { transform: rotate(360deg) translateX(130px) rotate(-360deg); } }
       @keyframes orbit2 { 0% { transform: rotate(60deg) translateX(155px) rotate(-60deg); } 100% { transform: rotate(420deg) translateX(155px) rotate(-420deg); } }
       @keyframes orbit3 { 0% { transform: rotate(120deg) translateX(140px) rotate(-120deg); } 100% { transform: rotate(480deg) translateX(140px) rotate(-480deg); } }
@@ -384,10 +484,11 @@
       min-width: 260px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.05);
       border: 1px solid #eef2ff;
-      transition: 0.2s;
+      transition: box-shadow 0.2s ease, transform 0.2s ease;
     }
     .pricing-card.popular { border: 2px solid #4F46E5; position: relative; }
     .badge { position: absolute; top: -12px; left: 20px; background: #4F46E5; color: white; padding: 0.2rem 1rem; border-radius: 20px; font-size: 0.75rem; }
+    .plan-btn { margin-top: 1rem; }
     .ceo-container {
       display: flex;
       flex-wrap: wrap;
@@ -413,87 +514,156 @@
     .demo-btn { background: white; color: #4F46E5; padding: 0.8rem 2rem; border-radius: 40px; text-decoration: none; font-weight: bold; display: inline-block; margin-top: 1rem; }
     .site-footer { background: #0f172a; color: #cbd5e1; }
     .footer-main { display: flex; flex-wrap: wrap; gap: 2rem; justify-content: space-between; max-width: 1200px; margin: 0 auto; }
+    .footer-link { color: #cbd5e1; }
+    .footer-bottom { text-align: center; padding-top: 2rem; }
     .social-icons a { color: white; margin-right: 1rem; }
     .whatsapp-float { position: fixed; bottom: 20px; right: 20px; background: #25D366; color: white; width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; z-index: 100; text-decoration: none; }
-    .chatbot-bubble { position: fixed; bottom: 20px; right: 90px; background: #4F46E5; width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 24px; cursor: pointer; z-index: 100; }
-    .chatbot-box { position: fixed; bottom: 90px; right: 20px; width: 320px; background: white; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); display: none; flex-direction: column; z-index: 101; overflow: hidden; }
+    .chatbot-bubble { position: fixed; bottom: 20px; right: 90px; background: #4F46E5; border: 0; width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 24px; cursor: pointer; z-index: 100; }
+    .chatbot-box { position: fixed; bottom: 90px; right: 20px; width: min(320px, calc(100vw - 2rem)); background: white; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); display: none; flex-direction: column; z-index: 101; overflow: hidden; }
     .chatbot-box.open { display: flex; }
-    .chatbot-header { background: #4F46E5; color: white; padding: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+    .chatbot-box[hidden] { display: none; }
+    .chatbot-header { background: #4F46E5; color: white; padding: 1rem; display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; }
+    .chatbot-close { background: none; border: none; color: white; cursor: pointer; min-width: 44px; min-height: 44px; }
     .chatbot-messages { height: 300px; overflow-y: auto; padding: 1rem; background: #f1f5f9; }
     .chat-msg { margin-bottom: 0.8rem; padding: 0.5rem 1rem; border-radius: 18px; max-width: 85%; }
     .chat-msg.bot { background: #e2e8f0; align-self: flex-start; }
     .chat-msg.user { background: #4F46E5; color: white; margin-left: auto; text-align: right; }
     .chatbot-input { display: flex; padding: 0.5rem; border-top: 1px solid #ddd; }
-    .chatbot-input input { flex: 1; padding: 0.5rem; border: 1px solid #ddd; border-radius: 20px; }
+    .chatbot-input input { flex: 1; min-width: 0; padding: 0.5rem; border: 1px solid #ddd; border-radius: 20px; }
+    .chatbot-input button { border: 0; background: #4F46E5; color: white; min-width: 44px; min-height: 44px; border-radius: 999px; cursor: pointer; margin-left: 0.4rem; }
     .quick-btns { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-top: 0.5rem; }
     .quick-btns button { background: #eef2ff; border: none; padding: 0.2rem 0.6rem; border-radius: 20px; cursor: pointer; font-size: 0.7rem; }
+
+    @media (max-width: 640px) {
+      .navbar { padding: 0.9rem 1rem; }
+      .navbar.scrolled { padding: 0.7rem 1rem; }
+      .logo a { font-size: 1.45rem; }
+      .hero,
+      .pricing-section,
+      .ceo-section,
+      .testimonial-section,
+      .features,
+      .site-footer { padding-left: 1rem; padding-right: 1rem; }
+      .hero { padding-top: 3rem; gap: 2rem; }
+      .hero-buttons .btn { width: 100%; }
+      .orbit-premium-section { padding: 4rem 1rem; }
+      .orbit-visual { min-height: 430px; }
+      .glass-dashboard { padding: 1rem; border-radius: 1.5rem; }
+      .orbit-card { width: 82px; font-size: 0.68rem; margin-left: -41px; }
+      .metrics-row { gap: 0.5rem; }
+      .metric-card { padding: 0.5rem 0.35rem; }
+      .progress-item { gap: 0.45rem; }
+      .bar-bg { width: 48%; }
+      .cta { margin: 1rem; border-radius: 2rem; padding: 3rem 1rem; }
+      .whatsapp-float { right: 16px; bottom: 16px; }
+      .chatbot-bubble { right: 82px; bottom: 16px; }
+      .chatbot-box { right: 1rem; bottom: 84px; }
+      @keyframes orbit1 { 0% { transform: rotate(0deg) translateX(108px) rotate(0deg); } 100% { transform: rotate(360deg) translateX(108px) rotate(-360deg); } }
+      @keyframes orbit2 { 0% { transform: rotate(60deg) translateX(126px) rotate(-60deg); } 100% { transform: rotate(420deg) translateX(126px) rotate(-420deg); } }
+      @keyframes orbit3 { 0% { transform: rotate(120deg) translateX(116px) rotate(-120deg); } 100% { transform: rotate(480deg) translateX(116px) rotate(-480deg); } }
+      @keyframes orbit4 { 0% { transform: rotate(200deg) translateX(122px) rotate(-200deg); } 100% { transform: rotate(560deg) translateX(122px) rotate(-560deg); } }
+      @keyframes orbit5 { 0% { transform: rotate(280deg) translateX(112px) rotate(-280deg); } 100% { transform: rotate(640deg) translateX(112px) rotate(-640deg); } }
+      @keyframes orbit6 { 0% { transform: rotate(330deg) translateX(124px) rotate(-330deg); } 100% { transform: rotate(690deg) translateX(124px) rotate(-690deg); } }
+    }
+
+    @media (max-width: 360px) {
+      .orbit-visual { min-height: 400px; }
+      .orbit-card { width: 76px; font-size: 0.64rem; margin-left: -38px; }
+      .dashboard-header,
+      .progress-item { font-size: 0.66rem; }
+      .metric-label { font-size: 0.62rem; }
+      @keyframes orbit1 { 0% { transform: rotate(0deg) translateX(96px) rotate(0deg); } 100% { transform: rotate(360deg) translateX(96px) rotate(-360deg); } }
+      @keyframes orbit2 { 0% { transform: rotate(60deg) translateX(112px) rotate(-60deg); } 100% { transform: rotate(420deg) translateX(112px) rotate(-420deg); } }
+      @keyframes orbit3 { 0% { transform: rotate(120deg) translateX(104px) rotate(-120deg); } 100% { transform: rotate(480deg) translateX(104px) rotate(-480deg); } }
+      @keyframes orbit4 { 0% { transform: rotate(200deg) translateX(108px) rotate(-200deg); } 100% { transform: rotate(560deg) translateX(108px) rotate(-560deg); } }
+      @keyframes orbit5 { 0% { transform: rotate(280deg) translateX(100px) rotate(-280deg); } 100% { transform: rotate(640deg) translateX(100px) rotate(-640deg); } }
+      @keyframes orbit6 { 0% { transform: rotate(330deg) translateX(110px) rotate(-330deg); } 100% { transform: rotate(690deg) translateX(110px) rotate(-690deg); } }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+      }
+      .animate {
+        opacity: 1;
+        transform: none;
+      }
+    }
   </style>
 </head>
 <body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
 
 <!-- HEADER -->
 <header class="navbar" id="mainNav">
-  <div class="logo"><a href="#">Class Orbit</a></div>
-  <button class="hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
-  <nav class="nav-links" id="navMenu">
-    <a href="#" class="active">Home</a>
-    <a href="#">Students</a>
-    <a href="#">Teachers</a>
-    <a href="#">About</a>
-    <a href="#">Contact</a>
-    <a href="#" class="login-btn">Login</a>
+  <div class="logo"><a href="index.html" aria-label="Class Orbit home">Class Orbit</a></div>
+  <button class="hamburger" id="hamburger" type="button" aria-label="Toggle menu" aria-controls="navMenu" aria-expanded="false"><span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span></button>
+  <nav class="nav-links" id="navMenu" aria-label="Primary navigation">
+    <a href="index.html" class="active" aria-current="page">Home</a>
+    <a href="student.html">Students</a>
+    <a href="teacher.html">Teachers</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="login.html" class="login-btn">Login</a>
   </nav>
 </header>
 
+<main id="main-content">
 <!-- HERO -->
-<section class="hero">
+<section class="hero" aria-labelledby="hero-title">
   <div class="hero-text">
-    <h1>Premium Learning Support, Perfectly Matched</h1>
+    <h1 id="hero-title">Premium Learning Support, Perfectly Matched</h1>
     <p>Class Orbit connects students with verified educators, structured learning plans, and personal academic guidance at home or online.</p>
     <div class="hero-buttons">
-      <a href="#" class="btn primary">Apply as Student</a>
-      <a href="#" class="btn secondary">Join as Teacher</a>
+      <a href="student.html" class="btn primary">Apply as Student</a>
+      <a href="teacher.html" class="btn secondary">Join as Teacher</a>
     </div>
   </div>
   <div class="hero-image">
-    <img src="https://images.pexels.com/photos/4145193/pexels-photo-4145193.jpeg" alt="Personalized Tutoring">
+    <img src="https://images.pexels.com/photos/4145193/pexels-photo-4145193.jpeg" alt="Tutor supporting a student during a personalized lesson" width="640" height="480" fetchpriority="high" decoding="async">
   </div>
 </section>
 
 <!-- REPLACED VIDEO TESTIMONIAL SECTION: PREMIUM ORBIT DASHBOARD -->
-<section id="education-testimonial" class="orbit-premium-section animate">
+<section id="education-testimonial" class="orbit-premium-section animate" aria-labelledby="orbit-title">
   <div class="orbit-premium-container">
     <!-- Left Side -->
     <div class="orbit-left">
       <div class="orbit-badge">✨ Class Orbit Intelligence</div>
-      <h2>Learning Designed Around Every Student</h2>
+      <h2 id="orbit-title">Learning Designed Around Every Student</h2>
       <div class="orbit-subhead">Personalized guidance, trusted educators, and measurable progress for modern families.</div>
       <div class="feature-list">
         <div class="feature-item">
-          <div class="feature-icon"><svg viewBox="0 0 24 24" stroke="currentColor"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="10"/></svg></div>
+          <div class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24" stroke="currentColor" focusable="false"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="10"/></svg></div>
           <div class="feature-text"><h4>Adaptive Learning Paths</h4><p>AI-driven curriculum tailored to each student's rhythm.</p></div>
         </div>
         <div class="feature-item">
-          <div class="feature-icon"><svg viewBox="0 0 24 24" stroke="currentColor"><path d="M22 12h-4l-3 9-4-18-3 9H2"/></svg></div>
-          <div class="feature-text"><h4>Real-time Progress Analytics</h4><p>Transparent insights for parents & educators.</p></div>
+          <div class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24" stroke="currentColor" focusable="false"><path d="M22 12h-4l-3 9-4-18-3 9H2"/></svg></div>
+          <div class="feature-text"><h4>Real-time Progress Analytics</h4><p>Transparent insights for parents &amp; educators.</p></div>
         </div>
         <div class="feature-item">
-          <div class="feature-icon"><svg viewBox="0 0 24 24" stroke="currentColor"><path d="M12 2a10 10 0 1 0 10 10"/><path d="M12 6v6l4 2"/></svg></div>
-          <div class="feature-text"><h4>Live Mentorship Hub</h4><p>Connect with certified teachers & subject experts.</p></div>
+          <div class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24" stroke="currentColor" focusable="false"><path d="M12 2a10 10 0 1 0 10 10"/><path d="M12 6v6l4 2"/></svg></div>
+          <div class="feature-text"><h4>Live Mentorship Hub</h4><p>Connect with certified teachers &amp; subject experts.</p></div>
         </div>
         <div class="feature-item">
-          <div class="feature-icon"><svg viewBox="0 0 24 24" stroke="currentColor"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
-          <div class="feature-text"><h4>Secure & Enterprise Grade</h4><p>Bank-level encryption, privacy-first design.</p></div>
+          <div class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24" stroke="currentColor" focusable="false"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
+          <div class="feature-text"><h4>Secure &amp; Enterprise Grade</h4><p>Bank-level encryption, privacy-first design.</p></div>
         </div>
       </div>
     </div>
     <!-- Right Side: Animated Illustration -->
-    <div class="orbit-visual">
-      <div class="particle particle1"></div>
-      <div class="particle particle2"></div>
-      <div class="particle particle3"></div>
-      <div class="orbit-svg-layer">
-        <svg viewBox="0 0 500 500" width="100%" height="100%">
+    <div class="orbit-visual" role="img" aria-label="Animated Class Orbit dashboard overview">
+      <div class="particle particle1" aria-hidden="true"></div>
+      <div class="particle particle2" aria-hidden="true"></div>
+      <div class="particle particle3" aria-hidden="true"></div>
+      <div class="orbit-svg-layer" aria-hidden="true">
+        <svg viewBox="0 0 500 500" width="100%" height="100%" focusable="false">
           <ellipse cx="250" cy="250" rx="160" ry="160" fill="none" stroke="rgba(79,70,229,0.25)" stroke-width="1.5" stroke-dasharray="6 8" />
           <ellipse cx="250" cy="250" rx="195" ry="195" fill="none" stroke="rgba(124,58,237,0.15)" stroke-width="1.2" stroke-dasharray="4 10" />
           <circle cx="250" cy="250" r="8" fill="#4F46E5" opacity="0.4" />
@@ -501,13 +671,13 @@
         </svg>
       </div>
       <div class="glass-dashboard">
-        <div class="dashboard-header"><span>📊 Class Orbit Hub</span><span style="font-size:10px;">Live</span></div>
+        <div class="dashboard-header"><span>📊 Class Orbit Hub</span><span class="live-indicator">Live</span></div>
         <div class="metrics-row"><div class="metric-card"><div class="metric-value">2,481</div><div class="metric-label">Active Students</div></div><div class="metric-card"><div class="metric-value">164</div><div class="metric-label">Teachers</div></div><div class="metric-card"><div class="metric-value">38</div><div class="metric-label">Courses</div></div></div>
         <div class="metrics-row"><div class="metric-card"><div class="metric-value">$126K</div><div class="metric-label">Revenue</div></div><div class="metric-card"><div class="metric-value">94%</div><div class="metric-label">Progress</div></div></div>
-        <div class="progress-item"><span>📘 Math Mastery</span><div class="bar-bg"><div class="bar-fill" style="width:78%"></div></div><span>78%</span></div>
-        <div class="progress-item"><span>📖 Reading Comp.</span><div class="bar-bg"><div class="bar-fill" style="width:64%"></div></div><span>64%</span></div>
-        <div class="progress-item"><span>🧪 Science</span><div class="bar-bg"><div class="bar-fill" style="width:82%"></div></div><span>82%</span></div>
-        <svg width="100%" height="30" viewBox="0 0 200 25"><polyline points="10,20 40,15 70,18 100,10 130,16 160,6 190,12" stroke="#4F46E5" fill="none" stroke-width="2"/><polygon points="10,20 40,15 70,18 100,10 130,16 160,6 190,12 190,25 10,25" fill="rgba(79,70,229,0.1)"/></svg>
+        <div class="progress-item"><span>📘 Math Mastery</span><div class="bar-bg"><div class="bar-fill math"></div></div><span>78%</span></div>
+        <div class="progress-item"><span>📖 Reading Comp.</span><div class="bar-bg"><div class="bar-fill reading"></div></div><span>64%</span></div>
+        <div class="progress-item"><span>🧪 Science</span><div class="bar-bg"><div class="bar-fill science"></div></div><span>82%</span></div>
+        <svg width="100%" height="30" viewBox="0 0 200 25" aria-hidden="true" focusable="false"><polyline points="10,20 40,15 70,18 100,10 130,16 160,6 190,12" stroke="#4F46E5" fill="none" stroke-width="2"/><polygon points="10,20 40,15 70,18 100,10 130,16 160,6 190,12 190,25 10,25" fill="rgba(79,70,229,0.1)"/></svg>
       </div>
       <div class="orbit-card card1">👩‍🎓 Students</div>
       <div class="orbit-card card2">👨‍🏫 Teachers</div>
@@ -520,53 +690,176 @@
 </section>
 
 <!-- PRICING -->
-<section class="pricing-section animate" id="pricing">
-  <div class="pricing-container"><h2 class="section-title">Our Fee Structure</h2><p class="section-subtitle">Choose the perfect learning plan for your child</p>
+<section class="pricing-section animate" id="pricing" aria-labelledby="pricing-title">
+  <div class="pricing-container"><h2 class="section-title" id="pricing-title">Our Fee Structure</h2><p class="section-subtitle">Choose the perfect learning plan for your child</p>
     <div class="pricing-grid">
-      <div class="pricing-card"><h3>Essential Plan</h3><p class="price">Tutor Fees Only</p><ul><li>✔ Dedicated Subject Tutor</li><li>✔ Regular Personalized Tutoring Classes</li><li>✔ Personal Academic Attention</li></ul><a href="#" class="plan-btn btn primary" style="display:inline-block; margin-top:1rem;">Get Started</a></div>
-      <div class="pricing-card popular"><span class="badge">Most Popular</span><h3>Standard Support Plan</h3><p class="price">Tutor Fees + ₹499</p><ul><li>✔ Anytime Teacher Replacement</li><li>✔ 24/7 Doubt Solving Faculty</li><li>✔ Parent-Student-Teacher Meetings</li></ul><a href="#" class="plan-btn btn primary">Get Started</a></div>
-      <div class="pricing-card"><h3>Premium Excellence Plan</h3><p class="price">Tutor Fees + ₹999</p><ul><li>✔ Everything in Standard Plan</li><li>✔ Online Career Guidance</li><li>✔ 4 Spoken English Classes / Month</li></ul><a href="#" class="plan-btn btn primary">Get Started</a></div>
+      <div class="pricing-card"><h3>Essential Plan</h3><p class="price">Tutor Fees Only</p><ul><li>✔ Dedicated Subject Tutor</li><li>✔ Regular Personalized Tutoring Classes</li><li>✔ Personal Academic Attention</li></ul><a href="plan-purchase.html" class="plan-btn btn primary">Get Started</a></div>
+      <div class="pricing-card popular"><span class="badge">Most Popular</span><h3>Standard Support Plan</h3><p class="price">Tutor Fees + ₹499</p><ul><li>✔ Anytime Teacher Replacement</li><li>✔ 24/7 Doubt Solving Faculty</li><li>✔ Parent-Student-Teacher Meetings</li></ul><a href="plan-purchase.html" class="plan-btn btn primary">Get Started</a></div>
+      <div class="pricing-card"><h3>Premium Excellence Plan</h3><p class="price">Tutor Fees + ₹999</p><ul><li>✔ Everything in Standard Plan</li><li>✔ Online Career Guidance</li><li>✔ 4 Spoken English Classes / Month</li></ul><a href="plan-purchase.html" class="plan-btn btn primary">Get Started</a></div>
     </div>
   </div>
 </section>
 
 <!-- CEO SECTION -->
-<section class="ceo-section animate"><div class="ceo-container"><div class="ceo-image"><img src="https://images.pexels.com/photos/5212345/pexels-photo-5212345.jpeg" alt="CEO"></div><div class="ceo-content"><h2>Message from the CEO</h2><h3>"Education Builds the Future"</h3><p>Education is not just about marks. It is about confidence, clarity, and momentum. At <strong>Class Orbit</strong>, we bring premium academic support into a simple, trusted platform.</p><h4>— Nikhil Singh</h4><span>Founder &amp; CEO, Class Orbit</span></div></div></section>
+<section class="ceo-section animate" aria-labelledby="ceo-title"><div class="ceo-container"><div class="ceo-image"><img src="https://images.pexels.com/photos/5212345/pexels-photo-5212345.jpeg" alt="Nikhil Singh, Founder and CEO of Class Orbit" width="200" height="200" loading="lazy" decoding="async"></div><div class="ceo-content"><h2 id="ceo-title">Message from the CEO</h2><h3>"Education Builds the Future"</h3><p>Education is not just about marks. It is about confidence, clarity, and momentum. At <strong>Class Orbit</strong>, we bring premium academic support into a simple, trusted platform.</p><h4>— Nikhil Singh</h4><span>Founder &amp; CEO, Class Orbit</span></div></div></section>
 
 <!-- TESTIMONIALS -->
-<section class="testimonial-section animate"><h2 class="section-title">What Parents Say</h2><div class="testimonial-slider" id="slider"><div class="testimonial active">"Class Orbit gave my son structure, confidence, and a tutor who truly understood him."<span>- Mrs. Sharma</span></div><div class="testimonial">"Premium experience, professional teachers, and a support team that stays involved."<span>- Mr. Verma</span></div><div class="testimonial">"A modern learning platform that still feels personal and reliable."<span>- Mrs. Gupta</span></div></div></section>
+<section class="testimonial-section animate" aria-labelledby="testimonials-title"><h2 class="section-title" id="testimonials-title">What Parents Say</h2><div class="testimonial-slider" id="slider" aria-live="polite"><div class="testimonial active">"Class Orbit gave my son structure, confidence, and a tutor who truly understood him."<span>- Mrs. Sharma</span></div><div class="testimonial">"Premium experience, professional teachers, and a support team that stays involved."<span>- Mr. Verma</span></div><div class="testimonial">"A modern learning platform that still feels personal and reliable."<span>- Mrs. Gupta</span></div></div></section>
 
 <!-- FEATURES -->
-<section class="features animate"><h2 class="section-title">Why Choose Class Orbit?</h2><div class="feature-grid"><div class="card">✔ Verified Expert Teachers</div><div class="card">✔ Free Demo Classes</div><div class="card">✔ Classes 1 to 12</div><div class="card">✔ Affordable Fees</div></div></section>
+<section class="features animate" aria-labelledby="features-title"><h2 class="section-title" id="features-title">Why Choose Class Orbit?</h2><div class="feature-grid"><div class="card">✔ Verified Expert Teachers</div><div class="card">✔ Free Demo Classes</div><div class="card">✔ Classes 1 to 12</div><div class="card">✔ Affordable Fees</div></div></section>
 
 <!-- CTA -->
-<section class="cta"><h2>Start Your Learning Journey With Class Orbit</h2><p>Book a free demo and experience premium, personalized learning support built around your goals.</p><a href="#" class="demo-btn">Book Free Demo</a></section>
+<section class="cta" aria-labelledby="cta-title"><h2 id="cta-title">Start Your Learning Journey With Class Orbit</h2><p>Book a free demo and experience premium, personalized learning support built around your goals.</p><a href="book-demo.html" class="demo-btn">Book Free Demo</a></section>
+
+</main>
 
 <!-- FOOTER -->
-<footer class="site-footer"><div class="footer-main"><div class="footer-col"><h3>Class Orbit</h3><p>Gorakhpur</p><p><a href="tel:+917518007867" style="color:#cbd5e1;">📞 +91 75180 07867</a></p><div class="social-icons"><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-youtube"></i></a></div></div><div class="footer-col"><h4>Services</h4><ul><li><a href="#" style="color:#cbd5e1;">Personalized Tutoring</a></li><li><a href="#" style="color:#cbd5e1;">Free Demo</a></li></ul></div><div class="footer-col"><h4>Quick Links</h4><ul><li><a href="#" style="color:#cbd5e1;">Home</a></li><li><a href="#" style="color:#cbd5e1;">Contact</a></li></ul></div></div><div class="footer-bottom" style="text-align:center; padding-top:2rem;">✨ Simple is Powerful • © 2026 Class Orbit. All Rights Reserved</div></footer>
+<footer class="site-footer"><div class="footer-main"><div class="footer-col"><h3>Class Orbit</h3><p>Gorakhpur</p><p><a href="tel:+917518007867" class="footer-link">📞&nbsp;+91&nbsp;75180&nbsp;07867</a></p><nav class="social-icons" aria-label="Social media links"><a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Class Orbit on Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a><a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Class Orbit on Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a><a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" aria-label="Class Orbit on YouTube"><i class="fab fa-youtube" aria-hidden="true"></i></a></nav></div><div class="footer-col"><h4>Services</h4><ul><li><a href="student.html" class="footer-link">Personalized Tutoring</a></li><li><a href="book-demo.html" class="footer-link">Free Demo</a></li></ul></div><div class="footer-col"><h4>Quick Links</h4><ul><li><a href="index.html" class="footer-link">Home</a></li><li><a href="contact.html" class="footer-link">Contact</a></li></ul></div></div><div class="footer-bottom">✨ Simple is Powerful • © 2026 Class Orbit. All Rights Reserved</div></footer>
 
-<a href="https://wa.me/917518007867" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
-<div class="chatbot-bubble" id="chatbotBubble" onclick="toggleChatbot()"><i class="fas fa-comments"></i></div>
-<div class="chatbot-box" id="chatbotBox"><div class="chatbot-header"><div>🧑‍🏫 Guru Ji</div><button onclick="toggleChatbot()" style="background:none; border:none; color:white;">✕</button></div><div class="chatbot-messages" id="chatMessages"><div class="chat-msg bot">Namaste! 🙏 Main Guru Ji hoon. Aapka swagat hai.<div class="quick-btns"><button onclick="sendQuick('Fees')">💰 Fees</button><button onclick="sendQuick('Demo')">🎯 Demo</button></div></div></div><div class="chatbot-input"><input type="text" id="chatInput" placeholder="Apna sawaal..." onkeypress="if(event.key==='Enter') sendChat()"><button onclick="sendChat()"><i class="fas fa-paper-plane"></i></button></div></div>
+<a href="https://wa.me/917518007867" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat with Class Orbit on WhatsApp"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
+<button class="chatbot-bubble" id="chatbotBubble" type="button" aria-label="Open Guru Ji chat" aria-controls="chatbotBox" aria-expanded="false"><i class="fas fa-comments" aria-hidden="true"></i></button>
+<section class="chatbot-box" id="chatbotBox" aria-label="Guru Ji chatbot" hidden><div class="chatbot-header"><div>🧑‍🏫 Guru Ji</div><button class="chatbot-close" id="chatbotClose" type="button" aria-label="Close Guru Ji chat">✕</button></div><div class="chatbot-messages" id="chatMessages" role="log" aria-live="polite" aria-relevant="additions"><div class="chat-msg bot">Namaste! 🙏 Main Guru Ji hoon. Aapka swagat hai.<div class="quick-btns"><button type="button" data-quick="Fees">💰 Fees</button><button type="button" data-quick="Demo">🎯 Demo</button></div></div></div><form class="chatbot-input" id="chatForm"><label class="visually-hidden" for="chatInput">Ask Guru Ji a question</label><input type="text" id="chatInput" placeholder="Apna sawaal..." autocomplete="off"><button type="submit" aria-label="Send message"><i class="fas fa-paper-plane" aria-hidden="true"></i></button></form></section>
 
 <script>
-  // Navbar & scroll animations
-  document.getElementById('hamburger')?.addEventListener('click', () => document.getElementById('navMenu')?.classList.toggle('open'));
-  window.addEventListener('scroll', () => {
-    document.getElementById('mainNav')?.classList.toggle('scrolled', window.scrollY > 10);
-    document.querySelectorAll('.animate').forEach(el => { if(el.getBoundingClientRect().top < window.innerHeight - 80) el.classList.add('show'); });
-  });
-  // Testimonial slider
-  let idx = 0, testimonials = document.querySelectorAll('.testimonial');
-  if(testimonials.length) setInterval(() => { testimonials[idx].classList.remove('active'); idx = (idx+1)%testimonials.length; testimonials[idx].classList.add('active'); }, 4000);
-  // Chatbot
-  function toggleChatbot() { document.getElementById('chatbotBox')?.classList.toggle('open'); }
-  function sendQuick(text) { addUserMsg(text); getBotReply(text); }
-  function sendChat() { let inp=document.getElementById('chatInput'); if(inp.value.trim()){ addUserMsg(inp.value); getBotReply(inp.value); inp.value=''; } }
-  function addUserMsg(t) { let m=document.getElementById('chatMessages'); let d=document.createElement('div'); d.className='chat-msg user'; d.textContent=t; m.appendChild(d); m.scrollTop=m.scrollHeight; }
-  function getBotReply(t) { let l=t.toLowerCase(), r=''; if(l.includes('fee')) r='💰 Plans: Essential (tutor fees), Standard +₹499, Premium +₹999'; else if(l.includes('demo')) r='🎯 Free demo: <a href="#">Click here</a>'; else r='Kripya contact karein ya FAQ dekhein.'; setTimeout(()=>{ let m=document.getElementById('chatMessages'); let d=document.createElement('div'); d.className='chat-msg bot'; d.innerHTML=r; m.appendChild(d); m.scrollTop=m.scrollHeight; }, 400); }
-  window.addEventListener('load', () => document.querySelectorAll('.animate').forEach(el => { if(el.getBoundingClientRect().top < window.innerHeight) el.classList.add('show'); }));
+  (() => {
+    const nav = document.getElementById('mainNav');
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('navMenu');
+    const animatedItems = Array.from(document.querySelectorAll('.animate'));
+    const testimonials = Array.from(document.querySelectorAll('.testimonial'));
+    const chatbotBubble = document.getElementById('chatbotBubble');
+    const chatbotClose = document.getElementById('chatbotClose');
+    const chatbotBox = document.getElementById('chatbotBox');
+    const chatMessages = document.getElementById('chatMessages');
+    const chatForm = document.getElementById('chatForm');
+    const chatInput = document.getElementById('chatInput');
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const revealVisibleItems = () => {
+      animatedItems.forEach((el) => {
+        if (el.getBoundingClientRect().top < window.innerHeight - 80) {
+          el.classList.add('show');
+        }
+      });
+    };
+
+    hamburger?.addEventListener('click', () => {
+      const isOpen = navMenu?.classList.toggle('open') ?? false;
+      hamburger.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    navMenu?.addEventListener('click', (event) => {
+      if (event.target instanceof HTMLAnchorElement && navMenu.classList.contains('open')) {
+        navMenu.classList.remove('open');
+        hamburger?.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(() => {
+        nav?.classList.toggle('scrolled', window.scrollY > 10);
+        revealVisibleItems();
+        ticking = false;
+      });
+    }, { passive: true });
+
+    let testimonialIndex = 0;
+    if (testimonials.length > 1 && !reduceMotion) {
+      window.setInterval(() => {
+        testimonials[testimonialIndex].classList.remove('active');
+        testimonialIndex = (testimonialIndex + 1) % testimonials.length;
+        testimonials[testimonialIndex].classList.add('active');
+      }, 4000);
+    }
+
+    const setChatOpen = (isOpen) => {
+      chatbotBox?.classList.toggle('open', isOpen);
+      if (chatbotBox) chatbotBox.hidden = !isOpen;
+      chatbotBubble?.setAttribute('aria-expanded', String(isOpen));
+      chatbotBubble?.setAttribute('aria-label', isOpen ? 'Close Guru Ji chat' : 'Open Guru Ji chat');
+      if (isOpen) chatInput?.focus();
+    };
+
+    const appendMessage = (text, type) => {
+      if (!chatMessages) return;
+      const message = document.createElement('div');
+      message.className = `chat-msg ${type}`;
+      message.textContent = text;
+      chatMessages.appendChild(message);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    };
+
+    const appendDemoReply = () => {
+      if (!chatMessages) return;
+      const message = document.createElement('div');
+      const link = document.createElement('a');
+      message.className = 'chat-msg bot';
+      message.append('🎯 Free demo: ');
+      link.href = 'book-demo.html';
+      link.textContent = 'Click here';
+      message.appendChild(link);
+      chatMessages.appendChild(message);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    };
+
+    const getBotReply = (text) => {
+      const normalized = text.toLowerCase();
+      window.setTimeout(() => {
+        if (normalized.includes('fee')) {
+          appendMessage('💰 Plans: Essential (tutor fees), Standard +₹499, Premium +₹999', 'bot');
+          return;
+        }
+        if (normalized.includes('demo')) {
+          appendDemoReply();
+          return;
+        }
+        appendMessage('Kripya contact karein ya FAQ dekhein.', 'bot');
+      }, 400);
+    };
+
+    const sendChat = (text) => {
+      const message = text.trim();
+      if (!message) return;
+      appendMessage(message, 'user');
+      getBotReply(message);
+    };
+
+    chatbotBubble?.addEventListener('click', () => {
+      setChatOpen(!chatbotBox?.classList.contains('open'));
+    });
+
+    chatbotClose?.addEventListener('click', () => {
+      setChatOpen(false);
+      chatbotBubble?.focus();
+    });
+
+    chatMessages?.addEventListener('click', (event) => {
+      const button = event.target instanceof HTMLElement ? event.target.closest('[data-quick]') : null;
+      if (button instanceof HTMLButtonElement) {
+        sendChat(button.dataset.quick ?? '');
+      }
+    });
+
+    chatForm?.addEventListener('submit', (event) => {
+      event.preventDefault();
+      sendChat(chatInput?.value ?? '');
+      if (chatInput) chatInput.value = '';
+    });
+
+    window.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && chatbotBox?.classList.contains('open')) {
+        setChatOpen(false);
+        chatbotBubble?.focus();
+      }
+    });
+
+    window.addEventListener('load', revealVisibleItems);
+    revealVisibleItems();
+  })();
 </script>
 </body>
 </html>
-```

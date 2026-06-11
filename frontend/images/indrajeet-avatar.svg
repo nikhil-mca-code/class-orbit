@@ -1,0 +1,67 @@
+<svg width="400" height="400" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E293B"/>
+    </linearGradient>
+
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06B6D4"/>
+      <stop offset="100%" stop-color="#4F46E5"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="400" height="400" rx="30" fill="url(#bg)"/>
+
+  <circle cx="320" cy="80" r="18" fill="#06B6D4" opacity="0.7"/>
+  <circle cx="90" cy="70" r="10" fill="#4F46E5" opacity="0.6"/>
+  <circle cx="320" cy="320" r="8" fill="#06B6D4" opacity="0.5"/>
+
+  <circle cx="200" cy="130" r="75" fill="white" fill-opacity="0.12"/>
+
+  <circle cx="200" cy="115" r="38" fill="white"/>
+
+  <path d="M130 230 C130 180 270 180 270 230 V260 H130 Z" fill="white"/>
+
+  <circle cx="320" cy="130" r="28" fill="url(#accent)"/>
+
+  <text x="320"
+        y="138"
+        text-anchor="middle"
+        fill="white"
+        font-size="18"
+        font-family="Arial"
+        font-weight="700">
+    IS
+  </text>
+
+  <text x="200"
+        y="315"
+        text-anchor="middle"
+        fill="white"
+        font-size="28"
+        font-family="Arial"
+        font-weight="700">
+    Indrajeet Singh
+  </text>
+
+  <text x="200"
+        y="345"
+        text-anchor="middle"
+        fill="white"
+        fill-opacity="0.9"
+        font-size="16"
+        font-family="Arial">
+    Student &amp; Parent Support
+  </text>
+
+  <text x="200"
+        y="370"
+        text-anchor="middle"
+        fill="white"
+        fill-opacity="0.75"
+        font-size="13"
+        font-family="Arial">
+    Diploma | Electrical Engineering
+  </text>
+</svg>

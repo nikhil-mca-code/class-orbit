@@ -100,7 +100,7 @@
     <h2>📝 Teacher Registration</h2>
     <div class="field-row">
       <div class="field"><label>Teacher Name *</label><input type="text" id="tName" placeholder="Apna naam"></div>
-      <div class="field"><label>Mobile Number *</label><input type="tel" id="tMobile" placeholder="+91 XXXXXXXXXX"></div>
+      <div class="field"><label>Mobile Number *</label><input type="tel" id="tMobile" placeholder="+91 7518007867"></div>
     </div>
     <div class="field-row">
       <div class="field"><label>Subject *</label><input type="text" id="tSubject" placeholder="e.g. Maths, English"></div>
@@ -141,7 +141,7 @@
   </div>
   <hr class="footer-divider">
   <div class="footer-main">
-    <div class="footer-col"><h3>Class Orbit</h3><p>Gorakhpur</p><p><a href="tel:+917518007867">📞 +91 75180 07867</a></p><p><a href="mailto:hello@classorbit.in">✉hello@classorbit.in</a></p><div class="social-icons"><a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a><a href="https://www.instagram.com/hometutor.in" target="_blank"><i class="fab fa-instagram"></i></a><a href="https://youtube.com/@classorbit" target="_blank"><i class="fab fa-youtube"></i></a><a href="https://wa.me/917518007867" target="_blank"><i class="fab fa-whatsapp"></i></a></div></div>
+    <div class="footer-col"><h3>Class Orbit</h3><p>Gorakhpur</p><p><a href="tel:+917518007867">📞 +91 75180 07867</a></p><p><a href="mailto:nikhil.mca.in@gmail.com">✉nikhil.mca.in@gmail.com</a></p><div class="social-icons"><a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a><a href="https://www.instagram.com/hometutor.in" target="_blank"><i class="fab fa-instagram"></i></a><a href="https://youtube.com/@classorbit" target="_blank"><i class="fab fa-youtube"></i></a><a href="https://wa.me/917518007867" target="_blank"><i class="fab fa-whatsapp"></i></a></div></div>
     <div class="footer-col"><h4>Services</h4><ul><li><a href="student.html">Personalized Tutoring</a></li><li><a href="student.html">Online Classes</a></li><li><a href="book-demo.html">Free Demo</a></li><li><a href="about.html">Career Guidance</a></li></ul></div>
     <div class="footer-col"><h4>Quick Links</h4><ul><li><a href="index.html">Home</a></li><li><a href="student.html">Students</a></li><li><a href="teacher.html">Teachers</a></li><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact</a></li></ul></div>
     <div class="footer-col"><h4>Privacy &amp; Info</h4><ul><li><a href="terms.html">Terms &amp; Conditions</a></li><li><a href="privacy.html">Privacy Policy</a></li><li><a href="contact.html">Get in Touch</a></li><li><a href="teacher.html">Become a Partner</a></li></ul></div>
@@ -220,7 +220,7 @@ function toggleChatbot(){ const b=document.getElementById('chatbotBox'),bl=docum
 function sendQuick(t){ addMsg(t,'user'); getBotReply(t); }
 function sendChat(){ const i=document.getElementById('chatInput'); const t=i.value.trim(); if(!t)return; addMsg(t,'user'); i.value=''; getBotReply(t); }
 function addMsg(t,r,trusted){ const m=document.getElementById('chatMessages'); const msg=document.createElement('div'); msg.className='chat-msg '+r; if(trusted) msg.innerHTML=t; else msg.textContent=t; m.appendChild(msg); m.scrollTop=m.scrollHeight; }
-function getBotReply(text){ const l=text.toLowerCase(); let r=''; if(l.includes('salary')||l.includes('earn')||l.includes('income')) r='💸 Teachers earn ₹15,000–₹50,000+ per month depending on subject & hours.'; else if(l.includes('contact')||l.includes('call')) r='📞 <a href="tel:+917518007867">+91 75180 07867</a> | <a href="mailto:hello@classorbit.in">hello@classorbit.in</a>'; else r='Neeche registration form bharein ya <a href="contact.html">contact karen</a>!'; setTimeout(()=>addMsg(r,'bot',true),600); }
+function getBotReply(text){ const l=text.toLowerCase(); let r=''; if(l.includes('salary')||l.includes('earn')||l.includes('income')) r='💸 Teachers earn ₹15,000–₹50,000+ per month depending on subject & hours.'; else if(l.includes('contact')||l.includes('call')) r='📞 <a href="tel:+917518007867">+91 75180 07867</a> | <a href="mailto:nikhil.mca.in@gmail.com">nikhil.mca.in@gmail.com</a>'; else r='Neeche registration form bharein ya <a href="contact.html">contact karen</a>!'; setTimeout(()=>addMsg(r,'bot',true),600); }
 </script>
 </body>
 </html>
