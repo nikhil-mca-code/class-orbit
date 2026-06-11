@@ -12,7 +12,7 @@
   <meta property="og:title" content="Class Orbit | Premium Education Platform">
   <meta property="og:description" content="Class Orbit is a premium education platform for verified tutors, personalized learning plans, free demos, and smarter academic support.">
   <meta property="og:url" content="https://classorbit.in/">
-  <meta property="og:image" content="https://images.pexels.com/photos/4145193/pexels-photo-4145193.jpeg">
+  <meta property="og:image" content="">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Class Orbit | Premium Education Platform">
   <meta name="twitter:description" content="Class Orbit connects students with verified educators, structured learning plans, and personal academic guidance.">
@@ -20,8 +20,10 @@
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%234F46E5'/%3E%3Ctext x='50' y='67' text-anchor='middle' fill='white' font-size='40' font-weight='bold'%3ECO%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link rel="stylesheet" href="shared.css">
   <link rel="preconnect" href="https://cdnjs.cloudflare.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+ <link rel="stylesheet" href="background.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <script type="application/ld+json">
     {
@@ -595,6 +597,196 @@
         transform: none;
       }
     }
+    /* ======================================
+   CLASS ORBIT FOUNDER SECTION
+====================================== */
+
+.co-founder-section {
+  padding: 90px 20px;
+  background: #ffffff;
+}
+
+.co-founder-container {
+  max-width: 1200px;
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 70px;
+}
+
+.co-founder-image-wrapper {
+  flex: 0 0 380px;
+  display: flex;
+  justify-content: center;
+}
+
+.co-founder-image {
+  width: 100%;
+  max-width: 380px;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+
+  border-radius: 28px;
+
+  box-shadow:
+    0 20px 60px rgba(0,0,0,0.08),
+    0 8px 25px rgba(79,70,229,0.12);
+
+  transition: all 0.4s ease;
+}
+
+.co-founder-image:hover {
+  transform: translateY(-8px);
+}
+
+.co-founder-content {
+  flex: 1;
+  max-width: 650px;
+}
+
+.co-founder-badge {
+  display: inline-block;
+
+  padding: 8px 16px;
+
+  border-radius: 999px;
+
+  background: rgba(79,70,229,0.08);
+
+  color: #4F46E5;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  margin-bottom: 20px;
+}
+
+.co-founder-title {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  line-height: 1.15;
+  font-weight: 800;
+
+  margin-bottom: 20px;
+
+  color: #111827;
+}
+
+.co-founder-description {
+  font-size: 1.05rem;
+  line-height: 1.9;
+
+  color: #4B5563;
+
+  margin-bottom: 18px;
+}
+
+.co-founder-signature {
+  margin-top: 30px;
+}
+
+.co-founder-signature h4 {
+  font-size: 1.3rem;
+  color: #111827;
+  margin-bottom: 5px;
+}
+
+.co-founder-signature span {
+  color: #6B7280;
+  font-weight: 500;
+}
+
+.co-founder-socials {
+  display: flex;
+  gap: 14px;
+
+  margin-top: 25px;
+}
+
+.co-founder-socials a {
+  width: 46px;
+  height: 46px;
+
+  border-radius: 50%;
+
+  background: #4F46E5;
+
+  color: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  text-decoration: none;
+
+  transition: all 0.3s ease;
+}
+
+.co-founder-socials a:hover {
+  transform: translateY(-4px);
+  background: #4338CA;
+}
+
+@media (max-width: 992px) {
+
+  .co-founder-container {
+    gap: 50px;
+  }
+
+  .co-founder-image-wrapper {
+    flex: 0 0 320px;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .co-founder-section {
+    padding: 70px 20px;
+  }
+
+  .co-founder-container {
+    flex-direction: column;
+    text-align: center;
+    gap: 35px;
+  }
+
+  .co-founder-image-wrapper {
+    flex: unset;
+    width: 100%;
+  }
+
+  .co-founder-image {
+    max-width: 260px;
+  }
+
+  .co-founder-socials {
+    justify-content: center;
+  }
+
+  .co-founder-title {
+    font-size: 2rem;
+  }
+
+  .co-founder-description {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+
+  .co-founder-image {
+    max-width: 220px;
+  }
+
+  .co-founder-title {
+    font-size: 1.8rem;
+  }
+
+  .co-founder-description {
+    line-height: 1.8;
+  }
+}
   </style>
 </head>
 <body>
@@ -602,18 +794,18 @@
 
 <!-- HEADER -->
 <header class="navbar" id="mainNav">
-  <div class="logo"><a href="index.html" aria-label="Class Orbit home">Class Orbit</a></div>
-  <button class="hamburger" id="hamburger" type="button" aria-label="Toggle menu" aria-controls="navMenu" aria-expanded="false"><span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span></button>
-  <nav class="nav-links" id="navMenu" aria-label="Primary navigation">
-    <a href="index.html" class="active" aria-current="page">Home</a>
+  <div class="logo"><a href="index.html"><img src="logo-class-orbit.svg" alt="Class Orbit Logo"></a></div>
+  <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  <nav id="navMenu">
+    <a href="index.html">Home</a>
     <a href="student.html">Students</a>
     <a href="teacher.html">Teachers</a>
     <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
+    <a href="team.html">Team</a>
+    <a href="contact.html" class="active">Contact</a>
     <a href="login.html" class="login-btn">Login</a>
   </nav>
 </header>
-
 <main id="main-content">
 <!-- HERO -->
 <section class="hero" aria-labelledby="hero-title">
@@ -626,7 +818,7 @@
     </div>
   </div>
   <div class="hero-image">
-    <img src="https://images.pexels.com/photos/4145193/pexels-photo-4145193.jpeg" alt="Tutor supporting a student during a personalized lesson" width="640" height="480" fetchpriority="high" decoding="async">
+    <img src="/frontend/images/hero-banner.webp" alt="Tutor supporting a student during a personalized lesson" width="640" height="480" fetchpriority="high" decoding="async">
   </div>
 </section>
 
@@ -701,8 +893,62 @@
 </section>
 
 <!-- CEO SECTION -->
-<section class="ceo-section animate" aria-labelledby="ceo-title"><div class="ceo-container"><div class="ceo-image"><img src="https://images.pexels.com/photos/5212345/pexels-photo-5212345.jpeg" alt="Nikhil Singh, Founder and CEO of Class Orbit" width="200" height="200" loading="lazy" decoding="async"></div><div class="ceo-content"><h2 id="ceo-title">Message from the CEO</h2><h3>"Education Builds the Future"</h3><p>Education is not just about marks. It is about confidence, clarity, and momentum. At <strong>Class Orbit</strong>, we bring premium academic support into a simple, trusted platform.</p><h4>— Nikhil Singh</h4><span>Founder &amp; CEO, Class Orbit</span></div></div></section>
+<section class="co-founder-section animate" aria-labelledby="co-founder-title">
+  <div class="co-founder-container">
 
+    <div class="co-founder-image-wrapper">
+      <img
+        src="/frontend/images/nikhil-avatar.svg"
+        alt="Nikhil Singh, Founder and CEO of Class Orbit"
+        class="co-founder-image"
+        loading="lazy"
+        decoding="async">
+    </div>
+
+    <div class="co-founder-content">
+
+      <div class="co-founder-badge">
+        Founder Message
+      </div>
+
+      <h2 id="co-founder-title" class="co-founder-title">
+        Education Builds the Future
+      </h2>
+
+      <p class="co-founder-description">
+        Education is not just about marks. It is about confidence, clarity,
+        discipline, and creating opportunities for a brighter future.
+      </p>
+
+      <p class="co-founder-description">
+        At <strong>Class Orbit</strong>, our mission is to connect students,
+        teachers, and parents through a trusted platform that makes learning
+        more personalized, accessible, and impactful.
+      </p>
+
+      <div class="co-founder-signature">
+        <h4>Nikhil Singh</h4>
+        <span>Founder &amp; CEO, Class Orbit</span>
+      </div>
+
+      <div class="co-founder-socials">
+        <a href="https://www.linkedin.com/in/nikhil-mca-in/" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+
+        <a href="https://github.com/nikhil-mca-code" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-github"></i>
+        </a>
+
+        <a href="https://www.instagram.com/_proxy.nikhil/" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-instagram"></i>
+        </a>
+      </div>
+
+    </div>
+
+  </div>
+</section>
 <!-- TESTIMONIALS -->
 <section class="testimonial-section animate" aria-labelledby="testimonials-title"><h2 class="section-title" id="testimonials-title">What Parents Say</h2><div class="testimonial-slider" id="slider" aria-live="polite"><div class="testimonial active">"Class Orbit gave my son structure, confidence, and a tutor who truly understood him."<span>- Mrs. Sharma</span></div><div class="testimonial">"Premium experience, professional teachers, and a support team that stays involved."<span>- Mr. Verma</span></div><div class="testimonial">"A modern learning platform that still feels personal and reliable."<span>- Mrs. Gupta</span></div></div></section>
 
@@ -714,12 +960,70 @@
 
 </main>
 
-<!-- FOOTER -->
-<footer class="site-footer"><div class="footer-main"><div class="footer-col"><h3>Class Orbit</h3><p>Gorakhpur</p><p><a href="tel:+917518007867" class="footer-link">📞&nbsp;+91&nbsp;75180&nbsp;07867</a></p><nav class="social-icons" aria-label="Social media links"><a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Class Orbit on Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a><a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Class Orbit on Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a><a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" aria-label="Class Orbit on YouTube"><i class="fab fa-youtube" aria-hidden="true"></i></a></nav></div><div class="footer-col"><h4>Services</h4><ul><li><a href="student.html" class="footer-link">Personalized Tutoring</a></li><li><a href="book-demo.html" class="footer-link">Free Demo</a></li></ul></div><div class="footer-col"><h4>Quick Links</h4><ul><li><a href="index.html" class="footer-link">Home</a></li><li><a href="contact.html" class="footer-link">Contact</a></li></ul></div></div><div class="footer-bottom">✨ Simple is Powerful • © 2026 Class Orbit. All Rights Reserved</div></footer>
 
-<a href="https://wa.me/917518007867" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat with Class Orbit on WhatsApp"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
-<button class="chatbot-bubble" id="chatbotBubble" type="button" aria-label="Open Guru Ji chat" aria-controls="chatbotBox" aria-expanded="false"><i class="fas fa-comments" aria-hidden="true"></i></button>
-<section class="chatbot-box" id="chatbotBox" aria-label="Guru Ji chatbot" hidden><div class="chatbot-header"><div>🧑‍🏫 Guru Ji</div><button class="chatbot-close" id="chatbotClose" type="button" aria-label="Close Guru Ji chat">✕</button></div><div class="chatbot-messages" id="chatMessages" role="log" aria-live="polite" aria-relevant="additions"><div class="chat-msg bot">Namaste! 🙏 Main Guru Ji hoon. Aapka swagat hai.<div class="quick-btns"><button type="button" data-quick="Fees">💰 Fees</button><button type="button" data-quick="Demo">🎯 Demo</button></div></div></div><form class="chatbot-input" id="chatForm"><label class="visually-hidden" for="chatInput">Ask Guru Ji a question</label><input type="text" id="chatInput" placeholder="Apna sawaal..." autocomplete="off"><button type="submit" aria-label="Send message"><i class="fas fa-paper-plane" aria-hidden="true"></i></button></form></section>
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-top">
+    <div class="footer-newsletter">
+      <h2>Stay Updated with Class Orbit</h2>
+      <div class="newsletter-form">
+        <input type="email" id="newsletterEmail" placeholder="Enter your email">
+        <button onclick="subscribeNewsletter()">Subscribe</button>
+      </div>
+    </div>
+    <div class="footer-contact-info">
+      <span>Call Anytime</span>
+      <h3><a href="tel:+917518007867">+91 75180 07867</a></h3>
+    </div>
+  </div>
+  <hr class="footer-divider">
+  <div class="footer-main">
+    <div class="footer-col">
+      <h3>Class Orbit</h3>
+      <p>Gorakhpur</p>
+      <p><a href="tel:+917518007867">📞 +91 75180 07867</a></p>
+      <p><a href="mailto:nikhil.mca.in@gmail.com">✉nikhil.mca.in@gmail.com</a></p>
+      <div class="social-icons">
+        <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/hometutor.in" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://youtube.com/@classorbit" target="_blank"><i class="fab fa-youtube"></i></a>
+        <a href="https://wa.me/917518007867" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="student.html">Personalized Tutoring</a></li>
+        <li><a href="student.html">Online Classes</a></li>
+        <li><a href="book-demo.html">Free Demo</a></li>
+        <li><a href="about.html">Career Guidance</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="student.html">Students</a></li>
+        <li><a href="teacher.html">Teachers</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Privacy &amp; Info</h4>
+      <ul>
+        <li><a href="terms.html">Terms &amp; Conditions</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="contact.html">Get in Touch</a></li>
+        <li><a href="teacher.html">Become a Partner</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-left"><img src="logo-class-orbit.svg" alt="Logo"><span>Class Orbit</span></div>
+    <div class="footer-right">✨ Simple is Powerful • © 2026 Class Orbit. All Rights Reserved</div>
+  </div>
+</footer>
 
 <script>
   (() => {

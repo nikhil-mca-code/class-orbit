@@ -71,7 +71,134 @@
       color: #2e7d32; padding: 14px; border-radius: 10px; text-align: center;
       font-weight: 600; margin-top: 14px;
     }
+/* ===================================
+   CLASS ORBIT CONTACT SECTION
+=================================== */
 
+.co-contact-section{
+  padding:100px 20px;
+  background:#f8fafc;
+}
+
+.co-contact-header{
+  text-align:center;
+  max-width:700px;
+  margin:0 auto 70px;
+}
+
+.co-contact-tag{
+  display:inline-block;
+  padding:8px 16px;
+  border-radius:999px;
+
+  background:rgba(79,70,229,.08);
+
+  color:#4F46E5;
+  font-size:14px;
+  font-weight:600;
+}
+
+.co-contact-title{
+  margin-top:18px;
+  font-size:clamp(2rem,5vw,3.5rem);
+  font-weight:800;
+  color:#111827;
+}
+
+.co-contact-subtitle{
+  margin-top:14px;
+  color:#6B7280;
+  line-height:1.8;
+}
+
+.co-contact-grid{
+  max-width:1200px;
+  margin:auto;
+
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:24px;
+}
+
+.co-contact-card{
+  background:white;
+
+  border-radius:24px;
+
+  padding:35px 25px;
+
+  text-align:center;
+
+  text-decoration:none;
+
+  box-shadow:
+  0 15px 40px rgba(0,0,0,.05);
+
+  transition:.35s ease;
+
+  border:1px solid #eef2ff;
+}
+
+.co-contact-card:hover{
+  transform:translateY(-10px);
+
+  box-shadow:
+  0 30px 60px rgba(79,70,229,.12);
+}
+
+.co-contact-icon{
+  width:70px;
+  height:70px;
+
+  margin:0 auto 20px;
+
+  border-radius:20px;
+
+  background:linear-gradient(
+  135deg,
+  #4F46E5,
+  #7C3AED
+  );
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.co-contact-icon i{
+  color:white;
+  font-size:28px;
+}
+
+.co-contact-card h3{
+  font-size:1.2rem;
+  margin-bottom:10px;
+  color:#111827;
+}
+
+.co-contact-card p{
+  color:#6B7280;
+  line-height:1.6;
+}
+
+@media(max-width:768px){
+
+  .co-contact-section{
+    padding:80px 20px;
+  }
+
+  .co-contact-title{
+    font-size:2rem;
+  }
+
+  .co-contact-grid{
+    gap:18px;
+  }
+
+  .co-contact-card{
+    padding:28px 20px;
+  }
+}
     /* MAP */
     .map-section { padding: 0 5% 60px; }
     .map-section h2 { text-align: center; font-size: 24px; color: #003366; margin-bottom: 20px; }
@@ -105,36 +232,83 @@
 </div>
 
 <!-- CONTACT CARDS -->
-<section class="contact-section">
-  <h2>Get In Touch</h2>
-  <p>Reach us through any of these channels — we respond fast!</p>
-  <div class="contact-grid">
-    <div class="contact-card">
-      <div class="icon-wrap"><i class="fas fa-phone"></i></div>
-      <h3>Call Us</h3>
-      <a href="tel:+917518007867">📞 +91 75180 07867</a>
-    </div>
-    <div class="contact-card">
-      <div class="icon-wrap"><i class="fab fa-whatsapp"></i></div>
-      <h3>WhatsApp</h3>
-      <a href="https://wa.me/917518007867" target="_blank">Chat on WhatsApp</a>
-    </div>
-    <div class="contact-card">
-      <div class="icon-wrap"><i class="fas fa-envelope"></i></div>
-      <h3>Email</h3>
-      <a href="mailto:nikhil.mca.in@gmail.com">nikhil.mca.in@gmail.com</a>
-    </div>
-    <div class="contact-card">
-      <div class="icon-wrap"><i class="fab fa-instagram"></i></div>
-      <h3>Instagram</h3>
-      <a href="https://www.instagram.com/_proxy.nikhil" target="_blank">@_proxy.nikhil</a>
-    </div>
-    <div class="contact-card">
-      <div class="icon-wrap"><i class="fas fa-map-marker-alt"></i></div>
-      <h3>Location</h3>
-      <a href="https://maps.app.goo.gl/oJfTPUA3ezxA5rBv9" target="_blank">Gorakhpur UP</a>
-    </div>
+<section class="co-contact-section">
+
+  <div class="co-contact-header">
+    <span class="co-contact-tag">Contact Us</span>
+
+    <h2 class="co-contact-title">
+      Let's Connect
+    </h2>
+
+    <p class="co-contact-subtitle">
+      Questions, admissions, career guidance, or academic support — we're here to help.
+    </p>
   </div>
+
+  <div class="co-contact-grid">
+
+    <a href="tel:+917518007867" class="co-contact-card">
+      <div class="co-contact-icon">
+        <i class="fas fa-phone"></i>
+      </div>
+
+      <h3>Call Us</h3>
+      <p>+91 75180 07867</p>
+    </a>
+
+    <a href="https://wa.me/917518007867"
+       target="_blank"
+       rel="noopener noreferrer"
+       class="co-contact-card">
+
+      <div class="co-contact-icon">
+        <i class="fab fa-whatsapp"></i>
+      </div>
+
+      <h3>WhatsApp</h3>
+      <p>Instant Chat Support</p>
+    </a>
+
+    <a href="mailto:nikhil.mca.in@gmail.com"
+       class="co-contact-card">
+
+      <div class="co-contact-icon">
+        <i class="fas fa-envelope"></i>
+      </div>
+
+      <h3>Email</h3>
+      <p>nikhil.mca.in@gmail.com</p>
+    </a>
+
+    <a href="https://www.instagram.com/_proxy.nikhil"
+       target="_blank"
+       rel="noopener noreferrer"
+       class="co-contact-card">
+
+      <div class="co-contact-icon">
+        <i class="fab fa-instagram"></i>
+      </div>
+
+      <h3>Instagram</h3>
+      <p>@_proxy.nikhil</p>
+    </a>
+
+    <a href="https://maps.app.goo.gl/oJfTPUA3ezxA5rBv9"
+       target="_blank"
+       rel="noopener noreferrer"
+       class="co-contact-card">
+
+      <div class="co-contact-icon">
+        <i class="fas fa-map-marker-alt"></i>
+      </div>
+
+      <h3>Location</h3>
+      <p>Gorakhpur, Uttar Pradesh</p>
+    </a>
+
+  </div>
+
 </section>
 
 <!-- CONTACT FORM -->
