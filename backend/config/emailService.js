@@ -11,7 +11,7 @@ const createTransporter = () => {
   return nodemailer.createTransport({
     service: "gmail",
     auth: {
-      user: process.env.EMAIL_USER,       // your Gmail:hello@classorbit.in
+      user: process.env.EMAIL_USER,       // your Gmail:nikhil.mca.in@gmail.com
       pass: process.env.EMAIL_APP_PASS,   // Gmail App Password (16 chars)
     },
   });
@@ -79,7 +79,7 @@ const studentRegisteredAdmin = (data) => `
     </div>
   </div>
   <div style="background:#003366;padding:12px;text-align:center;color:#aaa;font-size:12px;">
-    Class Orbit | +91 75180 07867 |hello@classorbit.in
+    Class Orbit | +91 75180 07867 |nikhil.mca.in@gmail.com
   </div>
 </div>`;
 
@@ -128,7 +128,7 @@ const teacherRegisteredAdmin = (data) => `
     </div>
   </div>
   <div style="background:#1a6b3c;padding:12px;text-align:center;color:#aaa;font-size:12px;">
-    Class Orbit | +91 75180 07867 |hello@classorbit.in
+    Class Orbit | +91 75180 07867 |nikhil.mca.in@gmail.com
   </div>
 </div>`;
 
