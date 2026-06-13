@@ -9,7 +9,10 @@ const isEmailConfigured = () => (
 // Create reusable transporter
 const createTransporter = () => {
   return nodemailer.createTransport({
-    service: "gmail",
+    host: "smtp.gmail.com",
+    port: 587,
+    secure: false,
+    family: 4,
     auth: {
       user: process.env.EMAIL_USER,       // your Gmail:nikhil.mca.in@gmail.com
       pass: process.env.EMAIL_APP_PASS,   // Gmail App Password (16 chars)
@@ -18,10 +21,36 @@ const createTransporter = () => {
 };
 
 // ── ADMIN NOTIFICATION EMAIL ──
+const logSmtpError = (context, err) => {
+  console.error(context, {
+    message: err.message,
+    code: err.code,
+    command: err.command,
+    response: err.response,
+    responseCode: err.responseCode,
+    errno: err.errno,
+    address: err.address,
+    port: err.port,
+    syscall: err.syscall,
+    stack: err.stack,
+  });
+};
+
+const verifyTransporter = async (transporter) => {
+  try {
+    await transporter.verify();
+    console.log("SMTP transporter verified successfully");
+  } catch (err) {
+    logSmtpError("SMTP transporter verification failed", err);
+    throw err;
+  }
+};
+
 const sendAdminNotification = async (subject, htmlContent) => {
   if (!isEmailConfigured()) return;
   try {
     const transporter = createTransporter();
+    await verifyTransporter(transporter);
     await transporter.sendMail({
       from: `"Class Orbit Website" <${process.env.EMAIL_USER}>`,
       to: process.env.ADMIN_EMAIL || process.env.EMAIL_USER,
@@ -30,7 +59,7 @@ const sendAdminNotification = async (subject, htmlContent) => {
     });
     console.log(`✅ Admin email sent: ${subject}`);
   } catch (err) {
-    console.error(`❌ Email error: ${err.message}`);
+    logSmtpError(`Email error while sending admin notification: ${subject}`, err);
     // Don't throw — email failure should not block form submission
   }
 };
@@ -41,6 +70,7 @@ const sendUserConfirmation = async (toEmail, toName, subject, htmlContent) => {
   if (!isEmailConfigured()) return;
   try {
     const transporter = createTransporter();
+    await verifyTransporter(transporter);
     await transporter.sendMail({
       from: `"Class Orbit" <${process.env.EMAIL_USER}>`,
       to: toEmail,
@@ -49,7 +79,7 @@ const sendUserConfirmation = async (toEmail, toName, subject, htmlContent) => {
     });
     console.log(`✅ User email sent to: ${toEmail}`);
   } catch (err) {
-    console.error(`❌ User email error: ${err.message}`);
+    logSmtpError(`User email error while sending to: ${toEmail}`, err);
   }
 };
 
