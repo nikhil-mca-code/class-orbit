@@ -1,7 +1,7 @@
-const nodemailer = require("nodemailer");
-
 const DEFAULT_ADMIN_EMAIL = "classorbit.nikhil@gmail.com";
 const DEFAULT_FRONTEND_URL = "https://class-orbit.netlify.app";
+const BREVO_API_BASE_URL = "https://api.brevo.com/v3";
+const BREVO_REQUEST_TIMEOUT_MS = 30000;
 
 const BRAND = {
   name: "Class Orbit",
@@ -12,22 +12,12 @@ const BRAND = {
 
 const adminEmail = () => process.env.ADMIN_EMAIL || DEFAULT_ADMIN_EMAIL;
 const frontendUrl = () => process.env.FRONTEND_URL || DEFAULT_FRONTEND_URL;
+const brevoSenderEmail = () => process.env.BREVO_SENDER_EMAIL || process.env.ADMIN_EMAIL || DEFAULT_ADMIN_EMAIL;
+const brevoConfigured = () => Boolean(process.env.BREVO_API_KEY);
 
-const smtpConfigured = () => (
-  process.env.SMTP_HOST &&
-  process.env.SMTP_PORT &&
-  process.env.SMTP_USER &&
-  process.env.SMTP_PASS
-);
-
-const transporter = nodemailer.createTransport({
-  host: process.env.SMTP_HOST,
-  port: Number(process.env.SMTP_PORT || 587),
-  secure: Number(process.env.SMTP_PORT || 587) === 465,
-  auth: {
-    user: process.env.SMTP_USER,
-    pass: process.env.SMTP_PASS,
-  },
+console.log("[Email] Brevo API client initialized", {
+  apiBaseUrl: BREVO_API_BASE_URL,
+  senderEmail: brevoSenderEmail(),
 });
 
 const escapeHtml = (value) => String(value == null ? "" : value).replace(/[&<>"']/g, (char) => ({
@@ -43,42 +33,71 @@ const formatDate = (date = new Date()) => new Date(date).toLocaleString("en-IN",
   timeStyle: "short",
 });
 
-const logSmtpError = (context, err) => {
+const parseBrevoResponse = async (response) => {
+  const text = await response.text();
+  if (!text) return null;
+
+  try {
+    return JSON.parse(text);
+  } catch (err) {
+    return text;
+  }
+};
+
+const brevoFetch = async (path, options = {}) => {
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), BREVO_REQUEST_TIMEOUT_MS);
+
+  try {
+    return await fetch(`${BREVO_API_BASE_URL}${path}`, {
+      ...options,
+      signal: controller.signal,
+      headers: {
+        accept: "application/json",
+        "api-key": process.env.BREVO_API_KEY,
+        ...(options.headers || {}),
+      },
+    });
+  } finally {
+    clearTimeout(timeout);
+  }
+};
+
+const logBrevoError = (context, err) => {
   console.error(`[Email] ${context}`, {
     message: err.message,
+    name: err.name,
     code: err.code,
-    command: err.command,
-    response: err.response,
-    responseCode: err.responseCode,
-    errno: err.errno,
-    address: err.address,
-    port: err.port,
-    syscall: err.syscall,
     stack: err.stack,
   });
 };
 
-const verifySmtp = async () => {
-  if (!smtpConfigured()) {
-    console.warn("[Email] SMTP is not configured. Email sending is disabled.");
+const validateBrevoApi = async () => {
+  if (!brevoConfigured()) {
+    console.warn("[Email] Brevo API is not configured. Email sending is disabled.", {
+      status: "missing_api_key",
+    });
     return false;
   }
 
   try {
-    await transporter.verify();
-    console.log("[Email] Brevo SMTP Ready", {
-      host: process.env.SMTP_HOST,
-      port: process.env.SMTP_PORT,
-      success: true,
+    const response = await brevoFetch("/account", { method: "GET" });
+    const responseBody = await parseBrevoResponse(response);
+
+    console.log("[Email] Brevo API validation result", {
+      status: response.status,
+      ok: response.ok,
+      responseBody,
     });
-    return true;
+
+    return response.ok;
   } catch (err) {
-    logSmtpError("SMTP verification failed", err);
+    logBrevoError("Brevo API validation failed", err);
     return false;
   }
 };
 
-verifySmtp();
+validateBrevoApi();
 
 const button = (href, label) => `
   <table role="presentation" cellpadding="0" cellspacing="0" style="margin:24px 0;">
@@ -140,39 +159,67 @@ const sendEmail = async ({ to, subject, html, text }) => {
     console.warn("[Email] Skipped send: missing recipient", { subject, success: false });
     return null;
   }
-  if (!smtpConfigured()) {
-    console.warn("[Email] Skipped send: SMTP is not configured", { to, subject, success: false });
+  if (!brevoConfigured()) {
+    console.warn("[Email] Skipped send: Brevo API is not configured", { to, subject, success: false });
     return null;
   }
 
-  const mailOptions = {
-    from: `"${BRAND.name}" <${process.env.SMTP_USER}>`,
-    to,
+  const payload = {
+    sender: {
+      name: BRAND.name,
+      email: brevoSenderEmail(),
+    },
+    to: Array.isArray(to)
+      ? to.map((email) => ({ email }))
+      : [{ email: to }],
     subject,
-    html,
-    text: text || subject,
+    htmlContent: html,
+    textContent: text || subject,
   };
 
   try {
-    const info = await transporter.sendMail(mailOptions);
+    const response = await brevoFetch("/smtp/email", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    });
+    const responseBody = await parseBrevoResponse(response);
+
+    if (!response.ok) {
+      console.error("[Email] Failed", {
+        to,
+        subject,
+        status: response.status,
+        responseBody,
+        success: false,
+      });
+      return null;
+    }
+
     console.log("[Email] Sent", {
       to,
       subject,
+      status: response.status,
+      responseBody,
       success: true,
-      messageId: info.messageId,
-      response: info.response,
     });
-    return info;
+    return responseBody;
   } catch (err) {
     console.error("[Email] Failed", {
       to,
       subject,
+      status: err.name === "AbortError" ? "timeout" : "network_error",
+      errorBody: {
+        name: err.name,
+        message: err.message,
+        code: err.code,
+      },
       success: false,
-      code: err.code,
-      message: err.message,
       stack: err.stack,
     });
-    logSmtpError(`Failed to send email`, err);
+    logBrevoError("Failed to send email via Brevo API", err);
     return null;
   }
 };
@@ -405,5 +452,5 @@ module.exports = {
   sendTeacherRejectionEmail,
   sendPaymentSuccessEmail,
   sendAdminNotification,
-  verifySmtp,
+  validateBrevoApi,
 };
