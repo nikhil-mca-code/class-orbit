@@ -213,7 +213,7 @@ app.put("/api/admin/teacher/:id", async (req,res) => {
       if (teacher.status === "active") {
         await sendTeacherApprovalEmail({ to: teacher.email, name: teacher.name, loginUrl: process.env.FRONTEND_URL });
       }
-      if (teacher.status === "inactive") {
+      if (previousTeacher.status === "pending" && teacher.status === "inactive") {
         await sendTeacherRejectionEmail({ to: teacher.email, name: teacher.name });
       }
     }

@@ -1,11 +1,17 @@
 const nodemailer = require("nodemailer");
 
+const DEFAULT_ADMIN_EMAIL = "classorbit.nikhil@gmail.com";
+const DEFAULT_FRONTEND_URL = "https://class-orbit.netlify.app";
+
 const BRAND = {
   name: "Class Orbit",
   color: "#4F46E5",
-  supportEmail: process.env.SUPPORT_EMAIL || process.env.ADMIN_EMAIL || process.env.SMTP_USER,
+  supportEmail: process.env.SUPPORT_EMAIL || process.env.ADMIN_EMAIL || DEFAULT_ADMIN_EMAIL,
   supportPhone: process.env.SUPPORT_PHONE || "+91 75180 07867",
 };
+
+const adminEmail = () => process.env.ADMIN_EMAIL || DEFAULT_ADMIN_EMAIL;
+const frontendUrl = () => process.env.FRONTEND_URL || DEFAULT_FRONTEND_URL;
 
 const smtpConfigured = () => (
   process.env.SMTP_HOST &&
@@ -60,7 +66,11 @@ const verifySmtp = async () => {
 
   try {
     await transporter.verify();
-    console.log(`[Email] SMTP verified: ${process.env.SMTP_HOST}:${process.env.SMTP_PORT}`);
+    console.log("[Email] Brevo SMTP Ready", {
+      host: process.env.SMTP_HOST,
+      port: process.env.SMTP_PORT,
+      success: true,
+    });
     return true;
   } catch (err) {
     logSmtpError("SMTP verification failed", err);
@@ -126,7 +136,14 @@ const layout = ({ title, intro, body, cta }) => `
 </html>`;
 
 const sendEmail = async ({ to, subject, html, text }) => {
-  if (!to || !smtpConfigured()) return null;
+  if (!to) {
+    console.warn("[Email] Skipped send: missing recipient", { subject, success: false });
+    return null;
+  }
+  if (!smtpConfigured()) {
+    console.warn("[Email] Skipped send: SMTP is not configured", { to, subject, success: false });
+    return null;
+  }
 
   const mailOptions = {
     from: `"${BRAND.name}" <${process.env.SMTP_USER}>`,
@@ -141,12 +158,21 @@ const sendEmail = async ({ to, subject, html, text }) => {
     console.log("[Email] Sent", {
       to,
       subject,
+      success: true,
       messageId: info.messageId,
       response: info.response,
     });
     return info;
   } catch (err) {
-    logSmtpError(`Failed to send email to ${to} with subject "${subject}"`, err);
+    console.error("[Email] Failed", {
+      to,
+      subject,
+      success: false,
+      code: err.code,
+      message: err.message,
+      stack: err.stack,
+    });
+    logSmtpError(`Failed to send email`, err);
     return null;
   }
 };
@@ -159,7 +185,7 @@ const sendAdminNotification = async ({ subject, title, intro, details = [], body
   });
 
   return sendEmail({
-    to: process.env.ADMIN_EMAIL,
+    to: adminEmail(),
     subject,
     html,
   });
@@ -185,7 +211,7 @@ const sendWelcomeEmail = async ({ to, name, role = "student", loginUrl }) => {
       title,
       intro: isTeacher ? "Thanks for applying to teach with Class Orbit." : "Your learning account is ready.",
       body,
-      cta: loginUrl ? button(loginUrl, "Login to Class Orbit") : "",
+      cta: button(loginUrl || `${frontendUrl()}/login.html`, "Login to Class Orbit"),
     }),
   });
 };
@@ -200,7 +226,8 @@ const sendPasswordResetEmail = async ({ to, name, resetLink, expiresIn = "15 min
       <p style="font-size:15px;line-height:1.7;color:#374151;">Use the button below to choose a new password.</p>
       ${button(resetLink, "Reset Password")}
       <p style="font-size:14px;line-height:1.7;color:#4B5563;">Reset link: <a href="${escapeHtml(resetLink)}" style="color:${BRAND.color};word-break:break-all;">${escapeHtml(resetLink)}</a></p>
-      <p style="font-size:14px;line-height:1.7;color:#6B7280;">This link expires in ${escapeHtml(expiresIn)}. If you did not request this, you can safely ignore this email.</p>`,
+      <p style="font-size:14px;line-height:1.7;color:#6B7280;">This link expires in ${escapeHtml(expiresIn)}. If you did not request this, you can safely ignore this email.</p>
+      <p style="font-size:14px;line-height:1.7;color:#6B7280;">For your security, Class Orbit will never ask for your password by email or phone.</p>`,
   }),
 });
 
@@ -284,7 +311,7 @@ const sendStudentRegistrationEmail = async (student) => {
       to: student.email,
       name: student.name,
       role: "student",
-      loginUrl: process.env.FRONTEND_URL,
+      loginUrl: `${frontendUrl()}/login.html`,
     });
   }
 };
@@ -310,7 +337,7 @@ const sendTeacherRegistrationEmail = async (teacher) => {
       to: teacher.email,
       name: teacher.name,
       role: "teacher",
-      loginUrl: process.env.FRONTEND_URL,
+      loginUrl: `${frontendUrl()}/login.html`,
     });
   }
 };
@@ -322,15 +349,15 @@ const sendTeacherApprovalEmail = async ({ to, name, loginUrl }) => sendEmail({
     title: "Teacher Application Approved",
     intro: `Congratulations ${name || "Teacher"}! Your Class Orbit teacher application has been approved.`,
     body: `<p style="font-size:15px;line-height:1.7;color:#374151;">You can now log in to access your dashboard, view assignments, and manage teaching details.</p>`,
-    cta: loginUrl ? button(loginUrl, "Open Dashboard") : "",
+    cta: button(loginUrl || `${frontendUrl()}/login.html`, "Open Dashboard"),
   }),
 });
 
 const sendTeacherRejectionEmail = async ({ to, name }) => sendEmail({
   to,
-  subject: "Teacher Application Update",
+  subject: "Teacher Application Rejected",
   html: layout({
-    title: "Teacher Application Update",
+    title: "Teacher Application Rejected",
     intro: `Hi ${name || "Teacher"}, thank you for your interest in Class Orbit.`,
     body: `<p style="font-size:15px;line-height:1.7;color:#374151;">After review, your application was not approved at this time. You may reapply in the future with updated details or credentials.</p>`,
   }),

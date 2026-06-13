@@ -65,6 +65,7 @@
       <div class="field"><label>Mobile Number *</label><input type="tel" id="dMobile" placeholder="+91 7518007867"></div>
       <div class="field"><label>Subject Needed *</label><input type="text" id="dSubject" placeholder="e.g. Maths, Science"></div>
     </div>
+    <div class="field"><label>Email Address *</label><input type="email" id="dEmail" placeholder="student@example.com"></div>
     <div class="field"><label>Preferred Timing</label><select id="dTime"><option>Morning (7AM–11AM)</option><option>Afternoon (12PM–4PM)</option><option>Evening (5PM–8PM)</option><option>Any Time</option></select></div>
     <div class="field"><label>Area / Locality *</label><input type="text" id="dArea" placeholder="Apna area batayein"></div>
     <button class="submit-btn" onclick="bookDemo()"><i class="fas fa-calendar-check"></i> &nbsp;Book Free Demo Class</button>
@@ -97,18 +98,20 @@ async function bookDemo(){
   const studentName = document.getElementById('dName').value.trim();
   const cls         = document.getElementById('dClass').value;
   const mobile      = document.getElementById('dMobile').value.trim();
+  const email       = document.getElementById('dEmail').value.trim();
   const subject     = document.getElementById('dSubject').value.trim();
   const area        = document.getElementById('dArea').value.trim();
   const timing      = document.getElementById('dTime').value;
-  if(!studentName||!cls||!mobile||!subject||!area){ alert('Kripya sabhi * fields bharein!'); return; }
+  if(!studentName||!cls||!mobile||!email||!subject||!area){ alert('Kripya sabhi * fields bharein!'); return; }
+  if(!email.includes('@')){ alert('Valid email daalen!'); return; }
 
-  const btn = document.querySelector('.form-box .submit-btn');
+  const btn = document.querySelector('#demoBox .submit-btn');
   btn.disabled=true; btn.textContent='Booking...';
 
   try {
     const res = await fetch(window.API_BASE_URL + '/api/demo/book', {
       method:'POST', headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({studentName, class:cls, mobile, subject, area, timing})
+      body: JSON.stringify({studentName, class:cls, mobile, email, subject, area, timing})
     });
     const data = await res.json();
     if (!res.ok || !data.success) throw new Error(data.message || 'Demo booking nahi hui.');
