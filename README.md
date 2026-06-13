@@ -445,21 +445,51 @@ This project was built to solve real educational workflow challenges while stren
 
 # 👨‍💻 Author
 
-### Nikhil Singh
+<div align="center">
 
-Software Development Intern | Full-Stack Developer
+<h3>Nikhil Singh</h3>
 
-📧 Email:
-[nikhil.mca.in@gmail.com](mailto:nikhil.mca.in@gmail.com)
+<p>
+Software Development Intern • Full-Stack Developer • Founder @ Gorakhpur Web Studio
+</p>
 
-💼 LinkedIn:
-https://www.linkedin.com/in/nikhil-mca-in/
+<a href="mailto:nikhil.mca.in@gmail.com">
+<img src="https://img.shields.io/badge/Email-Contact-red?style=for-the-badge&logo=gmail&logoColor=white"/>
+</a>
 
-🐙 GitHub:
-https://github.com/nikhil-mca-code
+<a href="https://www.linkedin.com/in/nikhil-mca-in/">
+<img src="https://img.shields.io/badge/LinkedIn-Nikhil%20Singh-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"/>
+</a>
 
-🌐 Website:
-https://gorakhpurwebstudio.in/
+<a href="https://github.com/nikhil-mca-code">
+<img src="https://img.shields.io/badge/GitHub-nikhil--mca--code-181717?style=for-the-badge&logo=github&logoColor=white"/>
+</a>
+
+<a href="https://gorakhpurwebstudio.in/">
+<img src="https://img.shields.io/badge/Website-Gorakhpur%20Web%20Studio-00C853?style=for-the-badge&logo=google-chrome&logoColor=white"/>
+</a>
+
+<a href="https://class-orbit.netlify.app/">
+<img src="https://img.shields.io/badge/Class%20Orbit-Live%20Demo-blueviolet?style=for-the-badge&logo=google-chrome&logoColor=white"/>
+</a>
+
+<a href="https://www.instagram.com/_proxy.nikhil/">
+<img src="https://img.shields.io/badge/Instagram-@_proxy.nikhil-E4405F?style=for-the-badge&logo=instagram&logoColor=white"/>
+</a>
+
+</div>
+
+---
+
+# 📜 License
+
+This project is intended for educational, learning, and portfolio purposes.
+
+---
+
+⭐ If you found this project useful, consider giving it a star.
+
+🚀 Contributions, suggestions, and feedback are welcome.
 
 ---
 
