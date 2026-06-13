@@ -72,18 +72,17 @@ const paymentConfigured = () => (
 const escapeHtml = (value) => String(value == null ? "" : value).replace(/[&<>"']/g, c => ({
   "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
 }[c]));
-const safeTemplateData = (data) => Object.fromEntries(
-  Object.entries(data).map(([key, value]) => [key, escapeHtml(value)])
-);
 
 const {
-  sendAdminNotification, sendUserConfirmation,
-  studentRegisteredAdmin, studentRegisteredUser,
-  teacherRegisteredAdmin, teacherRegisteredUser,
-  demoBookedAdmin,        demoBookedUser,
-  contactFormAdmin,       paymentSuccessAdmin,
-  paymentSuccessUser,
-} = require("./config/emailService");
+  sendAdminNotification,
+  sendBookDemoNotification,
+  sendContactNotification,
+  sendPaymentSuccessEmail,
+  sendStudentRegistrationEmail,
+  sendTeacherApprovalEmail,
+  sendTeacherRegistrationEmail,
+  sendTeacherRejectionEmail,
+} = require("./services/emailService");
 
 app.use("/api/auth", require("./routes/authroutes"));
 
@@ -94,8 +93,7 @@ app.post("/api/student/register", async (req, res) => {
     if (!name || !cls || !mobile) return res.status(400).json({ success:false, message:"Name, class aur mobile zaroori hain!" });
     const student = new Student({ name, class:cls, school, mobile, subject, area, email });
     await student.save();
-    sendAdminNotification(`New Student: ${name}`, studentRegisteredAdmin(safeTemplateData({name,class:cls,school,mobile,subject,area})));
-    if(email) sendUserConfirmation(email, name, "Registration Successful - Class Orbit", studentRegisteredUser(safeTemplateData({name,class:cls,subject,area})));
+    await sendStudentRegistrationEmail(student);
     res.json({ success:true, message:"Registration successful! Team jald contact karegi.", id:student._id });
   } catch(err) { console.error(err); res.status(500).json({ success:false, message:"Server error." }); }
 });
@@ -107,8 +105,7 @@ app.post("/api/teacher/register", async (req, res) => {
     if (!name || !mobile || !subject) return res.status(400).json({ success:false, message:"Name, mobile aur subject zaroori hain!" });
     const teacher = new Teacher({ name, mobile, subject, experience, qualification, area, email });
     await teacher.save();
-    sendAdminNotification(`New Teacher: ${name}`, teacherRegisteredAdmin(safeTemplateData({name,mobile,subject,experience,qualification,area})));
-    if(email) sendUserConfirmation(email, name, "Teacher Registration - Class Orbit", teacherRegisteredUser(safeTemplateData({name,subject,experience,area})));
+    await sendTeacherRegistrationEmail(teacher);
     res.json({ success:true, message:"Registration successful! Team 24 ghante mein contact karegi.", id:teacher._id });
   } catch(err) { console.error(err); res.status(500).json({ success:false, message:"Server error." }); }
 });
@@ -116,11 +113,11 @@ app.post("/api/teacher/register", async (req, res) => {
 // DEMO BOOKING
 app.post("/api/demo/book", async (req, res) => {
   try {
-    const { studentName, class:cls, mobile, subject, area, timing } = req.body;
+    const { studentName, class:cls, mobile, email, subject, area, timing } = req.body;
     if (!studentName||!cls||!mobile||!subject||!area) return res.status(400).json({ success:false, message:"Sabhi fields zaroori hain!" });
     const demo = new Demo({ studentName, class:cls, mobile, subject, area, timing });
     await demo.save();
-    sendAdminNotification(`New Demo Request: ${studentName}`, demoBookedAdmin(safeTemplateData({studentName,class:cls,mobile,subject,area,timing})));
+    await sendBookDemoNotification({ studentName, class:cls, mobile, email, subject, area, timing });
     res.json({ success:true, message:"Demo book ho gayi! 2 ghante mein call aayegi.", id:demo._id });
   } catch(err) { console.error(err); res.status(500).json({ success:false, message:"Server error." }); }
 });
@@ -132,7 +129,7 @@ app.post("/api/contact/send", async (req, res) => {
     if (!name||!mobile) return res.status(400).json({ success:false, message:"Name aur mobile zaroori hain!" });
     const contact = new Contact({ name, mobile, email, subject, message });
     await contact.save();
-    sendAdminNotification(`New Contact: ${name}`, contactFormAdmin(safeTemplateData({name,mobile,email,subject,message})));
+    await sendContactNotification({ name, mobile, email, subject, message });
     res.json({ success:true, message:"Message bhej diya! Hum jald reply karenge." });
   } catch(err) { console.error(err); res.status(500).json({ success:false, message:"Server error." }); }
 });
@@ -173,11 +170,7 @@ app.post("/api/payment/verify", async (req, res) => {
       { new:true }
     );
     if (!payment) return res.status(400).json({ success:false, message:"Payment order not found or already processed." });
-    if(payment) {
-      const safePayment = safeTemplateData(payment.toObject());
-      sendAdminNotification(`Payment Received: Rs.${payment.amount}`, paymentSuccessAdmin(safePayment));
-      if(payment.email) sendUserConfirmation(payment.email, payment.studentName, "Payment Successful - Class Orbit", paymentSuccessUser(safePayment));
-    }
+    await sendPaymentSuccessEmail(payment);
     res.json({ success:true, message:"Payment verified!" });
   } catch(err) { console.error(err); res.status(500).json({ success:false, message:"Verification error." }); }
 });
@@ -188,7 +181,11 @@ app.post("/api/newsletter/subscribe", async (req, res) => {
     const { email } = req.body;
     if(!email||!email.includes("@")) return res.status(400).json({ success:false, message:"Valid email daalen!" });
     const safeEmail = escapeHtml(email);
-    sendAdminNotification(`New Subscriber: ${email}`, `<p>New subscriber: <b>${safeEmail}</b> at ${new Date().toLocaleString("en-IN")}</p>`);
+    await sendAdminNotification({
+      subject: "New Newsletter Subscriber",
+      title: "New Newsletter Subscriber",
+      body: `<p style="font-size:15px;line-height:1.7;color:#374151;">New subscriber: <strong>${safeEmail}</strong> at ${escapeHtml(new Date().toLocaleString("en-IN"))}</p>`,
+    });
     res.json({ success:true, message:"Successfully subscribed!" });
   } catch(err) { res.status(500).json({ success:false }); }
 });
@@ -208,7 +205,21 @@ app.get("/api/admin/contacts", async (req,res) => { try { res.json(await Contact
 app.get("/api/admin/payments", async (req,res) => { try { res.json(await Payment.find({status:"success"}).sort({createdAt:-1})); } catch(e){ res.status(500).json([]); }});
 app.put("/api/admin/student/:id", async (req,res) => { try { res.json(await Student.findByIdAndUpdate(req.params.id,req.body,{new:true})); } catch(e){ res.status(500).json({}); }});
 app.delete("/api/admin/student/:id", async (req,res) => { try { await Student.findByIdAndDelete(req.params.id); res.json({ success:true }); } catch(e){ res.status(500).json({ success:false }); }});
-app.put("/api/admin/teacher/:id", async (req,res) => { try { res.json(await Teacher.findByIdAndUpdate(req.params.id,req.body,{new:true})); } catch(e){ res.status(500).json({}); }});
+app.put("/api/admin/teacher/:id", async (req,res) => {
+  try {
+    const previousTeacher = await Teacher.findById(req.params.id);
+    const teacher = await Teacher.findByIdAndUpdate(req.params.id,req.body,{new:true});
+    if (teacher && teacher.email && previousTeacher && previousTeacher.status !== teacher.status) {
+      if (teacher.status === "active") {
+        await sendTeacherApprovalEmail({ to: teacher.email, name: teacher.name, loginUrl: process.env.FRONTEND_URL });
+      }
+      if (teacher.status === "inactive") {
+        await sendTeacherRejectionEmail({ to: teacher.email, name: teacher.name });
+      }
+    }
+    res.json(teacher);
+  } catch(e){ res.status(500).json({}); }
+});
 app.put("/api/admin/demo/:id",    async (req,res) => { try { res.json(await Demo.findByIdAndUpdate(req.params.id,req.body,{new:true}));    } catch(e){ res.status(500).json({}); }});
 
 app.get("/api/health", (req,res) => res.json({ status:"OK", message:"Class Orbit Backend Running!" }));

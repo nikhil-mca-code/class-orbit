@@ -2,7 +2,7 @@ const User = require("../models/user");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const crypto = require("crypto");
-const { sendUserConfirmation, passwordResetEmail } = require("../config/emailService");
+const { sendWelcomeEmail, sendPasswordResetEmail } = require("../services/emailService");
 
 // =====================
 // GENERATE JWT TOKEN
@@ -38,6 +38,12 @@ exports.register = async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, 10);
     const user = new User({ name, email: normalizedEmail, password: hashedPassword, role: publicRole });
     await user.save();
+    await sendWelcomeEmail({
+      to: user.email,
+      name: user.name,
+      role: user.role,
+      loginUrl: process.env.FRONTEND_URL
+    });
     const token = generateToken(user);
     res.json({ message: "Registration successful", token, role: user.role, userId: user._id });
   } catch (err) {
@@ -98,15 +104,12 @@ exports.forgotPassword = async (req, res) => {
         await user.save();
         const baseUrl = process.env.FRONTEND_URL || `${req.protocol}://${req.get("host")}`;
         const resetLink = `${baseUrl}/forgot-password.html?token=${encodeURIComponent(token)}`;
-        const safeName = user.name.replace(/[&<>"']/g, c => ({
-          "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
-        }[c]));
-        await sendUserConfirmation(
-          user.email,
-          user.name,
-          "Password Reset - Class Orbit",
-          passwordResetEmail(safeName, resetLink)
-        );
+        await sendPasswordResetEmail({
+          to: user.email,
+          name: user.name,
+          resetLink,
+          expiresIn: "15 minutes"
+        });
       }
     }
     res.json({ message: "If that email is registered, a reset link has been sent." });
