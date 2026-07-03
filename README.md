@@ -474,7 +474,7 @@ Software Development Intern • Full-Stack Developer • Founder @ Gorakhpur Web
 </a>
 
 <a href="https://www.instagram.com/_proxy.nikhil/">
-<img src="https://img.shields.io/badge/Instagram-@_proxy.nikhil-E4405F?style=for-the-badge&logo=instagram&logoColor=white"/>
+<img src="https://img.shields.io/badge/Instagram-@proxy.nikhil-E4405F?style=for-the-badge&logo=instagram&logoColor=white"/>
 </a>
 
 </div>
